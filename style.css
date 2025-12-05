@@ -115,19 +115,19 @@ nav a:hover::after{
 .whatsapp-btn{
     background:linear-gradient(135deg,#00b853,#00a146);
     color:#fff;
-    padding:0.9rem 2.6rem;
+    padding:1rem 2.8rem;
     border-radius:999px;
     text-decoration:none;
     font-weight:700;
-    font-size:0.95rem;
+    font-size:1rem;
     display:inline-flex;
     align-items:center;
-    gap:0.6rem;
-    min-height:48px;
+    gap:0.7rem;
+    min-height:52px;
     box-shadow:0 10px 25px rgba(0,0,0,0.18);
 }
 .whatsapp-btn i{
-    font-size:1.2rem;
+    font-size:1.4rem;
 }
 
 /* HERO */
@@ -183,7 +183,9 @@ nav a:hover::after{
     margin-bottom:1rem;
 }
 
-.hero-title strong{color:var(--light-gold);}
+.hero-title strong{
+    color:var(--light-gold);
+}
 
 .hero-text{
     font-size:1rem;
@@ -216,12 +218,11 @@ nav a:hover::after{
 .primary-btn-whats{
     background:linear-gradient(135deg,#00b853,#00a146);
     color:#fff;
-    min-height:48px;
+    min-height:52px;
     box-shadow:0 12px 30px rgba(0,0,0,0.25);
 }
-
 .primary-btn-whats i{
-    font-size:1.2rem;
+    font-size:1.4rem;
 }
 
 .secondary-link{
@@ -238,7 +239,7 @@ nav a:hover::after{
     box-shadow:0 22px 55px rgba(0,0,0,0.45);
     display:flex;
     flex-direction:column;
-    gap:1.3rem;
+    gap:1.1rem;
 }
 
 .org-panel-title{
@@ -250,34 +251,39 @@ nav a:hover::after{
     color:rgba(255,255,255,0.8);
 }
 
-.org-top-row,
-.org-bottom-row{
+.org-top-row{
     display:flex;
     justify-content:center;
     gap:1.6rem;
     margin-top:0.6rem;
 }
 
-.org-bottom-row{margin-top:1.3rem;}
+.org-bottom-row{
+    display:flex;
+    justify-content:center;
+    gap:1.6rem;
+    margin-top:0.8rem;
+}
 
+/* cartão dos sócios / apoio */
 .org-simple-card{
-    width:170px;
+    width:180px;
     background:rgba(0,0,0,0.25);
-    border-radius:18px;
+    border-radius:20px;
     padding:1rem 0.8rem 1.1rem;
     text-align:center;
     box-shadow:0 14px 35px rgba(0,0,0,0.45);
     border:1px solid rgba(255,255,255,0.08);
 }
 
-.main-middle{
-    transform:translateY(-8px);
+.org-support-card{
+    background:rgba(0,0,0,0.4);
     border-color:rgba(255,255,255,0.25);
 }
 
 .org-simple-avatar{
-    width:86px;
-    height:86px;
+    width:90px;
+    height:90px;
     border-radius:50%;
     overflow:hidden;
     border:3px solid rgba(255,255,255,0.7);
@@ -291,13 +297,40 @@ nav a:hover::after{
 }
 
 .org-simple-name{
-    font-size:0.95rem;
+    font-size:0.98rem;
     font-weight:600;
 }
 
 .org-simple-role{
-    font-size:0.78rem;
+    font-size:0.8rem;
     color:rgba(255,255,255,0.78);
+}
+
+/* linhas do organograma */
+.org-connector{
+    position:relative;
+    height:26px;
+    margin-top:0.3rem;
+}
+
+.org-line-horizontal{
+    position:absolute;
+    top:50%;
+    left:20%;
+    right:20%;
+    height:2px;
+    background:rgba(255,255,255,0.45);
+}
+
+.org-connector::after{
+    content:'';
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%);
+    width:2px;
+    height:22px;
+    background:rgba(255,255,255,0.45);
 }
 
 /* SEÇÕES */
@@ -330,7 +363,7 @@ section{padding:4rem 2.5rem;}
     letter-spacing:0.08em;
 }
 
-/* SÓCIOS – fotos maiores */
+/* SÓCIOS – fotos grandes */
 .socios-grid{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
@@ -339,20 +372,20 @@ section{padding:4rem 2.5rem;}
 
 .socio-card{
     background:#fff;
-    border-radius:24px;
-    padding:2.4rem 2rem 2rem;
-    box-shadow:0 22px 60px rgba(0,0,0,0.08);
+    border-radius:28px;
+    padding:3rem 2.4rem 2.4rem;
+    box-shadow:0 26px 70px rgba(0,0,0,0.08);
     border-top:4px solid var(--gold);
 }
 
 .socio-photo{
-    width:190px;
-    height:190px;
+    width:220px;
+    height:220px;
     border-radius:50%;
-    margin:0 auto 1.4rem;
-    border:5px solid rgba(196,151,91,0.75);
+    margin:0 auto 1.6rem;
+    border:6px solid rgba(196,151,91,0.8);
     overflow:hidden;
-    box-shadow:0 10px 30px rgba(196,151,91,0.55);
+    box-shadow:0 12px 36px rgba(196,151,91,0.6);
 }
 
 .socio-photo img{
@@ -362,7 +395,7 @@ section{padding:4rem 2.5rem;}
 }
 
 .socio-name{
-    font-size:1.2rem;
+    font-size:1.3rem;
     font-weight:700;
     color:var(--primary-green);
     text-align:center;
@@ -371,8 +404,8 @@ section{padding:4rem 2.5rem;}
 
 .socio-title{
     text-align:center;
-    font-size:0.82rem;
-    letter-spacing:0.14em;
+    font-size:0.85rem;
+    letter-spacing:0.16em;
     color:var(--gold);
 }
 
@@ -565,7 +598,7 @@ section{padding:4rem 2.5rem;}
     cursor:pointer;
 }
 
-/* CONTATO */
+/* CONTATO / FOOTER */
 .contact-section{
     background:var(--dark-bg);
     color:#fff;
@@ -577,7 +610,6 @@ section{padding:4rem 2.5rem;}
     gap:2.5rem;
 }
 
-/* FOOTER */
 footer{
     background:#05070a;
     color:rgba(255,255,255,0.6);

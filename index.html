@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSC Advogados | Agro Business Law</title>
+    <title>BSC Advogados | Governança Agrária</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -14,55 +14,52 @@
 </head>
 <body>
 
-    <header class="hero-agro">
-        <div class="hero-overlay"></div>
+    <div class="agro-background">
+        <div class="overlay-dark"></div>
+    </div>
+
+    <main class="app-container">
         
-        <div class="brand-spotlight js-scroll-fade">
-            <div class="logo-container-glow">
-                <img src="logo.png" alt="BSC Advogados" class="hero-logo">
+        <header class="hero-header js-scroll-fade">
+            <div class="logo-glass-container">
+                <img src="logo.png" alt="BSC Advogados" class="logo-hero">
             </div>
             <h1 class="hero-title">Barcellos Sakumoto & Carvalho</h1>
-            <p class="hero-subtitle">Excelência Jurídica enraizada no Agronegócio</p>
-            <div class="gold-separator"></div>
-        </div>
-    </header>
+            <p class="hero-subtitle">Inteligência Jurídica que Conecta o Campo ao Mundo</p>
+            <div class="hero-divider"></div>
+        </header>
 
-    <main class="content-wrapper">
-        
         <section class="section-board js-scroll-fade">
-            <h2 class="section-title">Board Executivo</h2>
+            <h2 class="section-label">Board Executivo</h2>
             
-            <div class="partners-row">
-                <div class="profile-card">
-                    <div class="card-image-wrapper">
-                        <img src="giovani.jpg" alt="Dr. Giovani Barcellos">
+            <div class="cards-wrapper">
+                <div class="profile-card glass-effect">
+                    <div class="profile-image-box">
+                        <img src="giovani.jpg" alt="Dr. Giovani">
                     </div>
-                    <div class="card-content">
+                    <div class="profile-content">
                         <h3>Dr. Giovani Barcellos</h3>
-                        <span class="role-tag">Sócio Fundador</span>
-                        <div class="wheat-icon"><i class="fas fa-seedling"></i></div>
+                        <span class="tag-role">Sócio Fundador</span>
                     </div>
                 </div>
 
-                <div class="profile-card center-card">
-                    <div class="card-image-wrapper">
-                        <img src="abimael.jpg" alt="Dr. Abimael Carvalho">
+                <div class="profile-card glass-effect card-center">
+                    <div class="profile-image-box">
+                        <img src="abimael.jpg" alt="Dr. Abimael">
                     </div>
-                    <div class="card-content">
+                    <div class="profile-content">
                         <h3>Dr. Abimael Carvalho</h3>
-                        <span class="role-tag">Sócio Fundador</span>
-                        <div class="wheat-icon"><i class="fas fa-seedling"></i></div>
+                        <span class="tag-role">Sócio Fundador</span>
                     </div>
                 </div>
 
-                <div class="profile-card">
-                    <div class="card-image-wrapper">
-                        <img src="pamella.jpg" alt="Dra. Pamella Sakumoto">
+                <div class="profile-card glass-effect">
+                    <div class="profile-image-box">
+                        <img src="pamella.jpg" alt="Dra. Pamella">
                     </div>
-                    <div class="card-content">
+                    <div class="profile-content">
                         <h3>Dra. Pamella Sakumoto</h3>
-                        <span class="role-tag">Sócia Fundadora</span>
-                        <div class="wheat-icon"><i class="fas fa-seedling"></i></div>
+                        <span class="tag-role">Sócia Fundadora</span>
                     </div>
                 </div>
             </div>
@@ -71,14 +68,15 @@
         <section class="section-management js-scroll-fade">
             <div class="connector-line"></div>
             
-            <div class="profile-card controller-style">
-                <div class="card-image-wrapper">
-                    <img src="iago.jpg" alt="Iago Manguary">
-                </div>
-                <div class="card-content">
-                    <h3>Iago Manguary</h3>
-                    <span class="role-tag tag-dark">Controladoria Jurídica</span>
-                    <p class="card-desc">Gestão de Eficiência e Qualidade</p>
+            <div class="profile-card glass-effect wide-card">
+                <div class="flex-row">
+                    <div class="profile-image-box small-box">
+                        <img src="iago.jpg" alt="Iago Manguary">
+                    </div>
+                    <div class="profile-content text-left">
+                        <h3>Iago Manguary</h3>
+                        <span class="tag-role role-blue">Controladoria Jurídica</span>
+                    </div>
                 </div>
             </div>
             
@@ -87,38 +85,26 @@
 
         <section class="section-network js-scroll-fade">
             <div class="network-header">
-                <h2>Território de Atuação</h2>
-                <p>Presença estratégica nas principais fronteiras agrícolas</p>
+                <h2><i class="fas fa-map-marked-alt"></i> Nossa Presença</h2>
             </div>
 
-            <div class="maps-container">
-                <div class="map-column">
-                    <div class="column-header">
-                        <img src="https://flagcdn.com/w40/br.png" alt="Brasil" class="flag-icon">
-                        <h3>Brasil</h3>
-                    </div>
-                    <div class="locations-grid" id="brazilGrid"></div>
+            <div class="network-split">
+                <div class="network-col">
+                    <h3 class="col-title"><img src="https://flagcdn.com/w40/br.png" alt="Brasil"> Operação Brasil</h3>
+                    <div id="brazilGrid" class="grid-locations"></div>
                 </div>
 
-                <div class="vertical-divider"></div>
-
-                <div class="map-column">
-                    <div class="column-header">
-                        <img src="https://flagcdn.com/w40/us.png" alt="USA" class="flag-icon">
-                        <h3>Internacional</h3>
-                    </div>
-                    <div class="locations-grid one-col" id="usaGrid"></div>
+                <div class="network-col">
+                    <h3 class="col-title"><img src="https://flagcdn.com/w40/us.png" alt="EUA"> Internacional</h3>
+                    <div id="usaGrid" class="grid-locations"></div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 BSC Advogados Associados.</p>
-            <p class="footer-slogan">Do plantio à colheita, segurança jurídica.</p>
-        </div>
+    <footer class="app-footer">
+        <p>© 2024 BSC Advogados. Excelência no Agronegócio.</p>
     </footer>
 
     <script src="script.js"></script>

@@ -50,3 +50,181 @@
         }
 
         /* CONTAINER GERAL */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            font-size: 28px;
+            color: #0a3d2a;
+        }
+
+        p {
+            font-size: 17px;
+        }
+
+        /* BLOCOS DE ESTATISTICAS */
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .statBox {
+            background: white;
+            padding: 25px;
+            width: 160px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .statBox h3 {
+            font-size: 22px;
+            margin: 0;
+            color: #0a4f36;
+        }
+
+        .statBox p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* BOTÕES */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #0a4f36;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #087042;
+        }
+
+        /* SÓCIOS */
+        .socio {
+            margin-top: 35px;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .socio img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0a4f36;
+        }
+
+        footer {
+            margin-top: 45px;
+            background: #0a4f36;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #99ffdd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Justice_scale_icon.svg/1024px-Justice_scale_icon.svg.png">
+        <h1>BSC Advogados</h1>
+    </header>
+
+    <!-- MENU -->
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Sócios</a>
+        <a href="#">Organograma</a>
+        <a href="#">Capilaridade</a>
+        <a href="#">Contato</a>
+        <a href="https://wa.me/55DDNUMERO" target="_blank">Fale Conosco</a>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container">
+
+        <h2>Excelência em Direito Agrário</h2>
+        <p>
+            Soluções jurídicas completas para o agronegócio: regularização fundiária, contratos, litígios,
+            consultoria técnica e planejamento sucessório de propriedades rurais.
+        </p>
+
+        <a class="btn" href="#">Solicitar Consulta</a>
+        <a class="btn" href="#">Ver Capilaridade</a>
+
+        <!-- BLOCO DE ESTATISTICAS -->
+        <div class="stats">
+            <div class="statBox">
+                <h3>3</h3>
+                <p>Sócios</p>
+            </div>
+
+            <div class="statBox">
+                <h3>10+</h3>
+                <p>Locais de Atuação</p>
+            </div>
+
+            <div class="statBox">
+                <h3>4</h3>
+                <p>Países</p>
+            </div>
+        </div>
+
+        <!-- SÓCIOS -->
+        <h2>Nossos Sócios</h2>
+        <p>Liderança com profundo conhecimento técnico e reputação no agronegócio.</p>
+
+        <div class="socio">
+            <img src="https://i.postimg.cc/0Q3Q0R4J/user.png">
+            <div>
+                <h3>Dr. Giovani de Góuvani — Sócio Fundador</h3>
+                <p>Atuação especializada em direito fundiário, contencioso e estruturação jurídica no agronegócio.</p>
+            </div>
+        </div>
+
+        <div class="socio">
+            <img src="https://i.postimg.cc/0Q3Q0R4J/user.png">
+            <div>
+                <h3>Dra. Ana Beatriz — Sócia</h3>
+                <p>Especialista em contratos rurais, compliance ambiental e sucessão patrimonial agrícola.</p>
+            </div>
+        </div>
+
+        <div class="socio">
+            <img src="https://i.postimg.cc/0Q3Q0R4J/user.png">
+            <div>
+                <h3>Dr. Lucas Ferreira — Sócio</h3>
+                <p>Atua em litígios complexos envolvendo propriedades rurais e proteção jurídica do produtor.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer>
+        © 2025 BSC Advogados — Especialistas em Direito Agrário •  
+        <a href="#">Política de Privacidade</a>
+    </footer>
+
+</body>
+</html>

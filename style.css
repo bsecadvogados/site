@@ -1,17 +1,17 @@
-/* --- VARIÁVEIS & RESET (Paleta Dark Premium) --- */
+/* --- VARIÁVEIS & RESET (Dark Premium) --- */
 :root {
-    --bg-dark: #0a1f18;         /* Fundo Verde/Preto Profundo */
-    --bg-card: #132a22;         /* Fundo dos Cards */
-    --primary-green: #009c3b;   /* Verde Destaque */
-    --primary-gold: #d4af37;    /* Dourado Rico */
-    --text-light: #f0f0f0;      /* Texto Claro */
-    --text-muted: #a0b3b0;      /* Texto Secundário */
+    --bg-dark: #05100e;         /* Fundo quase preto */
+    --bg-card: #0f221c;         /* Fundo dos cards */
+    --primary-green: #009c3b;   /* Verde Vibrante */
+    --primary-gold: #d4af37;    /* Dourado Metálico */
+    --text-light: #f0f0f0;
+    --text-muted: #8a9e9a;
     
     --font-titles: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
     
-    --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    --gold-glow: 0 0 15px rgba(212, 175, 55, 0.4);
+    --card-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    --gold-glow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,297 +20,90 @@ body {
     background-color: var(--bg-dark);
     font-family: var(--font-body);
     color: var(--text-light);
-    background-image: radial-gradient(circle at top, #1a3c34 0%, var(--bg-dark) 60%);
+    /* Gradiente sutil no fundo */
+    background-image: radial-gradient(circle at 50% 0%, #1a3c34 0%, var(--bg-dark) 70%);
     min-height: 100vh;
 }
 
 /* --- HERO SECTION --- */
 .hero-section {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(to bottom, rgba(10,31,24,0.8), var(--bg-dark));
-    border-bottom: 3px solid var(--primary-gold);
+    text-align: center; padding: 80px 20px 60px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
+.hero-logo { max-width: 260px; height: auto; margin-bottom: 25px; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2)); }
+.hero-section h1 { font-family: var(--font-titles); font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary-gold); margin-bottom: 20px; }
+.gold-divider { width: 80px; height: 3px; background: var(--primary-gold); margin: 0 auto 20px; }
+.tagline { font-size: 1.1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 3px; }
 
-.hero-logo {
-    max-width: 280px;
-    height: auto;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
-}
+/* --- CONTAINER --- */
+.main-container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
 
-.hero-section h1 {
-    font-family: var(--font-titles);
-    font-size: 2.5rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--primary-gold);
-}
-
-.gold-divider {
-    width: 100px;
-    height: 3px;
-    background: var(--primary-gold);
-    margin: 20px auto;
-}
-
-.tagline {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
-/* --- CONTAINER PRINCIPAL --- */
-.main-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
-
-.section-title {
-    font-family: var(--font-titles);
-    text-align: center;
-    font-size: 2rem;
-    color: var(--text-light);
-    margin-bottom: 40px;
-    position: relative;
-}
+/* --- TÍTULOS --- */
+.section-title { font-family: var(--font-titles); text-align: center; font-size: 2.2rem; color: var(--text-light); margin-bottom: 40px; position: relative; }
+.section-subtitle { text-align: center; color: var(--text-muted); margin-top: -30px; margin-bottom: 50px; font-size: 1rem; }
 
 /* --- SÓCIOS --- */
-.partners-grid {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px;
-    flex-wrap: wrap;
-}
+.partners-grid { display: flex; justify-content: center; align-items: flex-start; gap: 30px; flex-wrap: wrap; margin-bottom: 60px; }
 
 .partner-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 12px;
-    overflow: hidden;
-    width: 300px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: var(--card-shadow);
+    background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px; overflow: hidden; width: 300px; text-align: center;
+    transition: 0.4s ease; box-shadow: var(--card-shadow);
 }
-
-/* Destaque para o card central (Abimael) */
-.center-focus {
-    transform: scale(1.1);
-    border-color: var(--primary-gold);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.6), var(--gold-glow);
-    z-index: 10;
-}
-
-.partner-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--primary-gold);
-}
+.center-focus { transform: scale(1.1); border: 1px solid var(--primary-gold); box-shadow: 0 20px 50px rgba(0,0,0,0.8), var(--gold-glow); z-index: 10; }
+.partner-card:hover { transform: translateY(-10px) scale(1.02); border-color: var(--primary-gold); }
 .center-focus:hover { transform: translateY(-10px) scale(1.12); }
 
-.img-frame {
-    height: 320px;
-    overflow: hidden;
-    position: relative;
-}
+.img-frame { height: 340px; overflow: hidden; position: relative; }
+.img-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%) contrast(1.1); transition: 0.6s; }
+.partner-card:hover img { filter: grayscale(0%); transform: scale(1.05); }
 
-.img-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Filtro levemente dourado/sepia para sofisticar */
-    filter: sepia(20%) contrast(1.1);
-    transition: 0.5s;
-}
+.card-info { padding: 25px; }
+.card-info h3 { font-family: var(--font-titles); color: var(--primary-gold); margin-bottom: 8px; font-size: 1.4rem; }
+.role-badge { display: inline-block; padding: 6px 16px; background: var(--primary-gold); color: var(--bg-dark); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; border-radius: 50px; }
 
-.partner-card:hover img { filter: sepia(0%); transform: scale(1.05); }
-
-.card-info { padding: 20px; }
-
-.card-info h3 {
-    font-family: var(--font-titles);
-    color: var(--primary-gold);
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-}
-
-.role-badge {
-    display: inline-block;
-    padding: 6px 14px;
-    background: var(--primary-gold);
-    color: var(--bg-dark);
-    font-weight: 700;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    border-radius: 20px;
-}
-
-/* --- GESTÃO (IAGO) & CONECTORES --- */
-.section-management {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 30px 0;
-}
-
-/* Linhas Douradas do Organograma */
-.connector-vertical-line {
-    width: 2px;
-    background: linear-gradient(to bottom, var(--primary-gold), rgba(212, 175, 55, 0.3));
-    height: 50px;
-}
+/* --- GESTÃO (IAGO) --- */
+.section-management { display: flex; flex-direction: column; align-items: center; margin-bottom: 80px; }
+.connector-vertical-line { width: 2px; background: linear-gradient(to bottom, var(--primary-gold), rgba(212, 175, 55, 0.1)); height: 50px; }
 .main-line { height: 60px; }
-.short { height: 25px; background: var(--primary-gold); }
 
 .management-card {
-    display: flex;
-    align-items: center;
-    background: var(--bg-card);
-    border: 2px solid var(--primary-green);
-    padding: 15px 30px;
-    border-radius: 50px; /* Formato de pílula */
-    gap: 20px;
-    box-shadow: var(--gold-glow);
+    background: var(--bg-card); border: 1px solid var(--primary-green);
+    padding: 20px 40px; border-radius: 50px; box-shadow: 0 0 20px rgba(0, 156, 59, 0.2);
+    text-align: center; min-width: 300px;
 }
+.card-info-side h3 { font-family: var(--font-titles); color: var(--primary-green); font-size: 1.4rem; margin-bottom: 5px; }
+.role-badge.dark { background: transparent; color: var(--primary-gold); border: 1px solid var(--primary-gold); }
 
-.img-frame-small {
-    width: 70px; height: 70px;
-    border-radius: 50%; overflow: hidden;
-    border: 2px solid var(--primary-gold);
-}
-.img-frame-small img { width: 100%; height: 100%; object-fit: cover; }
-
-.card-info-side h3 {
-    font-family: var(--font-titles);
-    color: var(--primary-gold);
-    font-size: 1.2rem; margin-bottom: 5px;
-}
-.role-badge.dark { background: var(--bg-dark); color: var(--primary-gold); border: 1px solid var(--primary-gold); }
-
-/* --- ORGANOGRAMA DE CAPILARIDADE (ÁRVORE VISUAL) --- */
-.section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 40px; margin-top: -30px; }
-
-.tree-diagram-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.tree-root {
-    background: var(--primary-gold);
-    color: var(--bg-dark);
-    padding: 12px 35px;
-    border-radius: 30px;
-    font-weight: 700; font-size: 1.1rem;
-    box-shadow: var(--gold-glow);
-}
-
-/* Barra horizontal que divide Brasil e Intl */
-.connector-horizontal-bar {
-    width: 60%;
-    height: 2px;
-    background: var(--primary-gold);
-    position: relative;
-}
-
-.tree-branches-wrapper {
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
-}
-
-.tree-branch {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-}
-
-/* Conector que sobe da header do ramo para a barra horizontal */
-.connector-up { margin-top: -25px; }
-
-.branch-header {
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-weight: 700;
-    display: flex; align-items: center; gap: 10px;
-    color: white;
-    border: 2px solid var(--primary-gold);
-}
-.br-header { background: linear-gradient(45deg, #009c3b, #005f24); }
-.intl-header { background: linear-gradient(45deg, #003366, #001f3f); }
-.flag-icon { width: 24px; border-radius: 2px; }
-
-/* Grid dos nós (cards de cidade) */
-.tree-nodes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
+/* --- GLOBO 3D (EARTH) --- */
+.section-network {
     width: 100%;
-    padding-top: 10px;
-    position: relative;
-}
-.one-column { grid-template-columns: 1fr; max-width: 220px; }
-
-/* Linha horizontal superior dentro do grid para conectar os nós */
-.tree-nodes-grid::before {
-    content: ''; position: absolute; top: 0; left: 10%; right: 10%;
-    height: 2px; background: var(--primary-gold); opacity: 0.5;
+    display: flex; flex-direction: column; align-items: center;
 }
 
-/* CARD DO NÓ (LOCAL) */
-.node-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 6px;
-    text-align: center;
-    position: relative;
-    transition: 0.3s;
+#globeViz {
+    width: 100%;
+    height: 700px; /* Altura do globo */
+    border-radius: 20px;
     overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+    background: #000; /* Fundo do espaço */
+    margin-bottom: 30px;
+    cursor: move; /* Indica que é interativo */
 }
 
-/* Linha conectora vertical do nó individual */
-.node-card::before {
-    content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
-    width: 2px; height: 15px; background: var(--primary-gold); opacity: 0.5;
+.network-legend {
+    display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted);
 }
-
-.node-card:hover {
-    border-color: var(--primary-gold);
-    box-shadow: var(--gold-glow);
-    transform: translateY(-5px);
-}
-
-.node-state-header {
-    background: rgba(212, 175, 55, 0.1);
-    color: var(--primary-gold);
-    padding: 5px;
-    font-size: 0.8rem; font-weight: 700;
-}
-.node-body { padding: 10px; }
-.city-name { display: block; font-weight: 700; color: var(--text-light); margin-bottom: 5px; }
-.partner-name { display: block; font-size: 0.8rem; color: var(--text-muted); }
+.network-legend i { margin-right: 5px; font-size: 0.8rem; }
 
 /* FOOTER */
-footer {
-    text-align: center; padding: 30px;
-    background: #05110d; color: var(--text-muted);
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
-}
+footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); color: #555; }
 
-/* --- RESPONSIVIDADE (MOBILE) --- */
+/* MOBILE */
 @media (max-width: 900px) {
-    .hero-title { font-size: 1.8rem; }
+    .hero-section h1 { font-size: 1.8rem; }
     .partners-grid { flex-direction: column; align-items: center; gap: 40px; }
-    .center-focus { transform: scale(1); } /* Remove escala no mobile */
-    
-    /* Desmonta a árvore horizontal e empilha no mobile */
-    .connector-horizontal-bar { display: none; }
-    .tree-branches-wrapper { flex-direction: column; gap: 40px; width: 100%; }
-    .connector-up { display: none; }
-    .tree-nodes-grid::before { display: none; } /* Remove linha do grid */
-    .tree-nodes-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+    .center-focus { transform: scale(1); }
+    #globeViz { height: 450px; }
 }

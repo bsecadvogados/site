@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ================= DADOS DA REDE =================
-    // Estes dados preenchem os cartões do organograma automaticamente
-    
+    // DADOS DO ORGANOGRAMA
     const brazilNodes = [
         { state: "TO", city: "Palmas (Matriz)", partner: "Equipe BSC" },
         { state: "TO", city: "Arraias", partner: "Parceiro Local" },
@@ -22,16 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { state: "Flórida", city: "Orlando", partner: "Intl. Desk" }
     ];
 
-    // ================= RENDERIZAÇÃO DO ORGANOGRAMA VISUAL =================
+    // RENDERIZAÇÃO
     function renderTreeNodes(data, containerId) {
         const container = document.getElementById(containerId);
         
         data.forEach(item => {
-            // Cria o elemento do cartão (nó)
             const nodeCard = document.createElement('div');
             nodeCard.className = 'node-card glow-hover';
             
-            // Monta o HTML interno
             nodeCard.innerHTML = `
                 <div class="node-header">${item.state}</div>
                 <div class="node-body">
@@ -43,11 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Chama a função para desenhar os dois ramos da árvore
     renderTreeNodes(brazilNodes, 'brazil-tree-grid');
     renderTreeNodes(usaNodes, 'usa-tree-grid');
 
-    // ================= ANIMAÇÃO AO ROLAR (FADE IN) =================
+    // ANIMAÇÃO
     const fadeElements = document.querySelectorAll('.js-scroll-fade');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

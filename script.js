@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Dados dos parceiros
+    // Dados dos parceiros (Mantenha sua lista atualizada aqui)
     const partnersData = [
         {
             state: "Tocantins (Matriz)",
@@ -64,13 +64,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gridContainer = document.getElementById('networkGrid');
 
+    // Efeito de Fade-In ao rolar
+    const fadeElements = document.querySelectorAll('.js-scroll-fade');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    fadeElements.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'all 0.6s ease-out';
+        observer.observe(el);
+    });
+
+    // Geração dos cards da rede
     partnersData.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'state-card';
+        card.className = 'glass-card state-card'; // Adicionado glass-card aqui
 
         const citiesHtml = item.cities.map(city => {
             const partnerListHtml = city.partners.map(p => 
-                `<div class="partner-name"><i class="fas fa-user-tie"></i> ${p}</div>`
+                `<div class="partner-name"><i class="fas fa-check-circle"></i> ${p}</div>`
             ).join('');
 
             return `

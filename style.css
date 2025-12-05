@@ -540,6 +540,7 @@ section{
     padding-right:0.3rem;
 }
 
+/* Lista de parceiros – visual profissional */
 .parceiro-item{
     background:var(--light-bg);
     border-radius:16px;
@@ -652,6 +653,7 @@ section{
     cursor:pointer;
 }
 
+/* Formulário do modal – alinhado */
 .form-group{
     margin-bottom:1rem;
 }

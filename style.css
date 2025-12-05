@@ -1,211 +1,226 @@
-/* --- CONFIGURAÇÕES GERAIS (VIBE TECH/DARK) --- */
+/* --- CONFIGURAÇÕES GERAIS (AGRO PREMIUM) --- */
 :root {
-    --bg-dark: #0a1f18;         /* Fundo escuro profundo (verde/azul noite) */
-    --accent-gold: #FFD700;     /* Dourado Brilhante */
-    --accent-green: #00ff88;    /* Verde Neon Tecnológico */
-    --text-light: #ffffff;
-    --text-dim: #a0b3b0;
+    --agro-green: #1a3c34;      /* Verde BSC Profundo */
+    --agro-gold: #d4af37;       /* Dourado Ouro Velho */
+    --earth-brown: #4a403a;     /* Marrom Terra */
+    --cream-bg: #f5f2eb;        /* Fundo Creme Papel */
     
-    --glass-bg: rgba(255, 255, 255, 0.05); /* Fundo de vidro translúcido */
-    --glass-border: rgba(255, 255, 255, 0.15);
-    --glass-blur: blur(12px);
+    --font-title: 'Playfair Display', serif;
+    --font-text: 'Lato', sans-serif;
     
-    --line-glow: 0 0 10px rgba(0, 255, 136, 0.4); /* Brilho das linhas */
-    --font-main: 'Montserrat', sans-serif;
+    --card-shadow: 0 10px 30px rgba(26, 60, 52, 0.15);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--bg-dark);
-    font-family: var(--font-main);
-    color: var(--text-light);
+    background-color: var(--cream-bg);
+    font-family: var(--font-text);
+    color: var(--earth-brown);
     overflow-x: hidden;
-    min-height: 100vh;
 }
 
-/* Fundo com Orbes Brilhantes (Efeito App Moderno) */
-.app-background {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -2; overflow: hidden;
-    background: radial-gradient(circle at top center, #122d25 0%, #050c0a 100%);
-}
-.glow-orb {
-    position: absolute; border-radius: 50%;
-    filter: blur(100px); opacity: 0.4;
-}
-.orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--accent-green); animation: pulse 10s infinite alternate; }
-.orb-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--accent-gold); animation: pulse 8s infinite alternate-reverse; }
-
-@keyframes pulse { 0% { opacity: 0.2; transform: scale(1); } 100% { opacity: 0.4; transform: scale(1.1); } }
-
-.organogram-container {
-    max-width: 1100px; margin: 0 auto; padding: 80px 20px 120px;
-    display: flex; flex-direction: column; align-items: center;
+/* --- HERO SECTION (IMAGEM AGRO E LOGO DESTAQUE) --- */
+.hero-agro {
+    position: relative;
+    height: 85vh; /* Ocupa quase toda a tela inicial */
+    width: 100%;
+    /* Imagem de fundo de plantação (URL de exemplo Unsplash) */
+    background: url('https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=1931&auto=format&fit=crop') center/cover no-repeat fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-/* --- COMPONENTES REUTILIZÁVEIS --- */
-/* Glassmorphism Cards */
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+/* Overlay escuro para destacar o logo */
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 26, 22, 0.7), rgba(26, 60, 52, 0.9));
 }
 
-/* Efeito de Hover Brilhante */
-.glow-hover:hover {
-    border-color: var(--accent-green);
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2), 0 8px 32px rgba(0,0,0,0.3);
-    transform: translateY(-5px);
+.brand-spotlight {
+    position: relative; z-index: 10;
+    padding: 0 20px;
+    animation: fadeInUp 1.2s ease-out;
 }
 
-/* Linhas de Conexão Neon */
-.neon-line-vertical {
-    width: 3px; background: linear-gradient(to bottom, var(--accent-gold), var(--accent-green));
-    box-shadow: var(--line-glow); margin: 0 auto;
-}
-.neon-line-horizontal {
-    height: 3px; background: linear-gradient(to right, var(--accent-green), var(--accent-gold), var(--accent-green));
-    box-shadow: var(--line-glow); width: 60%; margin: 0 auto;
-}
-
-/* Badges (Cargos) */
-.badge-role {
+/* Container do Logo com Brilho */
+.logo-container-glow {
     display: inline-block;
-    padding: 6px 16px;
-    background: linear-gradient(135deg, var(--accent-gold), #b88a00);
-    color: #000; font-weight: 700; font-size: 0.7rem;
-    text-transform: uppercase; border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
 }
 
-/* --- NÍVEL 1: MARCA --- */
-.level-brand { text-align: center; z-index: 10; position: relative; }
-.brand-card { padding: 40px 60px; display: inline-block; }
-.logo-img { height: 90px; width: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
-.brand-name { font-weight: 800; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;
-    background: linear-gradient(to right, #fff, var(--accent-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+.hero-logo {
+    height: 140px; /* Logo bem grande */
+    width: auto;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
 }
-.brand-tagline { color: var(--text-dim); font-weight: 300; letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; }
-.main-connector { height: 60px; }
 
-/* --- NÍVEL 2: SÓCIOS --- */
-.level-partners { width: 100%; }
-.partners-grid { display: flex; justify-content: center; gap: 30px; }
-.partner-node { display: flex; flex-direction: column; align-items: center; width: 320px; }
-.node-connector { height: 40px; }
-
-.member-card {
-    width: 100%; padding: 30px; text-align: center;
-    display: flex; flex-direction: column; align-items: center;
-    position: relative; overflow: hidden;
+.hero-title {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
-/* Efeito de luz passando no card */
-.member-card::before {
-    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--agro-gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 300;
+}
+
+.gold-separator {
+    width: 80px; height: 3px; background: var(--agro-gold);
+    margin: 20px auto 0;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.content-wrapper {
+    position: relative;
+    top: -60px; /* Sobe um pouco sobre a imagem hero */
+    z-index: 20;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- SÓCIOS --- */
+.section-board { margin-bottom: 60px; }
+.section-title {
+    text-align: center; font-family: var(--font-title);
+    font-size: 2rem; color: #fff; margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.partners-row {
+    display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+}
+
+.profile-card {
+    background: #fff;
+    width: 300px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+    border-bottom: 4px solid var(--agro-gold); /* Detalhe Agro */
+}
+
+.profile-card:hover { transform: translateY(-10px); }
+
+.card-image-wrapper {
+    height: 320px; width: 100%; overflow: hidden;
+    position: relative;
+}
+
+.card-image-wrapper img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: sepia(20%); /* Filtro levemente envelhecido/quente */
     transition: 0.5s;
 }
-.member-card:hover::before { left: 100%; }
 
-.card-avatar {
-    width: 130px; height: 130px; border-radius: 50%;
-    border: 3px solid var(--glass-border);
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    overflow: hidden; margin-bottom: 20px;
+.profile-card:hover img { filter: sepia(0%); transform: scale(1.05); }
+
+.card-content { padding: 25px; text-align: center; position: relative; }
+
+.card-content h3 {
+    font-family: var(--font-title); color: var(--agro-green);
+    font-size: 1.3rem; margin-bottom: 8px;
+}
+
+.role-tag {
+    display: inline-block; padding: 5px 12px;
+    background: var(--agro-green); color: var(--agro-gold);
+    font-size: 0.75rem; text-transform: uppercase; font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.wheat-icon {
+    margin-top: 15px; color: #e0e0e0; font-size: 1.2rem;
+}
+
+/* --- IAGO (CONTROLLER) --- */
+.section-management {
+    display: flex; flex-direction: column; align-items: center; margin-bottom: 80px;
+}
+
+.connector-line {
+    height: 50px; width: 2px; background: var(--agro-green); opacity: 0.3;
+}
+
+.controller-style {
+    border-bottom: 4px solid var(--agro-green);
+    width: 320px;
+}
+.controller-style .role-tag { background: var(--earth-brown); color: #fff; }
+.card-desc { font-size: 0.9rem; color: #888; margin-top: 10px; font-style: italic; }
+
+/* --- REDE / MAPAS --- */
+.section-network {
+    background: #fff; padding: 60px 40px;
+    border-radius: 8px; box-shadow: var(--card-shadow);
+    margin-bottom: 80px;
+}
+
+.network-header { text-align: center; margin-bottom: 50px; }
+.network-header h2 { font-family: var(--font-title); color: var(--agro-green); font-size: 2.2rem; }
+.network-header p { color: var(--earth-brown); font-style: italic; }
+
+.maps-container { display: flex; gap: 40px; }
+
+.map-column { flex: 1; }
+.column-header {
+    display: flex; align-items: center; gap: 15px;
+    border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 25px;
+}
+.column-header h3 { font-family: var(--font-title); font-size: 1.5rem; color: var(--agro-green); }
+.flag-icon { width: 35px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+.vertical-divider { width: 1px; background: #eee; }
+
+/* Grid de Locais */
+.locations-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+.one-col { grid-template-columns: 1fr; }
+
+.location-item {
+    background: var(--cream-bg); padding: 15px; border-radius: 4px;
+    border-left: 3px solid var(--agro-gold);
     transition: 0.3s;
 }
-.card-avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: 0.3s;}
-.member-card:hover .card-avatar { border-color: var(--accent-green); box-shadow: 0 0 25px rgba(0, 255, 136, 0.3); }
-.member-card:hover .card-avatar img { filter: grayscale(0%); transform: scale(1.05); }
+.location-item:hover { background: #efead8; padding-left: 20px; }
 
-.card-info h3 { font-weight: 700; font-size: 1.2rem; margin-bottom: 10px; }
-.center-down-connector { height: 50px; }
-
-/* --- NÍVEL 3: GESTÃO (IAGO) --- */
-.level-management { width: 100%; display: flex; justify-content: center; position: relative; z-index: 5; }
-.management-wrapper { display: flex; flex-direction: column; align-items: center; width: 350px; }
-.management-connector-up { height: 40px; margin-top: -40px; /* Puxa para cima para conectar à linha dos sócios */ }
-
-.controller-card {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-    border-color: rgba(0, 255, 136, 0.2); /* Borda esverdeada para diferenciar */
-}
-.role-controller {
-    background: linear-gradient(135deg, var(--accent-green), #008f4d);
-    color: #0a1f18; box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
-}
-.role-desc { font-size: 0.85rem; color: var(--text-dim); margin-top: 12px; font-style: italic; }
-.management-connector-down { height: 60px; }
-
-/* --- NÍVEL 4: REDE --- */
-.level-network { width: 100%; max-width: 1000px; margin-top: 20px; }
-.section-header { text-align: center; margin-bottom: 30px; }
-.section-header h2 { font-weight: 300; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 3px; }
-.section-header h2 i { color: var(--accent-green); margin-right: 10px; }
-.section-header p { color: var(--text-dim); margin-top: 10px; }
-
-.network-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-
-/* Cards de Estado (Estilo App) */
-.state-card {
-    border-radius: 12px; overflow: hidden; transition: all 0.3s ease;
-    border-left: 4px solid var(--accent-gold);
-}
-.state-header {
-    padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-    background: rgba(255,255,255,0.03); transition: 0.3s;
-}
-.state-header:hover { background: rgba(255,255,255,0.06); }
-.state-name { font-weight: 700; font-size: 1.1rem; color: var(--text-light); }
-.toggle-icon { color: var(--accent-green); transition: transform 0.3s; }
-
-.state-card.active { border-color: var(--accent-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.1); }
-.state-card.active .toggle-icon { transform: rotate(180deg); }
-
-.state-content {
-    max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
-    background: rgba(0,0,0,0.2);
-}
-.city-block { padding: 15px 25px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.city-name { font-size: 0.7rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; display: block; margin-bottom: 6px; letter-spacing: 1px; }
-.partner-name { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-light); font-weight: 600; }
-.partner-name i { color: var(--accent-green); font-size: 0.9rem; }
+.loc-state { font-weight: 700; color: var(--agro-green); display: block; margin-bottom: 5px; font-size: 0.95rem; }
+.loc-city { font-size: 0.85rem; color: #666; display: block; }
+.loc-partner { margin-top: 8px; font-size: 0.8rem; color: var(--earth-brown); font-weight: 600; display: flex; align-items: center; gap: 5px; }
+.loc-partner i { color: var(--agro-green); }
 
 /* --- FOOTER --- */
-.glass-footer {
-    position: fixed; bottom: 0; width: 100%; text-align: center;
-    padding: 15px; background: rgba(10, 31, 24, 0.8); backdrop-filter: blur(10px);
-    border-top: 1px solid var(--glass-border); font-size: 0.8rem; color: var(--text-dim);
+footer {
+    background: var(--agro-green); color: #fff; text-align: center; padding: 40px 20px;
 }
+.footer-slogan { font-family: var(--font-title); color: var(--agro-gold); margin-top: 10px; font-size: 1.1rem; }
 
-/* --- RESPONSIVIDADE (MOBILE) --- */
+/* Animações */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Mobile */
 @media (max-width: 900px) {
-    .neon-line-horizontal { display: none; }
-    .partners-grid { flex-direction: column; align-items: center; gap: 0; }
-    .partner-node { width: 100%; margin-bottom: 0; }
-    
-    /* Ajuste dos conectores verticais no mobile para formar uma fila única */
-    .node-connector { height: 30px; }
-    .center-down-connector { display: none; } /* Remove o central */
-    .management-connector-up { margin-top: 0; height: 30px; } /* Ajusta o do Iago */
-
-    /* Adiciona conector abaixo de cada card no mobile */
-    .member-card::after {
-        content: ''; display: block; width: 3px; height: 30px;
-        background: linear-gradient(to bottom, var(--accent-gold), var(--accent-green));
-        box-shadow: var(--line-glow); margin: 0 auto;
-        position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
-    }
-    /* O último card (Iago) conecta à rede com uma linha maior */
-    .controller-card::after { height: 60px; bottom: -60px; }
-    .management-connector-down { display: none; } /* Esconde o conector original do desktop */
-    
-    .brand-name { font-size: 1.4rem; }
-    .brand-card { padding: 30px 20px; width: 100%; }
-    .organogram-container { padding-top: 40px; }
+    .hero-title { font-size: 1.8rem; }
+    .hero-logo { height: 100px; }
+    .content-wrapper { top: -30px; }
+    .maps-container { flex-direction: column; }
+    .vertical-divider { display: none; }
+    .partners-row { flex-direction: column; align-items: center; }
 }

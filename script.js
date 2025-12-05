@@ -1,131 +1,140 @@
-// Dados dos Locais e Parceiros
-const locationsData = [
+// ==========================================
+// DADOS DA REDE DE ATUAÇÃO E PARCEIROS
+// ==========================================
+// Edite este objeto para adicionar/remover parceiros
+const partnersData = [
     {
-        id: "TO",
-        name: "Tocantins",
+        uf: "TO",
+        state: "Tocantins (Matriz)",
         cities: [
-            { name: "Palmas (Sede)", partners: ["Equipe BSC Sede"] },
-            { name: "Arraias", partners: ["Parceiro Local 1"] }
+            { name: "Palmas", partners: ["Equipe BSC Sede"] },
+            { name: "Arraias", partners: ["Parceiro Local"] }
         ]
     },
     {
-        id: "RS",
-        name: "Rio Grande do Sul",
+        uf: "RS",
+        state: "Rio Grande do Sul",
         cities: [
-            { name: "Porto Alegre", partners: ["Disponível para Parceria"] },
+            { name: "Porto Alegre", partners: ["Representação Capital"] },
             { name: "Ibirubá", partners: ["Dr. João da Silva"] }
         ]
     },
     {
-        id: "MS",
-        name: "Mato Grosso do Sul",
+        uf: "BA",
+        state: "Bahia",
+        cities: [
+            { name: "Salvador", partners: ["Consultor Associado"] },
+            { name: "Luís Eduardo Magalhães", partners: ["Especialista Soja/Algodão"] }
+        ]
+    },
+    {
+        uf: "MT",
+        state: "Mato Grosso",
+        cities: [
+            { name: "Sinop", partners: ["Base Norte"] },
+            { name: "Rondonópolis", partners: ["Base Sul"] },
+            { name: "Confresa", partners: ["Base Xingu"] }
+        ]
+    },
+    {
+        uf: "MS",
+        state: "Mato Grosso do Sul",
         cities: [
             { name: "Sonora", partners: ["Escritório Associado MS"] }
         ]
     },
     {
-        id: "BA",
-        name: "Bahia",
+        uf: "DF",
+        state: "Distrito Federal",
         cities: [
-            { name: "Salvador", partners: ["Consultor Regional"] },
-            { name: "Luís Eduardo Magalhães", partners: ["Especialista em Soja"] }
+            { name: "Brasília", partners: ["Tribunais Superiores (STJ/STF)"] }
         ]
     },
     {
-        id: "MT",
-        name: "Mato Grosso",
+        uf: "MG",
+        state: "Minas Gerais",
         cities: [
-            { name: "Sinop", partners: [] },
-            { name: "Rondonópolis", partners: [] },
-            { name: "Confresa", partners: [] }
+            { name: "Belo Horizonte", partners: ["Atuação Estratégica"] }
         ]
     },
     {
-        id: "DF",
-        name: "Distrito Federal",
+        uf: "SC",
+        state: "Santa Catarina",
         cities: [
-            { name: "Brasília", partners: ["Atuação nos Tribunais Superiores"] }
+            { name: "Joinville", partners: ["Atuação Estratégica"] }
         ]
     },
     {
-        id: "MG",
-        name: "Minas Gerais",
+        uf: "USA",
+        state: "Estados Unidos",
         cities: [
-            { name: "Belo Horizonte", partners: [] }
-        ]
-    },
-    {
-        id: "SC",
-        name: "Santa Catarina",
-        cities: [
-            { name: "Joinville", partners: [] }
-        ]
-    },
-    {
-        id: "USA",
-        name: "Estados Unidos",
-        cities: [
-            { name: "Orlando, FL", partners: ["Consultoria Internacional"] }
+            { name: "Orlando, FL", partners: ["International Desk"] }
         ]
     }
 ];
 
-// Função para carregar a lista de estados
-function loadStates() {
-    const listElement = document.getElementById('statesList');
-    
-    locationsData.forEach(state => {
-        const item = document.createElement('div');
-        item.className = 'state-item';
-        item.innerHTML = `<span>${state.name}</span> <i class="fas fa-chevron-right"></i>`;
-        
-        item.addEventListener('click', () => {
-            // Remove classe active de todos
-            document.querySelectorAll('.state-item').forEach(i => i.classList.remove('active'));
-            // Adiciona no clicado
-            item.classList.add('active');
-            // Carrega detalhes
-            showDetails(state);
-        });
-        
-        listElement.appendChild(item);
-    });
-}
+// ==========================================
+// LÓGICA DE RENDERIZAÇÃO
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const gridContainer = document.getElementById('networkGrid');
 
-// Função para mostrar os detalhes do estado clicado
-function showDetails(stateData) {
-    const detailsElement = document.getElementById('locationDetails');
-    
-    let citiesHTML = '';
-    
-    stateData.cities.forEach(city => {
-        // Verifica se há parceiros listados
-        const partnersList = city.partners.length > 0 
-            ? city.partners.map(p => `<span class="partner-badge"><i class="fas fa-user-tie"></i> ${p}</span>`).join('') 
-            : '<span style="font-style:italic; color:#999; font-size:0.9rem">Oportunidade de Parceria Aberta</span>';
+    partnersData.forEach(item => {
+        // 1. Criar o Card do Estado
+        const card = document.createElement('div');
+        card.className = 'state-card';
 
-        citiesHTML += `
-            <div class="city-group">
-                <div class="city-name">${city.name}</div>
-                <div class="partner-name">
-                    ${partnersList}
+        // 2. Gerar HTML interno das cidades
+        // Se não houver parceiro definido, mostra mensagem padrão
+        const citiesHtml = item.cities.map(city => {
+            const partnerListHtml = city.partners.length > 0 
+                ? city.partners.map(p => `<div class="partner-name"><i class="fas fa-user-tie"></i> ${p}</div>`).join('')
+                : `<div class="partner-name" style="color:#aaa; font-style:italic">Oportunidade de Parceria</div>`;
+
+            return `
+                <div class="city-block">
+                    <span class="city-name">${city.name}</span>
+                    ${partnerListHtml}
                 </div>
+            `;
+        }).join('');
+
+        // 3. Montar o HTML do Card
+        card.innerHTML = `
+            <div class="state-header">
+                <span class="state-name">${item.state}</span>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="state-content">
+                ${citiesHtml}
             </div>
         `;
+
+        // 4. Adicionar Evento de Clique (Accordion)
+        const header = card.querySelector('.state-header');
+        const content = card.querySelector('.state-content');
+
+        header.addEventListener('click', () => {
+            // Fecha todos os outros (Opcional - se quiser que só fique um aberto por vez)
+            document.querySelectorAll('.state-card').forEach(otherCard => {
+                if (otherCard !== card && otherCard.classList.contains('active')) {
+                    otherCard.classList.remove('active');
+                    otherCard.querySelector('.state-content').style.maxHeight = null;
+                }
+            });
+
+            // Alterna o estado do atual
+            card.classList.toggle('active');
+
+            // Lógica de altura para animação suave
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null; // Fecha
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px"; // Abre conforme o tamanho do conteúdo
+            }
+        });
+
+        // Adiciona ao grid principal
+        gridContainer.appendChild(card);
     });
-
-    detailsElement.innerHTML = `
-        <h3 style="color:var(--primary-green); margin-bottom:20px; border-bottom:1px solid #ddd; padding-bottom:10px;">
-            Atuação em: ${stateData.name}
-        </h3>
-        ${citiesHTML}
-        <div style="margin-top:30px;">
-            <a href="https://wa.me/5563992699118?text=Olá, tenho interesse na parceria em ${stateData.name}" target="_blank" class="btn-primary" style="font-size:0.9rem">
-                Quero ser parceiro nesta região
-            </a>
-        </div>
-    `;
-}
-
-// Inicializa
-document.addEventListener('DOMContentLoaded', loadStates);
+});

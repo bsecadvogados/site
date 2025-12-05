@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // DADOS DO ORGANOGRAMA
-    const brazilNodes = [
+    // ================= DADOS DO ORGANOGRAMA =================
+    // Basta adicionar ou remover itens aqui para atualizar o site.
+    
+    const brazilData = [
         { state: "TO", city: "Palmas (Matriz)", partner: "Equipe BSC" },
         { state: "TO", city: "Arraias", partner: "Parceiro Local" },
         { state: "RS", city: "Porto Alegre", partner: "Rep. Capital" },
@@ -16,20 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
         { state: "SC", city: "Joinville", partner: "Estratégico" }
     ];
 
-    const usaNodes = [
-        { state: "Flórida", city: "Orlando", partner: "Intl. Desk" }
+    const intlData = [
+        { state: "EUA", city: "Orlando, FL", partner: "International Desk" }
     ];
 
-    // RENDERIZAÇÃO
-    function renderTreeNodes(data, containerId) {
+    // ================= FUNÇÃO DE RENDERIZAÇÃO =================
+    function renderNetworkCards(data, containerId) {
         const container = document.getElementById(containerId);
         
         data.forEach(item => {
+            // Cria o elemento do cartão (nó)
             const nodeCard = document.createElement('div');
-            nodeCard.className = 'node-card glow-hover';
+            nodeCard.className = 'node-card';
             
+            // Monta o HTML interno
             nodeCard.innerHTML = `
-                <div class="node-header">${item.state}</div>
+                <div class="node-state-header">${item.state}</div>
                 <div class="node-body">
                     <span class="city-name">${item.city}</span>
                     <span class="partner-name">${item.partner}</span>
@@ -39,24 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    renderTreeNodes(brazilNodes, 'brazil-tree-grid');
-    renderTreeNodes(usaNodes, 'usa-tree-grid');
+    // Executa a função para os dois grupos
+    renderNetworkCards(brazilData, 'brazil-grid');
+    renderNetworkCards(intlData, 'intl-grid');
 
-    // ANIMAÇÃO
-    const fadeElements = document.querySelectorAll('.js-scroll-fade');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, { threshold: 0.1 });
-
-    fadeElements.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s ease-out';
-        observer.observe(el);
-    });
+    // Animação simples de entrada do Hero
+    setTimeout(() => {
+        document.querySelector('.hero-content').classList.add('active');
+    }, 200);
 });

@@ -45,6 +45,7 @@ function initMap() {
 }
 
 function renderLocais() {
+  // limpar marcadores antigos
   marcadores.forEach((m) => mapa.removeLayer(m));
   marcadores = [];
 
@@ -56,6 +57,7 @@ function renderLocais() {
   locais.forEach((loc) => {
     paises.add(loc.pais.trim().toLowerCase());
 
+    // marcador no mapa
     const marker = L.marker([loc.lat, loc.lng]).addTo(mapa);
     marker.bindPopup(
       `<div class="popup-title">${loc.cidade} – ${loc.estado}</div>
@@ -67,6 +69,7 @@ function renderLocais() {
     );
     marcadores.push(marker);
 
+    // item visual na lista
     const item = document.createElement("div");
     item.className = "parceiro-item";
     item.onclick = () => {

@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // ================= DADOS DA REDE =================
-    // Adicione ou remova locais aqui. O visual se ajusta automaticamente.
+    // Estes dados preenchem os cartões do organograma automaticamente
+    
     const brazilNodes = [
         { state: "TO", city: "Palmas (Matriz)", partner: "Equipe BSC" },
         { state: "TO", city: "Arraias", partner: "Parceiro Local" },
@@ -26,11 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById(containerId);
         
         data.forEach(item => {
-            // Cria o cartão do nó
+            // Cria o elemento do cartão (nó)
             const nodeCard = document.createElement('div');
             nodeCard.className = 'node-card glow-hover';
             
-            // Monta o HTML interno do cartão
+            // Monta o HTML interno
             nodeCard.innerHTML = `
                 <div class="node-header">${item.state}</div>
                 <div class="node-body">
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Renderiza os dois ramos da árvore
+    // Chama a função para desenhar os dois ramos da árvore
     renderTreeNodes(brazilNodes, 'brazil-tree-grid');
     renderTreeNodes(usaNodes, 'usa-tree-grid');
 

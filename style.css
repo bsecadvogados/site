@@ -1,288 +1,211 @@
-/* --- CONFIGURAÇÕES GERAIS --- */
+/* --- CONFIGURAÇÕES GERAIS (VIBE TECH/DARK) --- */
 :root {
-    --bsc-green: #153e32;       /* Verde Nobre */
-    --bsc-gold: #c5a059;        /* Dourado */
-    --white-soft: #fcfcfc;      /* Fundo Off-White */
-    --gray-text: #4a4a4a;
-    --font-serif: 'Cinzel', serif;
-    --font-sans: 'Lato', sans-serif;
-    --card-radius: 8px;
-    --line-thickness: 2px;
+    --bg-dark: #0a1f18;         /* Fundo escuro profundo (verde/azul noite) */
+    --accent-gold: #FFD700;     /* Dourado Brilhante */
+    --accent-green: #00ff88;    /* Verde Neon Tecnológico */
+    --text-light: #ffffff;
+    --text-dim: #a0b3b0;
+    
+    --glass-bg: rgba(255, 255, 255, 0.05); /* Fundo de vidro translúcido */
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-blur: blur(12px);
+    
+    --line-glow: 0 0 10px rgba(0, 255, 136, 0.4); /* Brilho das linhas */
+    --font-main: 'Montserrat', sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    background-color: var(--white-soft);
-    font-family: var(--font-sans);
-    color: var(--gray-text);
+    background-color: var(--bg-dark);
+    font-family: var(--font-main);
+    color: var(--text-light);
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* Textura de fundo */
-.bg-texture {
+/* Fundo com Orbes Brilhantes (Efeito App Moderno) */
+.app-background {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
-    background-size: 30px 30px;
-    opacity: 0.3;
-    z-index: -1;
+    z-index: -2; overflow: hidden;
+    background: radial-gradient(circle at top center, #122d25 0%, #050c0a 100%);
 }
+.glow-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(100px); opacity: 0.4;
+}
+.orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--accent-green); animation: pulse 10s infinite alternate; }
+.orb-2 { bottom: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--accent-gold); animation: pulse 8s infinite alternate-reverse; }
+
+@keyframes pulse { 0% { opacity: 0.2; transform: scale(1); } 100% { opacity: 0.4; transform: scale(1.1); } }
 
 .organogram-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1100px; margin: 0 auto; padding: 80px 20px 120px;
+    display: flex; flex-direction: column; align-items: center;
 }
 
-/* --- ESTILOS DA MARCA (TOPO) --- */
-.level-brand {
-    text-align: center;
-    position: relative;
-    z-index: 10;
-}
-
-.brand-card {
-    background: white;
-    padding: 30px 50px;
-    border-radius: var(--card-radius);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border-top: 5px solid var(--bsc-green);
-    display: inline-block;
-    position: relative;
-    max-width: 95%;
-}
-
-.logo-img { 
-    height: 80px; 
-    width: auto; 
-    display: block; 
-    margin: 0 auto 15px; 
-    max-width: 100%; /* Garante que não estoure no celular */
-}
-
-.brand-name {
-    font-family: var(--font-serif);
-    color: var(--bsc-green);
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.brand-category {
-    color: var(--bsc-gold);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-top: 5px;
-}
-
-.connector-main-vertical {
-    width: var(--line-thickness);
-    height: 50px;
-    background-color: var(--bsc-gold);
-    margin: 0 auto;
-}
-
-/* --- ESTILOS DOS SÓCIOS --- */
-.level-partners { width: 100%; position: relative; }
-
-.connector-horizontal-bar {
-    width: 66%;
-    height: var(--line-thickness);
-    background-color: var(--bsc-gold);
-    margin: 0 auto;
-}
-
-.partners-grid {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-}
-
-.partner-node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-    position: relative;
-}
-
-.connector-node-vertical {
-    width: var(--line-thickness);
-    height: 30px;
-    background-color: var(--bsc-gold);
-}
-
-.partner-card {
-    background: white;
-    width: 100%;
-    border-radius: var(--card-radius);
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.4s ease;
-}
-
-.partner-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(21, 62, 50, 0.15);
-    border-color: var(--bsc-gold);
-}
-
-.photo-container {
-    width: 100%;
-    height: 320px;
-    overflow: hidden;
-    position: relative;
-    background: #eee;
-}
-
-.photo-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    transition: transform 0.6s ease, filter 0.6s ease;
-}
-
-.partner-card:hover .photo-container img {
-    filter: grayscale(0%);
-    transform: scale(1.05);
-}
-
-.info-container { padding: 25px 20px; text-align: center; }
-
-.info-container h3 {
-    font-family: var(--font-serif);
-    color: var(--bsc-green);
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.info-container .role {
-    font-size: 0.8rem;
-    color: var(--gray-text);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.gold-line {
-    width: 40px; height: 2px;
-    background: var(--bsc-gold);
-    margin: 15px auto 0;
-    transition: width 0.3s;
-}
-
-.partner-card:hover .gold-line { width: 80px; }
-
-.connector-partners-to-network {
-    width: var(--line-thickness);
-    height: 60px;
-    background-color: var(--bsc-gold);
-    margin-top: -5px;
-}
-
-/* --- ESTILOS DA REDE --- */
-.level-network { width: 100%; max-width: 1000px; margin-top: 10px; }
-
-.section-header {
-    text-align: center;
-    margin-bottom: 40px;
-    background: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-    display: inline-block;
-    position: relative;
-    left: 50%; transform: translateX(-50%);
-}
-
-.icon-header { font-size: 1.5rem; color: var(--bsc-gold); display: block; margin-bottom: 5px; }
-.section-header h2 { font-family: var(--font-serif); color: var(--bsc-green); font-size: 1.3rem; }
-.section-header p { font-size: 0.9rem; color: #999; margin-top: 5px; font-style: italic; }
-
-.network-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.state-card {
-    background: white;
-    border: 1px solid #eee;
-    border-left: 4px solid var(--bsc-gold);
-    border-radius: 4px;
-    overflow: hidden;
+/* --- COMPONENTES REUTILIZÁVEIS --- */
+/* Glassmorphism Cards */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 
-.state-header {
-    padding: 18px 20px;
-    cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
-    background: white;
-    transition: 0.3s;
+/* Efeito de Hover Brilhante */
+.glow-hover:hover {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2), 0 8px 32px rgba(0,0,0,0.3);
+    transform: translateY(-5px);
 }
 
-.state-header:hover { background: #fdfdfd; }
-.state-name { font-family: var(--font-serif); font-weight: 700; color: var(--bsc-green); }
-.toggle-icon { font-size: 0.8rem; color: var(--bsc-gold); transition: transform 0.3s; }
+/* Linhas de Conexão Neon */
+.neon-line-vertical {
+    width: 3px; background: linear-gradient(to bottom, var(--accent-gold), var(--accent-green));
+    box-shadow: var(--line-glow); margin: 0 auto;
+}
+.neon-line-horizontal {
+    height: 3px; background: linear-gradient(to right, var(--accent-green), var(--accent-gold), var(--accent-green));
+    box-shadow: var(--line-glow); width: 60%; margin: 0 auto;
+}
 
-.state-card.active { box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+/* Badges (Cargos) */
+.badge-role {
+    display: inline-block;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, var(--accent-gold), #b88a00);
+    color: #000; font-weight: 700; font-size: 0.7rem;
+    text-transform: uppercase; border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* --- NÍVEL 1: MARCA --- */
+.level-brand { text-align: center; z-index: 10; position: relative; }
+.brand-card { padding: 40px 60px; display: inline-block; }
+.logo-img { height: 90px; width: auto; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+.brand-name { font-weight: 800; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px;
+    background: linear-gradient(to right, #fff, var(--accent-gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.brand-tagline { color: var(--text-dim); font-weight: 300; letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; }
+.main-connector { height: 60px; }
+
+/* --- NÍVEL 2: SÓCIOS --- */
+.level-partners { width: 100%; }
+.partners-grid { display: flex; justify-content: center; gap: 30px; }
+.partner-node { display: flex; flex-direction: column; align-items: center; width: 320px; }
+.node-connector { height: 40px; }
+
+.member-card {
+    width: 100%; padding: 30px; text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    position: relative; overflow: hidden;
+}
+/* Efeito de luz passando no card */
+.member-card::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: 0.5s;
+}
+.member-card:hover::before { left: 100%; }
+
+.card-avatar {
+    width: 130px; height: 130px; border-radius: 50%;
+    border: 3px solid var(--glass-border);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    overflow: hidden; margin-bottom: 20px;
+    transition: 0.3s;
+}
+.card-avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: 0.3s;}
+.member-card:hover .card-avatar { border-color: var(--accent-green); box-shadow: 0 0 25px rgba(0, 255, 136, 0.3); }
+.member-card:hover .card-avatar img { filter: grayscale(0%); transform: scale(1.05); }
+
+.card-info h3 { font-weight: 700; font-size: 1.2rem; margin-bottom: 10px; }
+.center-down-connector { height: 50px; }
+
+/* --- NÍVEL 3: GESTÃO (IAGO) --- */
+.level-management { width: 100%; display: flex; justify-content: center; position: relative; z-index: 5; }
+.management-wrapper { display: flex; flex-direction: column; align-items: center; width: 350px; }
+.management-connector-up { height: 40px; margin-top: -40px; /* Puxa para cima para conectar à linha dos sócios */ }
+
+.controller-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    border-color: rgba(0, 255, 136, 0.2); /* Borda esverdeada para diferenciar */
+}
+.role-controller {
+    background: linear-gradient(135deg, var(--accent-green), #008f4d);
+    color: #0a1f18; box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+.role-desc { font-size: 0.85rem; color: var(--text-dim); margin-top: 12px; font-style: italic; }
+.management-connector-down { height: 60px; }
+
+/* --- NÍVEL 4: REDE --- */
+.level-network { width: 100%; max-width: 1000px; margin-top: 20px; }
+.section-header { text-align: center; margin-bottom: 30px; }
+.section-header h2 { font-weight: 300; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 3px; }
+.section-header h2 i { color: var(--accent-green); margin-right: 10px; }
+.section-header p { color: var(--text-dim); margin-top: 10px; }
+
+.network-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+
+/* Cards de Estado (Estilo App) */
+.state-card {
+    border-radius: 12px; overflow: hidden; transition: all 0.3s ease;
+    border-left: 4px solid var(--accent-gold);
+}
+.state-header {
+    padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255,255,255,0.03); transition: 0.3s;
+}
+.state-header:hover { background: rgba(255,255,255,0.06); }
+.state-name { font-weight: 700; font-size: 1.1rem; color: var(--text-light); }
+.toggle-icon { color: var(--accent-green); transition: transform 0.3s; }
+
+.state-card.active { border-color: var(--accent-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.1); }
 .state-card.active .toggle-icon { transform: rotate(180deg); }
 
 .state-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-    background: #fafafa;
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+    background: rgba(0,0,0,0.2);
 }
-
-.city-block { padding: 12px 20px; border-bottom: 1px solid rgba(0,0,0,0.05); }
-.city-name { font-size: 0.75rem; font-weight: 800; color: #aaa; text-transform: uppercase; display: block; margin-bottom: 4px; }
-.partner-name { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--bsc-green); font-weight: 600; }
-.partner-name i { color: var(--bsc-gold); font-size: 0.8rem; }
+.city-block { padding: 15px 25px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.city-name { font-size: 0.7rem; font-weight: 800; color: var(--text-dim); text-transform: uppercase; display: block; margin-bottom: 6px; letter-spacing: 1px; }
+.partner-name { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text-light); font-weight: 600; }
+.partner-name i { color: var(--accent-green); font-size: 0.9rem; }
 
 /* --- FOOTER --- */
-.simple-footer {
-    width: 100%; text-align: center;
-    padding: 20px; margin-top: 60px; border-top: 1px solid #eee;
-    font-size: 0.8rem; color: #aaa;
+.glass-footer {
+    position: fixed; bottom: 0; width: 100%; text-align: center;
+    padding: 15px; background: rgba(10, 31, 24, 0.8); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--glass-border); font-size: 0.8rem; color: var(--text-dim);
 }
 
-.float-whatsapp {
-    position: fixed; bottom: 20px; right: 20px;
-    background: #25D366; color: white;
-    width: 55px; height: 55px; border-radius: 50%;
-    display: flex; justify-content: center; align-items: center;
-    font-size: 28px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-    transition: 0.3s; z-index: 100;
-    text-decoration: none;
-}
-.float-whatsapp:hover { transform: scale(1.1); background: #20b857; }
-
-/* --- MOBILE --- */
+/* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 900px) {
-    .connector-horizontal-bar { display: none; }
+    .neon-line-horizontal { display: none; }
     .partners-grid { flex-direction: column; align-items: center; gap: 0; }
+    .partner-node { width: 100%; margin-bottom: 0; }
     
-    .partner-node { width: 100%; max-width: 350px; margin-bottom: 0; }
-    .connector-node-vertical { height: 40px; }
-    .connector-partners-to-network { display: none; }
-    
-    .partner-card::after {
-        content: ''; display: block; width: 2px; height: 20px; 
-        background: var(--bsc-gold); margin: 0 auto;
-        position: absolute; bottom: -20px; left: 50%;
+    /* Ajuste dos conectores verticais no mobile para formar uma fila única */
+    .node-connector { height: 30px; }
+    .center-down-connector { display: none; } /* Remove o central */
+    .management-connector-up { margin-top: 0; height: 30px; } /* Ajusta o do Iago */
+
+    /* Adiciona conector abaixo de cada card no mobile */
+    .member-card::after {
+        content: ''; display: block; width: 3px; height: 30px;
+        background: linear-gradient(to bottom, var(--accent-gold), var(--accent-green));
+        box-shadow: var(--line-glow); margin: 0 auto;
+        position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
     }
-    .partner-node:last-child .partner-card::after { height: 60px; }
+    /* O último card (Iago) conecta à rede com uma linha maior */
+    .controller-card::after { height: 60px; bottom: -60px; }
+    .management-connector-down { display: none; } /* Esconde o conector original do desktop */
     
-    .brand-name { font-size: 1.2rem; }
-    .organogram-container { padding-top: 30px; }
+    .brand-name { font-size: 1.4rem; }
+    .brand-card { padding: 30px 20px; width: 100%; }
+    .organogram-container { padding-top: 40px; }
 }

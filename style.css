@@ -1,166 +1,166 @@
-/* --- CONFIGURAÇÕES GERAIS --- */
+/* --- CONFIGURAÇÕES GERAIS (AGRO PREMIUM) --- */
 :root {
-    --gold-primary: #FFD700;
-    --green-agro: #2E8B57;
-    --dark-overlay: rgba(12, 28, 20, 0.85); /* Verde escuro translúcido */
-    --text-white: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --font-main: 'Montserrat', sans-serif;
+    --agro-green: #1a3c34;      /* Verde BSC Profundo */
+    --agro-gold: #d4af37;       /* Dourado Ouro Velho */
+    --earth-brown: #4a403a;     /* Marrom Terra */
+    --cream-bg: #f5f2eb;        /* Fundo Creme Papel */
+    --white: #ffffff;
+    
+    --font-title: 'Playfair Display', serif;
+    --font-text: 'Lato', sans-serif;
+    
+    --card-shadow: 0 10px 30px rgba(26, 60, 52, 0.15);
+    --hover-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: var(--font-main);
-    color: var(--text-white);
-    background: #0a0a0a;
+    background-color: var(--cream-bg);
+    font-family: var(--font-text);
+    color: var(--earth-brown);
     overflow-x: hidden;
 }
 
-/* Fundo Imersivo (Imagem Fixa) */
-.agro-background {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-    /* Imagem de alta qualidade de campo agrícola */
-    background: url('https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+/* Efeito de Hover Global */
+.glow-hover { transition: all 0.3s ease; }
+.glow-hover:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
+
+/* --- HERO SECTION --- */
+.hero-agro {
+    position: relative; height: 85vh; width: 100%;
+    background: url('https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=1931&auto=format&fit=crop') center/cover no-repeat fixed;
+    display: flex; justify-content: center; align-items: center; text-align: center;
 }
-
-.overlay-dark {
-    width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(12, 28, 20, 0.95));
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 26, 22, 0.7), rgba(26, 60, 52, 0.9));
 }
-
-.app-container {
-    max-width: 1200px; margin: 0 auto; padding: 60px 20px 100px;
-    display: flex; flex-direction: column; align-items: center;
+.brand-spotlight { position: relative; z-index: 10; padding: 0 20px; animation: fadeInUp 1.2s ease-out; }
+.logo-container-glow {
+    display: inline-block; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50%; padding: 30px; margin-bottom: 25px;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
 }
-
-/* --- HEADER & LOGO --- */
-.hero-header { text-align: center; margin-bottom: 80px; width: 100%; }
-
-/* Container de Vidro para a Logo (Destaque) */
-.logo-glass-container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 30px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    transition: transform 0.3s;
-}
-.logo-glass-container:hover { transform: scale(1.02); border-color: var(--gold-primary); }
-
-.logo-hero { height: 120px; width: auto; display: block; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
-
+.hero-logo { height: 140px; width: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
 .hero-title {
-    font-size: 2.2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
-    background: linear-gradient(to right, #fff, var(--gold-primary));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
+    font-family: var(--font-title); font-size: 2.5rem; color: #fff; text-transform: uppercase;
+    letter-spacing: 2px; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
-.hero-subtitle { font-size: 1rem; color: #ccc; letter-spacing: 1px; font-weight: 300; }
-.hero-divider { width: 60px; height: 4px; background: var(--gold-primary); margin: 25px auto 0; border-radius: 2px; }
+.hero-subtitle { font-size: 1.1rem; color: var(--agro-gold); text-transform: uppercase; letter-spacing: 4px; font-weight: 300; }
+.gold-separator { width: 80px; height: 3px; background: var(--agro-gold); margin: 20px auto 0; }
 
+/* --- CONTEÚDO PRINCIPAL --- */
+.content-wrapper { position: relative; top: -60px; z-index: 20; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- CARDS DOS SÓCIOS --- */
-.section-board { width: 100%; margin-bottom: 60px; text-align: center; }
-.section-label { font-size: 0.9rem; text-transform: uppercase; color: var(--gold-primary); letter-spacing: 3px; margin-bottom: 30px; opacity: 0.8; }
-
-.cards-wrapper {
-    display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+/* --- SÓCIOS (COM FOTO) --- */
+.section-board { margin-bottom: 40px; }
+.section-title {
+    text-align: center; font-family: var(--font-title); font-size: 2rem; color: #fff;
+    margin-bottom: 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
-
-/* Efeito Glassmorphism (Vidro) */
-.glass-effect {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-    border-radius: 16px;
-    transition: all 0.4s ease;
+.partners-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.profile-card {
+    background: #fff; width: 300px; border-radius: 4px; overflow: hidden;
+    box-shadow: var(--card-shadow); border-bottom: 4px solid var(--agro-gold);
 }
-.glass-effect:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-10px);
-    border-color: var(--gold-primary);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+.card-image-wrapper { height: 320px; width: 100%; overflow: hidden; position: relative; }
+.card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: sepia(20%); transition: 0.5s; }
+.profile-card:hover img { filter: sepia(0%); transform: scale(1.05); }
+.card-content { padding: 25px; text-align: center; }
+.card-content h3 { font-family: var(--font-title); color: var(--agro-green); font-size: 1.3rem; margin-bottom: 8px; }
+.role-tag {
+    display: inline-block; padding: 5px 12px; background: var(--agro-green); color: var(--agro-gold);
+    font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;
 }
+.wheat-icon { margin-top: 15px; color: #e0e0e0; font-size: 1.2rem; }
 
-.profile-card { width: 300px; padding: 25px; display: flex; flex-direction: column; align-items: center; }
-.card-center { transform: scale(1.05); border-color: rgba(255, 215, 0, 0.3); z-index: 2; }
-.card-center:hover { transform: scale(1.1) translateY(-10px); }
+/* --- IAGO (SEM FOTO - CARD DE TEXTO) --- */
+.section-management { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+.connector-line-vertical { height: 40px; width: 2px; background: var(--agro-gold); opacity: 0.6; margin: 0 auto; }
+.connector-line-vertical.short { height: 20px; }
+.connector-line-vertical.no-margin-bottom { margin-bottom: -20px; position: relative; z-index: 5; }
 
-.profile-image-box {
-    width: 140px; height: 140px; border-radius: 50%; overflow: hidden;
-    border: 3px solid rgba(255,255,255,0.1); margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+.text-only-card {
+    background: var(--white); padding: 25px 40px; border-radius: 4px;
+    text-align: center; box-shadow: var(--card-shadow);
+    border: 2px solid var(--agro-green); min-width: 280px; position: relative;
 }
-.profile-image-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.profile-card:hover .profile-image-box img { transform: scale(1.1); }
+.text-only-card h3 { font-family: var(--font-title); color: var(--agro-green); font-size: 1.4rem; margin-bottom: 10px; }
+.controller-style .role-tag { background: var(--earth-brown); color: #fff; }
+.wheat-icon-small { color: var(--agro-gold); margin-top: 10px; font-size: 1rem; }
 
-.profile-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
-.tag-role {
-    padding: 5px 15px; background: var(--gold-primary); color: #000;
-    font-size: 0.7rem; font-weight: 800; border-radius: 20px; text-transform: uppercase;
-}
-.role-blue { background: #00BFFF; color: #000; } /* Cor diferente para controladoria */
-
-/* --- CONTROLADORIA (IAGO) --- */
-.section-management { width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 80px; }
-.connector-line { width: 2px; height: 40px; background: linear-gradient(to bottom, var(--gold-primary), transparent); opacity: 0.5; }
-.wide-card { width: auto; min-width: 320px; padding: 20px 40px; }
-.flex-row { display: flex; align-items: center; gap: 20px; }
-.small-box { width: 80px; height: 80px; margin-bottom: 0; border-width: 2px; }
-.text-left { text-align: left; }
-
-/* --- REDE (LOCAIS) --- */
-.section-network { width: 100%; }
+/* --- ORGANOGRAMA DE REDE (NOVO ESTILO VISUAL) --- */
+.section-network-tree { background: #fff; padding: 60px 20px; border-radius: 8px; box-shadow: var(--card-shadow); margin-bottom: 80px; }
 .network-header { text-align: center; margin-bottom: 40px; }
-.network-header h2 { font-size: 1.8rem; font-weight: 300; text-transform: uppercase; letter-spacing: 2px; }
+.network-header h2 { font-family: var(--font-title); color: var(--agro-green); font-size: 2.2rem; }
+.network-header p { color: var(--earth-brown); font-style: italic; }
 
-.network-split { display: flex; gap: 40px; justify-content: center; }
-.network-col { flex: 1; max-width: 500px; }
-.col-title { 
-    display: flex; align-items: center; gap: 10px; font-size: 1.2rem; 
-    color: var(--gold-primary); margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
+.tree-structure { display: flex; flex-direction: column; align-items: center; }
+.tree-root-node {
+    background: var(--agro-green); color: var(--agro-gold); padding: 10px 30px;
+    border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    display: flex; align-items: center; gap: 10px;
 }
-.col-title img { width: 24px; height: auto; border-radius: 2px; }
+.connector-bar-horizontal { width: 50%; height: 2px; background: var(--agro-gold); opacity: 0.6; }
+.tree-branches-row { display: flex; justify-content: space-around; width: 80%; margin-top: 0; }
+.tree-branch { display: flex; flex-direction: column; align-items: center; flex: 1; }
 
-.grid-locations { display: grid; gap: 15px; }
-
-/* Cards de Local */
-.location-item {
-    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 8px; overflow: hidden; transition: 0.3s;
+.branch-head {
+    padding: 12px 25px; border-radius: 4px; font-weight: 700; text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px; color: var(--white); position: relative;
 }
-.location-header {
-    padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+.node-br { background: #009c3b; /* Verde Brasil */ }
+.node-intl { background: #003366; /* Azul Intl */ }
+.flag-small { width: 24px; border-radius: 2px; }
+
+/* Conector que sobe até a barra horizontal */
+.up-connector { margin-top: -20px; height: 20px; }
+
+/* Grid dos cartões de nó */
+.tree-grid-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px; width: 100%; padding: 20px 0; position: relative;
 }
-.location-header:hover { background: rgba(255,255,255,0.08); }
-.loc-name { font-weight: 700; font-size: 0.95rem; }
-.loc-icon { color: var(--gold-primary); font-size: 0.8rem; transition: 0.3s; }
+.tree-grid-container.one-col { grid-template-columns: 1fr; max-width: 250px; }
 
-.location-item.active { border-color: var(--gold-primary); background: rgba(0,0,0,0.3); }
-.location-item.active .loc-icon { transform: rotate(180deg); }
+/* Linha superior horizontal que conecta os cards do grid */
+.tree-grid-container::before {
+    content: ''; position: absolute; top: 0; left: 10%; right: 10%;
+    height: 2px; background: var(--agro-gold); opacity: 0.4;
+}
 
-.location-body { max-height: 0; overflow: hidden; transition: 0.4s ease; background: rgba(0,0,0,0.2); }
-.city-row { padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.03); }
-.city-label { display: block; font-size: 0.7rem; color: #888; text-transform: uppercase; font-weight: 700; margin-bottom: 3px; }
-.partner-val { font-size: 0.9rem; color: #fff; display: flex; align-items: center; gap: 8px; }
-.partner-val i { color: var(--green-agro); font-size: 0.8rem; }
+/* Cartão de Nó (Estado/Local) */
+.node-card {
+    background: var(--cream-bg); border: 1px solid #e0d8c0; border-radius: 4px;
+    text-align: center; overflow: hidden; position: relative; transition: 0.3s;
+}
+.node-card::before {
+    content: ''; position: absolute; top: -15px; left: 50%; width: 2px; height: 15px;
+    background: var(--agro-gold); opacity: 0.4;
+}
+.node-card:hover { border-color: var(--agro-gold); background: #fff; transform: translateY(-3px); }
 
-/* Footer */
-.app-footer { text-align: center; padding: 20px; color: #666; font-size: 0.8rem; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); }
+.node-header { background: var(--agro-green); color: var(--agro-gold); padding: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
+.node-body { padding: 12px; }
+.city-name { font-weight: 700; font-size: 0.8rem; color: var(--earth-brown); display: block; }
+.partner-name { font-size: 0.75rem; color: #666; margin-top: 4px; display: block; }
 
-/* --- MOBILE --- */
+
+/* --- FOOTER --- */
+footer { background: var(--agro-green); color: #fff; text-align: center; padding: 40px 20px; }
+.footer-slogan { font-family: var(--font-title); color: var(--agro-gold); margin-top: 10px; font-size: 1.1rem; }
+
+/* Animações */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Mobile */
 @media (max-width: 900px) {
-    .network-split { flex-direction: column; }
-    .cards-wrapper { flex-direction: column; align-items: center; }
-    .card-center { transform: scale(1); } .card-center:hover { transform: translateY(-10px); }
-    .hero-title { font-size: 1.5rem; }
-    .logo-hero { height: 90px; }
-    .app-container { padding-top: 40px; }
+    .hero-title { font-size: 1.8rem; } .hero-logo { height: 100px; } .content-wrapper { top: -30px; }
+    .partners-row { flex-direction: column; align-items: center; }
+    .connector-bar-horizontal { display: none; }
+    .tree-branches-row { flex-direction: column; width: 100%; gap: 30px; }
+    .up-connector { display: none; }
+    .branch-head::before { content: ''; position: absolute; top: -20px; left: 50%; width: 2px; height: 20px; background: var(--agro-gold); opacity: 0.6; }
+    .tree-grid-container::before { display: none; } /* Remove linha horizontal do grid no mobile */
 }

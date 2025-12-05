@@ -1,70 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Dados Brasil
-    const brazilData = [
-        { state: "Tocantins (Matriz)", cities: [{name: "Palmas", p: "Equipe BSC Sede"}, {name: "Arraias", p: "Parceiro Local"}] },
-        { state: "Rio Grande do Sul", cities: [{name: "Porto Alegre", p: "Representação Capital"}, {name: "Ibirubá", p: "Dr. João da Silva"}] },
-        { state: "Mato Grosso", cities: [{name: "Sinop", p: "Base Norte"}, {name: "Rondonópolis", p: "Base Sul"}] },
-        { state: "Bahia", cities: [{name: "Salvador", p: "Consultor Associado"}, {name: "LEM", p: "Especialista Agro"}] },
-        { state: "Distrito Federal", cities: [{name: "Brasília", p: "Tribunais Superiores"}] }
+    // ================= DADOS DA REDE =================
+    // Adicione ou remova locais aqui. O visual se ajusta automaticamente.
+    const brazilNodes = [
+        { state: "TO", city: "Palmas (Matriz)", partner: "Equipe BSC" },
+        { state: "TO", city: "Arraias", partner: "Parceiro Local" },
+        { state: "RS", city: "Porto Alegre", partner: "Rep. Capital" },
+        { state: "RS", city: "Ibirubá", partner: "Dr. João Silva" },
+        { state: "BA", city: "L.E. Magalhães", partner: "Esp. Agro" },
+        { state: "BA", city: "Salvador", partner: "Consultoria" },
+        { state: "MT", city: "Sinop", partner: "Base Norte" },
+        { state: "MT", city: "Rondonópolis", partner: "Base Sul" },
+        { state: "MS", city: "Sonora", partner: "Assoc. MS" },
+        { state: "DF", city: "Brasília", partner: "Tribunais Sup." },
+        { state: "MG", city: "Belo Horizonte", partner: "Estratégico" },
+        { state: "SC", city: "Joinville", partner: "Estratégico" }
     ];
 
-    // Dados EUA
-    const usaData = [
-        { state: "Flórida", cities: [{name: "Orlando", p: "International Desk"}] }
+    const usaNodes = [
+        { state: "Flórida", city: "Orlando", partner: "Intl. Desk" }
     ];
 
-    function renderGrid(data, containerId) {
+    // ================= RENDERIZAÇÃO DO ORGANOGRAMA VISUAL =================
+    function renderTreeNodes(data, containerId) {
         const container = document.getElementById(containerId);
+        
         data.forEach(item => {
-            const div = document.createElement('div');
-            div.className = 'location-item';
+            // Cria o cartão do nó
+            const nodeCard = document.createElement('div');
+            nodeCard.className = 'node-card glow-hover';
             
-            const citiesHtml = item.cities.map(c => `
-                <div class="city-row">
-                    <span class="city-label">${c.name}</span>
-                    <span class="partner-val"><i class="fas fa-check"></i> ${c.p}</span>
+            // Monta o HTML interno do cartão
+            nodeCard.innerHTML = `
+                <div class="node-header">${item.state}</div>
+                <div class="node-body">
+                    <span class="city-name">${item.city}</span>
+                    <span class="partner-name">${item.partner}</span>
                 </div>
-            `).join('');
-
-            div.innerHTML = `
-                <div class="location-header">
-                    <span class="loc-name">${item.state}</span>
-                    <i class="fas fa-chevron-down loc-icon"></i>
-                </div>
-                <div class="location-body">${citiesHtml}</div>
             `;
-
-            const header = div.querySelector('.location-header');
-            const body = div.querySelector('.location-body');
-
-            header.addEventListener('click', () => {
-                div.classList.toggle('active');
-                if(body.style.maxHeight) body.style.maxHeight = null;
-                else body.style.maxHeight = body.scrollHeight + "px";
-            });
-
-            container.appendChild(div);
+            container.appendChild(nodeCard);
         });
     }
 
-    renderGrid(brazilData, 'brazilGrid');
-    renderGrid(usaData, 'usaGrid');
+    // Renderiza os dois ramos da árvore
+    renderTreeNodes(brazilNodes, 'brazil-tree-grid');
+    renderTreeNodes(usaNodes, 'usa-tree-grid');
 
-    // Fade Animation
-    const observer = new IntersectionObserver(entries => {
+    // ================= ANIMAÇÃO AO ROLAR (FADE IN) =================
+    const fadeElements = document.querySelectorAll('.js-scroll-fade');
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if(entry.isIntersecting) {
+            if (entry.isIntersecting) {
                 entry.target.style.opacity = 1;
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.js-scroll-fade').forEach(el => {
+    fadeElements.forEach(el => {
         el.style.opacity = 0;
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s ease';
+        el.style.transition = 'all 0.8s ease-out';
         observer.observe(el);
     });
 });

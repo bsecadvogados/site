@@ -111,11 +111,11 @@ nav a:hover::after{
     width:100%;
 }
 
-/* Botão WhatsApp */
+/* Botão WhatsApp topo */
 .whatsapp-btn{
-    background:linear-gradient(135deg,#21c25e,#0b9a4d);
+    background:linear-gradient(135deg,#00b853,#00a146);
     color:#fff;
-    padding:0.85rem 2.3rem;
+    padding:0.9rem 2.6rem;
     border-radius:999px;
     text-decoration:none;
     font-weight:700;
@@ -123,7 +123,11 @@ nav a:hover::after{
     display:inline-flex;
     align-items:center;
     gap:0.6rem;
+    min-height:48px;
     box-shadow:0 10px 25px rgba(0,0,0,0.18);
+}
+.whatsapp-btn i{
+    font-size:1.2rem;
 }
 
 /* HERO */
@@ -179,9 +183,7 @@ nav a:hover::after{
     margin-bottom:1rem;
 }
 
-.hero-title strong{
-    color:var(--light-gold);
-}
+.hero-title strong{color:var(--light-gold);}
 
 .hero-text{
     font-size:1rem;
@@ -190,11 +192,42 @@ nav a:hover::after{
     margin-bottom:1.5rem;
 }
 
+/* Botões hero */
 .hero-cta{
     display:flex;
     flex-wrap:wrap;
-    gap:1rem;
+    gap:1.2rem;
     align-items:center;
+}
+
+.primary-btn{
+    border:none;
+    cursor:pointer;
+    border-radius:999px;
+    padding:0.9rem 2.3rem;
+    font-weight:600;
+    font-size:0.95rem;
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    text-decoration:none;
+}
+
+.primary-btn-whats{
+    background:linear-gradient(135deg,#00b853,#00a146);
+    color:#fff;
+    min-height:48px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.25);
+}
+
+.primary-btn-whats i{
+    font-size:1.2rem;
+}
+
+.secondary-link{
+    color:#fff;
+    text-decoration:underline;
+    font-size:0.9rem;
 }
 
 /* ORGANOGRAMA SIMPLES */
@@ -225,15 +258,13 @@ nav a:hover::after{
     margin-top:0.6rem;
 }
 
-.org-bottom-row{
-    margin-top:1.3rem;
-}
+.org-bottom-row{margin-top:1.3rem;}
 
 .org-simple-card{
-    width:150px;
+    width:170px;
     background:rgba(0,0,0,0.25);
     border-radius:18px;
-    padding:0.8rem 0.7rem 0.9rem;
+    padding:1rem 0.8rem 1.1rem;
     text-align:center;
     box-shadow:0 14px 35px rgba(0,0,0,0.45);
     border:1px solid rgba(255,255,255,0.08);
@@ -245,12 +276,12 @@ nav a:hover::after{
 }
 
 .org-simple-avatar{
-    width:70px;
-    height:70px;
+    width:86px;
+    height:86px;
     border-radius:50%;
     overflow:hidden;
-    border:2px solid rgba(255,255,255,0.7);
-    margin:0 auto 0.5rem;
+    border:3px solid rgba(255,255,255,0.7);
+    margin:0 auto 0.6rem;
 }
 
 .org-simple-avatar img{
@@ -260,7 +291,7 @@ nav a:hover::after{
 }
 
 .org-simple-name{
-    font-size:0.9rem;
+    font-size:0.95rem;
     font-weight:600;
 }
 
@@ -270,14 +301,9 @@ nav a:hover::after{
 }
 
 /* SEÇÕES */
-section{
-    padding:4rem 2.5rem;
-}
+section{padding:4rem 2.5rem;}
 
-.section-wrapper{
-    max-width:1320px;
-    margin:0 auto;
-}
+.section-wrapper{max-width:1320px;margin:0 auto;}
 
 .section-heading{
     text-align:center;
@@ -304,7 +330,7 @@ section{
     letter-spacing:0.08em;
 }
 
-/* SÓCIOS – só foto + nome */
+/* SÓCIOS – fotos maiores */
 .socios-grid{
     display:grid;
     grid-template-columns:repeat(3,minmax(0,1fr));
@@ -314,19 +340,19 @@ section{
 .socio-card{
     background:#fff;
     border-radius:24px;
-    padding:2rem 1.6rem 1.7rem;
-    box-shadow:0 14px 40px rgba(0,0,0,0.07);
+    padding:2.4rem 2rem 2rem;
+    box-shadow:0 22px 60px rgba(0,0,0,0.08);
     border-top:4px solid var(--gold);
 }
 
 .socio-photo{
-    width:150px;
-    height:150px;
+    width:190px;
+    height:190px;
     border-radius:50%;
-    margin:0 auto 1.2rem;
-    border:4px solid rgba(196,151,91,0.65);
+    margin:0 auto 1.4rem;
+    border:5px solid rgba(196,151,91,0.75);
     overflow:hidden;
-    box-shadow:0 8px 25px rgba(196,151,91,0.45);
+    box-shadow:0 10px 30px rgba(196,151,91,0.55);
 }
 
 .socio-photo img{
@@ -336,17 +362,17 @@ section{
 }
 
 .socio-name{
-    font-size:1.1rem;
+    font-size:1.2rem;
     font-weight:700;
     color:var(--primary-green);
     text-align:center;
-    margin-bottom:0.25rem;
+    margin-bottom:0.3rem;
 }
 
 .socio-title{
     text-align:center;
-    font-size:0.8rem;
-    letter-spacing:0.12em;
+    font-size:0.82rem;
+    letter-spacing:0.14em;
     color:var(--gold);
 }
 
@@ -368,16 +394,9 @@ section{
     box-shadow:0 16px 40px rgba(0,0,0,0.12);
 }
 
-.map-side{
-    display:flex;
-    flex-direction:column;
-    gap:1.4rem;
-}
+.map-side{display:flex;flex-direction:column;gap:1.4rem;}
 
-.stats-row{
-    display:flex;
-    gap:1rem;
-}
+.stats-row{display:flex;gap:1rem;}
 
 .stat-card{
     flex:1;
@@ -400,10 +419,7 @@ section{
     color:var(--primary-green);
 }
 
-.stat-text h4{
-    font-size:1.3rem;
-    color:var(--primary-green);
-}
+.stat-text h4{font-size:1.3rem;color:var(--primary-green);}
 
 .parceiros-header{
     display:flex;
@@ -447,10 +463,7 @@ section{
     margin-bottom:0.2rem;
 }
 
-.parceiro-top h4{
-    font-size:0.95rem;
-    color:var(--primary-green);
-}
+.parceiro-top h4{font-size:0.95rem;color:var(--primary-green);}
 
 .parceiro-estado{
     font-size:0.8rem;
@@ -562,35 +575,6 @@ section{
     display:grid;
     grid-template-columns:1.7fr 1.3fr;
     gap:2.5rem;
-}
-
-.contact-text h3{
-    font-family:'Playfair Display',serif;
-    font-size:1.7rem;
-    margin-bottom:0.8rem;
-}
-
-.contact-items{
-    display:flex;
-    flex-direction:column;
-    gap:0.8rem;
-    font-size:0.9rem;
-}
-
-.contact-item{
-    display:flex;
-    gap:0.7rem;
-}
-
-.mini-form h4{font-size:1rem;margin-bottom:0.6rem;}
-.mini-form button{
-    margin-top:0.3rem;
-    border:none;
-    border-radius:999px;
-    padding:0.75rem 1.4rem;
-    background:var(--gold);
-    color:#fff;
-    font-weight:600;
 }
 
 /* FOOTER */

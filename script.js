@@ -1,12 +1,11 @@
 // Dados dos Locais e Parceiros
-// VOCÊ PODE EDITAR ESTA LISTA LIVREMENTE PARA ADICIONAR PESSOAS
 const locationsData = [
     {
         id: "TO",
         name: "Tocantins",
         cities: [
             { name: "Palmas (Sede)", partners: ["Equipe BSC Sede"] },
-            { name: "Arraias", partners: ["Dra. Parceira Exemplo"] }
+            { name: "Arraias", partners: ["Parceiro Local 1"] }
         ]
     },
     {
@@ -100,7 +99,7 @@ function showDetails(stateData) {
     let citiesHTML = '';
     
     stateData.cities.forEach(city => {
-        // Verifica se há parceiros listados, se não, coloca "A definir"
+        // Verifica se há parceiros listados
         const partnersList = city.partners.length > 0 
             ? city.partners.map(p => `<span class="partner-badge"><i class="fas fa-user-tie"></i> ${p}</span>`).join('') 
             : '<span style="font-style:italic; color:#999; font-size:0.9rem">Oportunidade de Parceria Aberta</span>';

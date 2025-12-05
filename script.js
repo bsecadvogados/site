@@ -1,70 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Dados dos parceiros (Mantenha sua lista atualizada aqui)
-    const partnersData = [
-        {
-            state: "Tocantins (Matriz)",
-            cities: [
-                { name: "Palmas", partners: ["Equipe BSC Sede"] },
-                { name: "Arraias", partners: ["Parceiro Local"] }
-            ]
-        },
-        {
-            state: "Rio Grande do Sul",
-            cities: [
-                { name: "Porto Alegre", partners: ["Representação Capital"] },
-                { name: "Ibirubá", partners: ["Dr. João da Silva"] }
-            ]
-        },
-        {
-            state: "Bahia",
-            cities: [
-                { name: "Salvador", partners: ["Consultor Associado"] },
-                { name: "Luís Eduardo Magalhães", partners: ["Especialista Soja/Algodão"] }
-            ]
-        },
-        {
-            state: "Mato Grosso",
-            cities: [
-                { name: "Sinop", partners: ["Base Norte"] },
-                { name: "Rondonópolis", partners: ["Base Sul"] },
-                { name: "Confresa", partners: ["Base Xingu"] }
-            ]
-        },
-        {
-            state: "Mato Grosso do Sul",
-            cities: [
-                { name: "Sonora", partners: ["Escritório Associado MS"] }
-            ]
-        },
-        {
-            state: "Distrito Federal",
-            cities: [
-                { name: "Brasília", partners: ["Tribunais Superiores (STJ/STF)"] }
-            ]
-        },
-        {
-            state: "Minas Gerais",
-            cities: [
-                { name: "Belo Horizonte", partners: ["Atuação Estratégica"] }
-            ]
-        },
-        {
-            state: "Santa Catarina",
-            cities: [
-                { name: "Joinville", partners: ["Atuação Estratégica"] }
-            ]
-        },
-        {
-            state: "Estados Unidos",
-            cities: [
-                { name: "Orlando, FL", partners: ["International Desk"] }
-            ]
-        }
+    
+    // ================= DADOS =================
+    const brazilData = [
+        { state: "Tocantins", city: "Palmas (Matriz)", partner: "Equipe BSC Sede" },
+        { state: "Tocantins", city: "Arraias", partner: "Parceiro Local" },
+        { state: "Rio Grande do Sul", city: "Porto Alegre", partner: "Representação Capital" },
+        { state: "Rio Grande do Sul", city: "Ibirubá", partner: "Dr. João da Silva" },
+        { state: "Bahia", city: "Luís Eduardo Magalhães", partner: "Especialista Soja/Algodão" },
+        { state: "Bahia", city: "Salvador", partner: "Consultoria Jurídica" },
+        { state: "Mato Grosso", city: "Sinop", partner: "Base Norte" },
+        { state: "Mato Grosso", city: "Rondonópolis", partner: "Base Sul" },
+        { state: "Mato Grosso do Sul", city: "Sonora", partner: "Escritório Associado MS" },
+        { state: "Distrito Federal", city: "Brasília", partner: "Tribunais Superiores" },
+        { state: "Minas Gerais", city: "Belo Horizonte", partner: "Atuação Estratégica" },
+        { state: "Santa Catarina", city: "Joinville", partner: "Atuação Estratégica" }
     ];
 
-    const gridContainer = document.getElementById('networkGrid');
+    const usaData = [
+        { state: "Flórida", city: "Orlando", partner: "International Desk" }
+    ];
 
-    // Efeito de Fade-In ao rolar
+    // ================= RENDERIZAÇÃO =================
+    function renderLocations(data, containerId) {
+        const container = document.getElementById(containerId);
+        
+        data.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'location-item';
+            
+            div.innerHTML = `
+                <span class="loc-state">${item.state}</span>
+                <span class="loc-city">${item.city}</span>
+                <div class="loc-partner">
+                    <i class="fas fa-user-check"></i> ${item.partner}
+                </div>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    renderLocations(brazilData, 'brazilGrid');
+    renderLocations(usaData, 'usaGrid');
+
+    // ================= ANIMAÇÃO AO ROLAR =================
     const fadeElements = document.querySelectorAll('.js-scroll-fade');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -77,51 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach(el => {
         el.style.opacity = 0;
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s ease-out';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.8s ease-out';
         observer.observe(el);
-    });
-
-    // Geração dos cards da rede
-    partnersData.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'glass-card state-card'; // Adicionado glass-card aqui
-
-        const citiesHtml = item.cities.map(city => {
-            const partnerListHtml = city.partners.map(p => 
-                `<div class="partner-name"><i class="fas fa-check-circle"></i> ${p}</div>`
-            ).join('');
-
-            return `
-                <div class="city-block">
-                    <span class="city-name">${city.name}</span>
-                    ${partnerListHtml}
-                </div>
-            `;
-        }).join('');
-
-        card.innerHTML = `
-            <div class="state-header">
-                <span class="state-name">${item.state}</span>
-                <i class="fas fa-chevron-down toggle-icon"></i>
-            </div>
-            <div class="state-content">
-                ${citiesHtml}
-            </div>
-        `;
-
-        const header = card.querySelector('.state-header');
-        const content = card.querySelector('.state-content');
-
-        header.addEventListener('click', () => {
-            card.classList.toggle('active');
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-
-        gridContainer.appendChild(card);
     });
 });

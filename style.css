@@ -1,167 +1,398 @@
-/* assets/style.css
-   Estilos completos e detalhados para BSC Advogados Associados
-   Coloque este arquivo em assets/style.css
-*/
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BSC Advogados Associados | Direito Agrário e Agronegócio</title>
 
-:root{
-  --primary-green:#1a5f3f;
-  --secondary-green:#2d7a52;
-  --gold:#c4975b;
-  --light-gold:#d4a76a;
-  --light-bg:#f8f9fa;
-  --dark-bg:#0f1419;
-  --text-dark:#1a1a1a;
-  --muted:#6b6b6b;
-  --container:1200px;
-  --radius:14px;
-}
+    <!-- Fontes e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  font-family:"Montserrat",sans-serif;
-  color:var(--text-dark);
-  background:var(--light-bg);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-/* Container helper */
-.container{
-  max-width:var(--container);
-  margin:0 auto;
-  padding:0 20px;
-}
+    <!-- CSS do site -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="logo.png" alt="BSC Advogados Associados">
+                </div>
+                <div class="brand-text">
+                    <h1>BSC ADVOGADOS</h1>
+                    <p>ASSOCIADOS</p>
+                </div>
+            </div>
 
-/* Header */
-.site-header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  background:rgba(255,255,255,0.98);
-  backdrop-filter:blur(6px);
-  border-bottom:1px solid rgba(0,0,0,0.05);
-  z-index:1000;
-}
-.header-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 0;
-}
-.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
-.brand-logo{width:70px;height:70px;object-fit:contain;border-radius:10px}
-.brand-text h1{font-family:'Playfair Display',serif;font-size:18px;color:var(--primary-green);margin:0}
-.brand-text p{color:var(--gold);font-size:12px;margin:0;letter-spacing:1px}
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#socios">Sócios</a></li>
+                    <li><a href="#capilaridade">Capilaridade</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
 
-.main-nav ul{display:flex;gap:22px;list-style:none}
-.main-nav a{color:var(--text-dark);text-decoration:none;font-weight:600;padding:8px 6px;border-radius:8px}
-.main-nav a:hover{color:var(--primary-green)}
+            <a class="whatsapp-btn" href="https://wa.me/5563992699118" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i>
+                <span>(63) 99269‑9118</span>
+            </a>
+        </div>
+    </header>
 
-.header-actions{display:flex;align-items:center;gap:10px}
-.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:transparent;color:var(--primary-green);text-decoration:none;font-size:18px}
-.contact-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--primary-green),var(--secondary-green));color:#fff;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}
+    <!-- HERO / ORGANOGRAMA -->
+    <section id="inicio" class="hero">
+        <div class="hero-inner">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span></span>
+                    Excelência em Direito Agrário e do Agronegócio
+                </div>
+                <h1 class="hero-title">
+                    Estrutura jurídica completa para o
+                    <strong>produtor rural e empresas do campo</strong>.
+                </h1>
+                <p class="hero-text">
+                    A BSC Advogados Associados é um escritório especializado em Direito Agrário e do Agronegócio, focado em regularização fundiária, contratos rurais, governança patrimonial e solução de conflitos complexos em todo o território nacional. [web:9][web:58]
+                </p>
 
-/* HERO */
-.hero{
-  margin-top:100px;
-  padding:64px 0;
-  background:linear-gradient(135deg,var(--primary-green),var(--secondary-green));
-  color:#fff;
-}
-.hero-inner{display:flex;gap:30px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.hero-left{flex:1;min-width:280px}
-.hero-right{min-width:240px}
-.hero h2{font-family:'Playfair Display',serif;font-size:36px;margin-bottom:12px}
-.lead{font-size:18px;opacity:0.95;margin-bottom:18px}
-.accent{color:var(--gold)}
-.hero-ctas{display:flex;gap:12px}
-.btn{display:inline-block;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}
-.btn-primary{background:#fff;color:var(--primary-green}
-.btn-primary{background:#fff;color:var(--primary-green);padding:10px 18px;border-radius:999px}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:10px 18px;border-radius:999px}
+                <div class="hero-highlights">
+                    <div class="hero-highlight">
+                        <i class="fa-solid fa-seedling"></i>
+                        <span>Atuação estratégica voltada ao agronegócio.</span>
+                    </div>
+                    <div class="hero-highlight">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <span>Equipe dedicada em Direito Agrário e Ambiental.</span>
+                    </div>
+                    <div class="hero-highlight">
+                        <i class="fa-solid fa-globe-americas"></i>
+                        <span>Rede de parceiros no Brasil e exterior.</span>
+                    </div>
+                </div>
 
-/* Stats mini */
-.stats-cards{display:flex;gap:12px;align-items:center}
-.stat{background:rgba(255,255,255,0.08);padding:12px 16px;border-radius:10px;text-align:center}
-.stat-value{font-weight:800;font-size:20px}
-.stat-label{font-size:12px;color:rgba(255,255,255,0.9)}
+                <div class="hero-cta">
+                    <a href="https://wa.me/5563992699118" target="_blank" rel="noopener" class="primary-btn">
+                        <i class="fa-solid fa-comments"></i>
+                        Agendar uma reunião
+                    </a>
+                    <a href="#capilaridade" class="secondary-link">
+                        Ver organograma de atuação
+                        <i class="fa-solid fa-arrow-down-long"></i>
+                    </a>
+                </div>
+            </div>
 
-/* Section generic */
-.section{padding:48px 0}
-.section .section-head{margin-bottom:18px;text-align:center}
-.section h3{font-family:'Playfair Display',serif;font-size:28px;color:var(--primary-green);margin-bottom:6px}
-.subtitle{color:var(--gold);font-weight:600}
+            <div class="hero-right">
+                <div class="org-title">Organograma BSC Advogados</div>
+                <div class="org-sub">Estrutura de liderança e rede de atuação</div>
 
-/* Sócios grid */
-.socios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:24px}
-.socio-card{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(0,0,0,0.06);text-align:center}
-.socio-photo img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--gold)}
-.socio-card h4{color:var(--primary-green);margin-top:12px}
-.cargo{color:var(--gold);font-weight:700;margin:6px 0}
-.desc{color:var(--muted);font-size:14px}
-.tags{margin-top:12px}
-.tags span{background:var(--primary-green);color:#fff;padding:6px 10px;border-radius:999px;font-size:12px;margin:6px}
+                <div class="org-grid">
+                    <!-- Giovani principal -->
+                    <div class="org-card main">
+                        <div class="org-avatar">
+                            <img src="giovani.jpg" alt="Dr. Giovani de Góuvani">
+                        </div>
+                        <div class="org-info">
+                            <h4>Dr. Giovani de Góuvani</h4>
+                            <p>Sócio Fundador · Direito Agrário, Ambiental e Regularização Fundiária</p>
+                        </div>
+                        <span class="org-tag">Founder</span>
+                    </div>
 
-/* Organograma */
-.org-wrapper{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin-top:18px}
-.org-chart{flex:1;background:#fff;padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.05)}
-.org-root{display:flex;align-items:center;gap:12px}
-.org-logo{width:56px;height:56px;object-fit:contain;border-radius:8px}
-.org-title strong{display:block}
-.org-level{display:flex;gap:12px;justify-content:space-between;margin-top:14px}
-.org-node{flex:1}
-.person{display:flex;gap:12px;align-items:center;background:linear-gradient(180deg,#fff,#fbfbfb);padding:8px;border-radius:10px;cursor:pointer;transition:transform .2s}
-.person:hover{transform:translateY(-6px)}
-.avatar{width:56px;height:56px;background-size:cover;background-position:center;border-radius:8px}
-.meta strong{display:block}
-.org-actions{width:260px;background:#fff;padding:14px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.05)}
+                    <!-- Pamella -->
+                    <div class="org-card">
+                        <div class="org-avatar">
+                            <img src="pamella.jpg" alt="Dra. Pamella">
+                        </div>
+                        <div class="org-info">
+                            <h4>Dra. Pamella</h4>
+                            <p>Contratos Agrários, Planejamento Patrimonial e Sucessório Rural</p>
+                        </div>
+                    </div>
 
-/* Map panel */
-.map-panel{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
-#map{height:520px;border-radius:12px;border:3px solid #fff;box-shadow:0 12px 40px rgba(0,0,0,0.08)}
-.partners-panel{background:#fff;padding:16px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.05)}
-.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.panel-stats{display:flex;gap:12px}
-.panel-stats div{background:linear-gradient(135deg,#fff,#fbfbfb);padding:8px;border-radius:8px;text-align:center}
-.parceiros-list{display:grid;gap:12px;max-height:420px;overflow:auto;padding-right:6px}
-.parceiro-item{padding:10px;border-radius:10px;border-left:4px solid var(--primary-green);background:#fff;box-shadow:0 6px 20px rgba(0,0,0,0.04)}
-.parceiro-item h5{margin:0;color:var(--primary-green)}
-.parceiro-item p{margin:6px 0;color:var(--muted);font-size:13px}
-.parceiro-actions{display:flex;gap:8px;margin-top:8px}
+                    <!-- Abimael -->
+                    <div class="org-card">
+                        <div class="org-avatar">
+                            <img src="abimael.jpg" alt="Dr. Abimael">
+                        </div>
+                        <div class="org-info">
+                            <h4>Dr. Abimael</h4>
+                            <p>Litígios Agrários, Recuperação de Crédito e Consultoria Preventiva</p>
+                        </div>
+                    </div>
 
-/* Modal */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:3000}
-.modal[aria-hidden="false"],.modal.show{display:flex}
-.modal-content{background:#fff;padding:18px;border-radius:12px;width:100%;max-width:640px;max-height:90vh;overflow:auto}
-.modal-header{display:flex;justify-content:space-between;align-items:center}
-.close{background:none;border:none;font-size:28px;cursor:pointer}
-.form label{display:block;margin-top:12px;color:var(--primary-green);font-weight:700}
-.form input[type="text"],.form input[type="number"],.form select,.form textarea{width:100%;padding:10px;border:1px solid #e6e6e6;border-radius:8px;margin-top:6px}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:12px}
+                    <!-- Iago como apoio (exemplo: consultor jurídico/tributário) -->
+                    <div class="org-card">
+                        <div class="org-avatar">
+                            <img src="iago.jpg" alt="Iago">
+                        </div>
+                        <div class="org-info">
+                            <h4>Iago</h4>
+                            <p>Consultoria em negócios e apoio estratégico ao agronegócio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* Footer */
-.site-footer{background:var(--dark-bg);color:#fff;padding:36px 0;margin-top:28px}
-.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px;align-items:start;max-width:var(--container);margin:0 auto;padding:0 20px}
-.footer-about h4{font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:8px}
-.footer-about p{color:rgba(255,255,255,0.8)}
-.footer-contact h5,.footer-links h5{color:var(--gold)}
-.footer-links ul{list-style:none}
-.footer-links li{color:rgba(255,255,255,0.85);margin-bottom:8px}
-.footer-bottom{text-align:center;padding-top:18px;color:rgba(255,255,255,0.6);margin-top:18px}
+    <!-- SÓCIOS -->
+    <section id="socios">
+        <div class="section-wrapper">
+            <div class="section-heading">
+                <div class="pill">
+                    <i class="fa-solid fa-user-tie"></i>
+                    Sócios
+                </div>
+                <h2>Liderança especializada no agronegócio</h2>
+                <p>
+                    A equipe de sócios alia experiência técnica em Direito Agrário, visão empresarial e proximidade com o campo, oferecendo decisões jurídicas alinhadas à realidade do produtor rural. [web:55]
+                </p>
+            </div>
 
-/* Responsive */
-@media(max-width:1100px){
-  .map-panel{grid-template-columns:1fr}
-  .org-actions{width:100%}
-}
-@media(max-width:760px){
-  .header-inner{flex-direction:column;gap:12px}
-  .main-nav ul{flex-direction:column;gap:8px}
-  .hero-inner{flex-direction:column}
-  .footer-inner{grid-template-columns:1fr}
-  #map{height:420px}
-  .stats-cards{justify-content:flex-start}
-}
+            <div class="socios-grid">
+                <!-- Giovani -->
+                <article class="socio-card">
+                    <div class="socio-photo">
+                        <img src="giovani.jpg" alt="Dr. Giovani de Góuvani">
+                    </div>
+                    <h3 class="socio-name">Dr. Giovani de Góuvani</h3>
+                    <p class="socio-title">SÓCIO FUNDADOR</p>
+                    <div class="socio-badges">
+                        <span class="badge">Direito Agrário</span>
+                        <span class="badge">Direito Ambiental</span>
+                        <span class="badge">Regularização Fundiária</span>
+                    </div>
+                    <p class="socio-desc">
+                        Conduz projetos de regularização de imóveis rurais, defesa da propriedade e estruturação jurídica de empreendimentos agrícolas, buscando segurança de longo prazo para a atividade. [web:9][web:40]
+                    </p>
+                    <div class="socio-footer">
+                        <span><i class="fa-solid fa-location-dot"></i>Atuação nacional</span>
+                        <span><i class="fa-solid fa-tractor"></i>Foco no agronegócio</span>
+                    </div>
+                </article>
+
+                <!-- Pamella -->
+                <article class="socio-card">
+                    <div class="socio-photo">
+                        <img src="pamella.jpg" alt="Dra. Pamella">
+                    </div>
+                    <h3 class="socio-name">Dra. Pamella</h3>
+                    <p class="socio-title">SÓCIA</p>
+                    <div class="socio-badges">
+                        <span class="badge">Contratos Agrários</span>
+                        <span class="badge">Planejamento Sucessório</span>
+                        <span class="badge">Gestão Patrimonial Rural</span>
+                    </div>
+                    <p class="socio-desc">
+                        Estrutura contratos de arrendamento, parceria, integração e planejamento sucessório, protegendo o patrimônio rural e fortalecendo a governança familiar. [web:9][web:60]
+                    </p>
+                    <div class="socio-footer">
+                        <span><i class="fa-solid fa-file-signature"></i>Contratos rurais</span>
+                        <span><i class="fa-solid fa-people-roof"></i>Família e sucessões</span>
+                    </div>
+                </article>
+
+                <!-- Abimael -->
+                <article class="socio-card">
+                    <div class="socio-photo">
+                        <img src="abimael.jpg" alt="Dr. Abimael">
+                    </div>
+                    <h3 class="socio-name">Dr. Abimael</h3>
+                    <p class="socio-title">SÓCIO</p>
+                    <div class="socio-badges">
+                        <span class="badge">Litígios Agrários</span>
+                        <span class="badge">Recuperação de Crédito</span>
+                        <span class="badge">Consultoria Preventiva</span>
+                    </div>
+                    <p class="socio-desc">
+                        Atua em disputas judiciais e negociais envolvendo terras, contratos de produção, garantias rurais e operações estruturadas, integrando estratégias contenciosas e preventivas. [web:19][web:58]
+                    </p>
+                    <div class="socio-footer">
+                        <span><i class="fa-solid fa-gavel"></i>Contencioso especializado</span>
+                        <span><i class="fa-solid fa-handshake"></i>Negociação estratégica</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPILARIDADE / MAPA -->
+    <section id="capilaridade" class="map-section">
+        <div class="section-wrapper">
+            <div class="section-heading">
+                <div class="pill">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    Capilaridade
+                </div>
+                <h2>Rede de atuação e parceiros</h2>
+                <p>
+                    A BSC Advogados Associados organiza sua atuação em um organograma territorial, com base em Palmas‑TO e pontos parceiros em estados estratégicos e no exterior, permitindo atendimento ágil e local ao cliente. [web:40][web:58]
+                </p>
+            </div>
+
+            <div class="map-layout">
+                <div>
+                    <div id="map"></div>
+                </div>
+
+                <aside class="map-side">
+                    <div class="stats-row">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="stat-text">
+                                <h4 id="totalLocais">0</h4>
+                                <p>Locais de atuação</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fa-solid fa-flag"></i>
+                            </div>
+                            <div class="stat-text">
+                                <h4 id="totalPaises">0</h4>
+                                <p>Países</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="parceiros-header">
+                        <h3>Locais e parceiros</h3>
+                        <button class="add-local-btn" type="button" onclick="openModal()">
+                            <i class="fa-solid fa-plus"></i> Adicionar local
+                        </button>
+                    </div>
+
+                    <div id="parceirosList" class="parceiros-list"></div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL CADASTRO PARCEIRO -->
+    <div id="parceiroModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-head">
+                <h3>Adicionar local parceiro</h3>
+                <button class="close-modal" type="button" onclick="closeModal()">&times;</button>
+            </div>
+
+            <form id="parceiroForm" onsubmit="addParceiro(event)">
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" required placeholder="Ex.: Palmas" />
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado / Província</label>
+                    <input type="text" id="estado" required placeholder="Ex.: Tocantins" />
+                </div>
+                <div class="form-group">
+                    <label for="pais">País</label>
+                    <input type="text" id="pais" required placeholder="Ex.: Brasil" />
+                </div>
+                <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="number" step="any" id="latitude" required placeholder="-10.1834" />
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="number" step="any" id="longitude" required placeholder="-48.3336" />
+                </div>
+                <div class="form-group">
+                    <label for="responsavel">Responsável</label>
+                    <select id="responsavel" required onchange="toggleOutroResponsavel()">
+                        <option value="">Selecione...</option>
+                        <option value="Dr. Giovani de Góuvani">Dr. Giovani de Góuvani</option>
+                        <option value="Dra. Pamella">Dra. Pamella</option>
+                        <option value="Dr. Abimael">Dr. Abimael</option>
+                        <option value="outro">Outro profissional parceiro</option>
+                    </select>
+                </div>
+                <div class="form-group" id="outroResponsavelGroup" style="display:none;">
+                    <label for="outroResponsavel">Nome do profissional parceiro</label>
+                    <input type="text" id="outroResponsavel" placeholder="Ex.: Dra. Maria Silva" />
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Salvar local no organograma
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CONTATO -->
+    <section id="contato" class="contact-section">
+        <div class="section-wrapper">
+            <div class="contact-grid">
+                <div class="contact-text">
+                    <div class="pill">
+                        <i class="fa-solid fa-headset"></i>
+                        Contato
+                    </div>
+                    <h3>Fale com a BSC Advogados Associados</h3>
+                    <p>
+                        Informe sua demanda e receba um retorno da equipe BSC com a estratégia jurídica mais adequada para o seu negócio rural, sempre em conformidade com a ética profissional da advocacia. [web:50][web:55]
+                    </p>
+
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>WhatsApp: (63) 99269‑9118</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>E-mail institucional: contato@bscadvogados.adv.br (ajuste para o e-mail oficial do escritório).</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-brands fa-instagram"></i>
+                            <span>Instagram: <a href="https://www.instagram.com/bsecadvogados/" target="_blank" rel="noopener">@bsecadvogados</a></span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/bsecadvogados/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/5563992699118" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="mini-form">
+                    <h4>Envie uma mensagem rápida</h4>
+                    <p>Formulário demonstrativo para apresentações. Em produção, conecte com seu provedor de e-mail ou CRM.</p>
+
+                    <form onsubmit="event.preventDefault(); alert('Mensagem enviada (exemplo). Integre com um serviço de e-mail em produção.');">
+                        <div class="form-group">
+                            <label for="nomeLead">Nome</label>
+                            <input id="nomeLead" type="text" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="emailLead">E-mail</label>
+                            <input id="emailLead" type="email" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagemLead">Mensagem</label>
+                            <textarea id="mensagemLead" required></textarea>
+                        </div>
+                        <button type="submit">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        BSC Advogados Associados · Direito Agrário e do Agronegócio · Conteúdo meramente informativo.
+    </footer>
+
+    <!-- JS do site -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -29,6 +29,7 @@ body {
 /* --- HERO SECTION --- */
 .hero-agro {
     position: relative; height: 85vh; width: 100%;
+    /* Imagem de fundo de plantação */
     background: url('https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=1931&auto=format&fit=crop') center/cover no-repeat fixed;
     display: flex; justify-content: center; align-items: center; text-align: center;
 }
@@ -75,22 +76,23 @@ body {
 }
 .wheat-icon { margin-top: 15px; color: #e0e0e0; font-size: 1.2rem; }
 
-/* --- IAGO (SEM FOTO - CARD DE TEXTO) --- */
+/* --- IAGO (SEM FOTO - TEXTO) --- */
 .section-management { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
 .connector-line-vertical { height: 40px; width: 2px; background: var(--agro-gold); opacity: 0.6; margin: 0 auto; }
 .connector-line-vertical.short { height: 20px; }
 .connector-line-vertical.no-margin-bottom { margin-bottom: -20px; position: relative; z-index: 5; }
 
 .text-only-card {
-    background: var(--white); padding: 25px 40px; border-radius: 4px;
+    background: var(--white); padding: 25px 50px; border-radius: 4px;
     text-align: center; box-shadow: var(--card-shadow);
-    border: 2px solid var(--agro-green); min-width: 280px; position: relative;
+    border: 2px solid var(--agro-green); min-width: 300px; position: relative;
+    z-index: 6;
 }
-.text-only-card h3 { font-family: var(--font-title); color: var(--agro-green); font-size: 1.4rem; margin-bottom: 10px; }
+.text-only-card h3 { font-family: var(--font-title); color: var(--agro-green); font-size: 1.5rem; margin-bottom: 10px; }
 .controller-style .role-tag { background: var(--earth-brown); color: #fff; }
 .wheat-icon-small { color: var(--agro-gold); margin-top: 10px; font-size: 1rem; }
 
-/* --- ORGANOGRAMA DE REDE (NOVO ESTILO VISUAL) --- */
+/* --- ORGANOGRAMA DE REDE (ESTILO ÁRVORE) --- */
 .section-network-tree { background: #fff; padding: 60px 20px; border-radius: 8px; box-shadow: var(--card-shadow); margin-bottom: 80px; }
 .network-header { text-align: center; margin-bottom: 40px; }
 .network-header h2 { font-family: var(--font-title); color: var(--agro-green); font-size: 2.2rem; }
@@ -98,54 +100,53 @@ body {
 
 .tree-structure { display: flex; flex-direction: column; align-items: center; }
 .tree-root-node {
-    background: var(--agro-green); color: var(--agro-gold); padding: 10px 30px;
+    background: var(--agro-green); color: var(--agro-gold); padding: 12px 35px;
     border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 10px; font-size: 0.9rem;
 }
-.connector-bar-horizontal { width: 50%; height: 2px; background: var(--agro-gold); opacity: 0.6; }
-.tree-branches-row { display: flex; justify-content: space-around; width: 80%; margin-top: 0; }
+.connector-bar-horizontal { width: 60%; height: 2px; background: var(--agro-gold); opacity: 0.6; }
+.tree-branches-row { display: flex; justify-content: space-around; width: 90%; margin-top: 0; }
 .tree-branch { display: flex; flex-direction: column; align-items: center; flex: 1; }
 
 .branch-head {
-    padding: 12px 25px; border-radius: 4px; font-weight: 700; text-transform: uppercase;
-    display: flex; align-items: center; gap: 10px; color: var(--white); position: relative;
+    padding: 10px 25px; border-radius: 4px; font-weight: 700; text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px; color: var(--white); position: relative; font-size: 0.85rem;
 }
 .node-br { background: #009c3b; /* Verde Brasil */ }
 .node-intl { background: #003366; /* Azul Intl */ }
 .flag-small { width: 24px; border-radius: 2px; }
 
-/* Conector que sobe até a barra horizontal */
 .up-connector { margin-top: -20px; height: 20px; }
 
-/* Grid dos cartões de nó */
+/* Grid dos cards */
 .tree-grid-container {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px; width: 100%; padding: 20px 0; position: relative;
+    gap: 15px; width: 100%; padding: 20px 0; position: relative;
 }
 .tree-grid-container.one-col { grid-template-columns: 1fr; max-width: 250px; }
 
-/* Linha superior horizontal que conecta os cards do grid */
+/* Linha horizontal superior do grid */
 .tree-grid-container::before {
     content: ''; position: absolute; top: 0; left: 10%; right: 10%;
     height: 2px; background: var(--agro-gold); opacity: 0.4;
 }
 
-/* Cartão de Nó (Estado/Local) */
+/* Cartão do Nó (Estado) */
 .node-card {
     background: var(--cream-bg); border: 1px solid #e0d8c0; border-radius: 4px;
     text-align: center; overflow: hidden; position: relative; transition: 0.3s;
 }
+/* Linha conectora vertical do card */
 .node-card::before {
     content: ''; position: absolute; top: -15px; left: 50%; width: 2px; height: 15px;
     background: var(--agro-gold); opacity: 0.4;
 }
 .node-card:hover { border-color: var(--agro-gold); background: #fff; transform: translateY(-3px); }
 
-.node-header { background: var(--agro-green); color: var(--agro-gold); padding: 8px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
-.node-body { padding: 12px; }
+.node-header { background: var(--agro-green); color: var(--agro-gold); padding: 6px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+.node-body { padding: 10px; }
 .city-name { font-weight: 700; font-size: 0.8rem; color: var(--earth-brown); display: block; }
 .partner-name { font-size: 0.75rem; color: #666; margin-top: 4px; display: block; }
-
 
 /* --- FOOTER --- */
 footer { background: var(--agro-green); color: #fff; text-align: center; padding: 40px 20px; }
@@ -161,6 +162,8 @@ footer { background: var(--agro-green); color: #fff; text-align: center; padding
     .connector-bar-horizontal { display: none; }
     .tree-branches-row { flex-direction: column; width: 100%; gap: 30px; }
     .up-connector { display: none; }
+    /* Linha manual para o cabeçalho do ramo no mobile */
     .branch-head::before { content: ''; position: absolute; top: -20px; left: 50%; width: 2px; height: 20px; background: var(--agro-gold); opacity: 0.6; }
-    .tree-grid-container::before { display: none; } /* Remove linha horizontal do grid no mobile */
+    .tree-grid-container::before { display: none; } 
+    .tree-grid-container { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
 }

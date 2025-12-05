@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+    <!-- Geocoder Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
     <!-- CSS do site -->
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -39,6 +43,7 @@
                 </ul>
             </nav>
 
+            <!-- Botão WhatsApp estilo “pílula” -->
             <a class="whatsapp-btn" href="https://wa.me/5563992699118" target="_blank" rel="noopener">
                 <i class="fab fa-whatsapp"></i>
                 <span>(63) 99269‑9118</span>
@@ -46,7 +51,7 @@
         </div>
     </header>
 
-    <!-- HERO / ORGANOGRAMA -->
+    <!-- HERO -->
     <section id="inicio" class="hero">
         <div class="hero-inner">
             <div class="hero-left">
@@ -89,53 +94,54 @@
                 </div>
             </div>
 
-            <div class="hero-right">
-                <div class="org-title">Organograma BSC Advogados</div>
-                <div class="org-sub">Estrutura de liderança e rede de atuação</div>
+            <!-- Painel de organograma estilo “cards” -->
+            <div class="hero-right org-panel">
+                <h2 class="org-panel-title">Organograma BSC Advogados</h2>
+                <p class="org-panel-subtitle">Estrutura de liderança e rede de atuação</p>
 
-                <div class="org-grid">
-                    <!-- Giovani principal -->
-                    <div class="org-card main">
-                        <div class="org-avatar">
-                            <img src="giovani.jpg" alt="Dr. Giovani de Góuvani">
-                        </div>
-                        <div class="org-info">
-                            <h4>Dr. Giovani de Góuvani</h4>
-                            <p>Sócio Fundador · Direito Agrário, Ambiental e Regularização Fundiária</p>
-                        </div>
-                        <span class="org-tag">Founder</span>
+                <div class="org-main-card">
+                    <div class="org-main-avatar">
+                        <img src="giovani.jpg" alt="Dr. Giovani de Góuvani">
                     </div>
-
-                    <!-- Pamella -->
-                    <div class="org-card">
-                        <div class="org-avatar">
-                            <img src="pamella.jpg" alt="Dra. Pamella">
-                        </div>
-                        <div class="org-info">
-                            <h4>Dra. Pamella</h4>
-                            <p>Contratos Agrários, Planejamento Patrimonial e Sucessório Rural</p>
-                        </div>
+                    <div class="org-main-info">
+                        <h3>Dr. Giovani de Góuvani</h3>
+                        <p class="org-main-role">
+                            Sócio Fundador · Direito Agrário, Ambiental e Regularização Fundiária
+                        </p>
                     </div>
+                    <span class="org-main-tag">Founder</span>
+                </div>
 
-                    <!-- Abimael -->
-                    <div class="org-card">
-                        <div class="org-avatar">
+                <div class="org-row">
+                    <div class="org-card-v2">
+                        <div class="org-avatar-v2">
                             <img src="abimael.jpg" alt="Dr. Abimael">
                         </div>
-                        <div class="org-info">
+                        <div class="org-info-v2">
                             <h4>Dr. Abimael</h4>
-                            <p>Litígios Agrários, Recuperação de Crédito e Consultoria Preventiva</p>
+                            <p>Litígios Agrários, Recuperação de Crédito e Consultoria Preventiva.</p>
                         </div>
                     </div>
 
-                    <!-- Iago (apoio) -->
-                    <div class="org-card">
-                        <div class="org-avatar">
+                    <div class="org-card-v2">
+                        <div class="org-avatar-v2">
+                            <img src="pamella.jpg" alt="Dra. Pamella">
+                        </div>
+                        <div class="org-info-v2">
+                            <h4>Dra. Pamella</h4>
+                            <p>Contratos Agrários, Planejamento Patrimonial e Sucessório Rural.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="org-row single">
+                    <div class="org-card-v2">
+                        <div class="org-avatar-v2">
                             <img src="iago.jpg" alt="Iago">
                         </div>
-                        <div class="org-info">
+                        <div class="org-info-v2">
                             <h4>Iago</h4>
-                            <p>Consultoria em negócios e apoio estratégico ao agronegócio</p>
+                            <p>Consultoria em negócios e apoio estratégico ao agronegócio.</p>
                         </div>
                     </div>
                 </div>
@@ -151,56 +157,19 @@
                     <i class="fa-solid fa-user-tie"></i>
                     Sócios
                 </div>
-                <h2>Liderança especializada no agronegócio</h2>
-                <p>
-                    A equipe de sócios alia experiência técnica em Direito Agrário, visão empresarial e proximidade com o campo, oferecendo decisões jurídicas alinhadas à realidade do produtor rural. [web:55]
-                </p>
             </div>
 
             <div class="socios-grid">
-                <!-- Giovani -->
-                <article class="socio-card">
+                <!-- Giovani: apenas imagem e nome -->
+                <article class="socio-card socio-card-simple">
                     <div class="socio-photo">
                         <img src="giovani.jpg" alt="Dr. Giovani de Góuvani">
                     </div>
                     <h3 class="socio-name">Dr. Giovani de Góuvani</h3>
                     <p class="socio-title">SÓCIO FUNDADOR</p>
-                    <div class="socio-badges">
-                        <span class="badge">Direito Agrário</span>
-                        <span class="badge">Direito Ambiental</span>
-                        <span class="badge">Regularização Fundiária</span>
-                    </div>
-                    <p class="socio-desc">
-                        Conduz projetos de regularização de imóveis rurais, defesa da propriedade e estruturação jurídica de empreendimentos agrícolas, buscando segurança de longo prazo para a atividade. [web:40][web:58]
-                    </p>
-                    <div class="socio-footer">
-                        <span><i class="fa-solid fa-location-dot"></i>Atuação nacional</span>
-                        <span><i class="fa-solid fa-tractor"></i>Foco no agronegócio</span>
-                    </div>
                 </article>
 
-                <!-- Pamella -->
-                <article class="socio-card">
-                    <div class="socio-photo">
-                        <img src="pamella.jpg" alt="Dra. Pamella">
-                    </div>
-                    <h3 class="socio-name">Dra. Pamella</h3>
-                    <p class="socio-title">SÓCIA</p>
-                    <div class="socio-badges">
-                        <span class="badge">Contratos Agrários</span>
-                        <span class="badge">Planejamento Sucessório</span>
-                        <span class="badge">Gestão Patrimonial Rural</span>
-                    </div>
-                    <p class="socio-desc">
-                        Estrutura contratos de arrendamento, parceria, integração e planejamento sucessório, protegendo o patrimônio rural e fortalecendo a governança familiar. [web:9][web:60]
-                    </p>
-                    <div class="socio-footer">
-                        <span><i class="fa-solid fa-file-signature"></i>Contratos rurais</span>
-                        <span><i class="fa-solid fa-people-roof"></i>Família e sucessões</span>
-                    </div>
-                </article>
-
-                <!-- Abimael -->
+                <!-- Abimael NO MEIO -->
                 <article class="socio-card">
                     <div class="socio-photo">
                         <img src="abimael.jpg" alt="Dr. Abimael">
@@ -220,6 +189,27 @@
                         <span><i class="fa-solid fa-handshake"></i>Negociação estratégica</span>
                     </div>
                 </article>
+
+                <!-- Pamella à direita -->
+                <article class="socio-card">
+                    <div class="socio-photo">
+                        <img src="pamella.jpg" alt="Dra. Pamella">
+                    </div>
+                    <h3 class="socio-name">Dra. Pamella</h3>
+                    <p class="socio-title">SÓCIA</p>
+                    <div class="socio-badges">
+                        <span class="badge">Contratos Agrários</span>
+                        <span class="badge">Planejamento Sucessório</span>
+                        <span class="badge">Gestão Patrimonial Rural</span>
+                    </div>
+                    <p class="socio-desc">
+                        Estrutura contratos de arrendamento, parceria e planejamento sucessório para propriedades rurais, preservando o patrimônio familiar. [web:9][web:60]
+                    </p>
+                    <div class="socio-footer">
+                        <span><i class="fa-solid fa-file-signature"></i>Contratos rurais</span>
+                        <span><i class="fa-solid fa-people-roof"></i>Família e sucessões</span>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -232,10 +222,7 @@
                     <i class="fa-solid fa-map-location-dot"></i>
                     Capilaridade
                 </div>
-                <h2>Rede de atuação e parceiros</h2>
-                <p>
-                    A BSC Advogados Associados organiza sua atuação em um organograma territorial, com base em Palmas‑TO e pontos parceiros em estados estratégicos e no exterior, permitindo atendimento ágil e local ao cliente. [web:40][web:31]
-                </p>
+                <h2>Locais de atuação e parceiros</h2>
             </div>
 
             <div class="map-layout">
@@ -278,7 +265,7 @@
         </div>
     </section>
 
-    <!-- MODAL CADASTRO PARCEIRO -->
+    <!-- MODAL: CADASTRAR LOCAL (SEM LAT/LONG) -->
     <div id="parceiroModal" class="modal">
         <div class="modal-content">
             <div class="modal-head">
@@ -288,24 +275,23 @@
 
             <form id="parceiroForm" onsubmit="addParceiro(event)">
                 <div class="form-group">
-                    <label for="cidade">Cidade</label>
-                    <input type="text" id="cidade" required placeholder="Ex.: Palmas" />
+                    <label for="pais">País</label>
+                    <input type="text" id="pais" required placeholder="Ex.: Brasil, Estados Unidos" />
                 </div>
                 <div class="form-group">
                     <label for="estado">Estado / Província</label>
-                    <input type="text" id="estado" required placeholder="Ex.: Tocantins" />
+                    <input type="text" id="estado" required placeholder="Ex.: Tocantins, Flórida" />
                 </div>
                 <div class="form-group">
-                    <label for="pais">País</label>
-                    <input type="text" id="pais" required placeholder="Ex.: Brasil" />
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" required placeholder="Ex.: Palmas, Orlando" />
                 </div>
                 <div class="form-group">
-                    <label for="latitude">Latitude</label>
-                    <input type="number" step="any" id="latitude" required placeholder="-10.1834" />
-                </div>
-                <div class="form-group">
-                    <label for="longitude">Longitude</label>
-                    <input type="number" step="any" id="longitude" required placeholder="-48.3336" />
+                    <label for="enderecoBusca">Pesquisar local no mapa</label>
+                    <input type="text" id="enderecoBusca" placeholder="Digite cidade ou endereço para localizar no mapa" />
+                    <small class="hint">
+                        O ponto será localizado automaticamente a partir da pesquisa.
+                    </small>
                 </div>
                 <div class="form-group">
                     <label for="responsavel">Responsável</label>
@@ -329,7 +315,7 @@
         </div>
     </div>
 
-    <!-- CONTATO -->
+    <!-- CONTATO (simplificado, mantido) -->
     <section id="contato" class="contact-section">
         <div class="section-wrapper">
             <div class="contact-grid">
@@ -340,35 +326,30 @@
                     </div>
                     <h3>Fale com a BSC Advogados Associados</h3>
                     <p>
-                        Informe sua demanda e receba um retorno da equipe BSC com a estratégia jurídica mais adequada para o seu negócio rural, em conformidade com a ética profissional da advocacia. [web:50][web:86]
+                        Informe sua demanda e receba um retorno da equipe BSC com a estratégia jurídica mais adequada para o seu negócio rural. [web:55][web:86]
                     </p>
 
                     <div class="contact-items">
-                        <div class="contact-item">
+                        <div className="contact-item">
                             <i class="fa-brands fa-whatsapp"></i>
                             <span>WhatsApp: (63) 99269‑9118</span>
                         </div>
                         <div class="contact-item">
                             <i class="fa-solid fa-envelope"></i>
-                            <span>E-mail institucional: contato@bscadvogados.adv.br (ajuste para o e-mail oficial do escritório).</span>
+                            <span>E-mail: contato@bscadvogados.adv.br (ajuste para o e-mail oficial).</span>
                         </div>
                         <div class="contact-item">
                             <i class="fa-brands fa-instagram"></i>
                             <span>Instagram: <a href="https://www.instagram.com/bsecadvogados/" target="_blank" rel="noopener">@bsecadvogados</a></span>
                         </div>
                     </div>
-
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/bsecadvogados/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/5563992699118" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
                 </div>
 
                 <div class="mini-form">
                     <h4>Envie uma mensagem rápida</h4>
-                    <p>Formulário demonstrativo para apresentações. Em produção, conecte com seu provedor de e-mail ou CRM.</p>
+                    <p>Formulário demonstrativo. Em produção, integre com seu provedor de e-mail.</p>
 
-                    <form onsubmit="event.preventDefault(); alert('Mensagem enviada (exemplo). Integre com um serviço de e-mail em produção.');">
+                    <form onsubmit="event.preventDefault(); alert('Mensagem enviada (exemplo).');">
                         <div class="form-group">
                             <label for="nomeLead">Nome</label>
                             <input id="nomeLead" type="text" required />

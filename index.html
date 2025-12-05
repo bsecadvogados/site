@@ -1,113 +1,323 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZI - Consultoria Empresarial</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BSC Advogados Associados — Direito Agrário</title>
+  <meta name="description" content="BSC Advogados Associados — Especialistas em Direito Agrário. Regularização fundiária, contratos agrários, litígios e consultoria preventiva para o agronegócio." />
+  <meta name="theme-color" content="#1a5f3f" />
+
+  <!-- Fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Leaflet (map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Local CSS -->
+  <link rel="stylesheet" href="assets/style.css">
+
+  <!-- JSON-LD (structured data - organization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "BSC Advogados Associados",
+    "url": "https://<seu-usuario>.github.io/<seu-repo>",
+    "logo": "https://<seu-usuario>.github.io/<seu-repo>/assets/logo.png",
+    "description": "Escritório especializado em Direito Agrário e consultoria jurídica para o agronegócio.",
+    "telephone": "+5563992699118",
+    "sameAs": [
+      "https://www.instagram.com/bsecadvogados/"
+    ]
+  }
+  </script>
+
+  <!-- Leaflet script (defer will be OK but we'll load in script.js too) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+
+  <!-- Local main script -->
+  <script src="assets/script.js" defer></script>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <img src="logo.png" alt="Logo AZI" class="logo">
-        <nav>
-            <a href="#sobre">Sobre</a>
-            <a href="#areas">Áreas</a>
-            <a href="#equipe">Equipe</a>
-            <a href="#contato">Contato</a>
-        </nav>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-        <h1>AZI Consultoria Empresarial</h1>
-        <p>Especialistas em transformar desafios em resultados.</p>
-        <a href="#contato" class="btn">Fale Conosco</a>
-    </section>
-
-    <!-- Sobre Nós -->
-    <section id="sobre" class="sobre">
-        <h2>Sobre Nós</h2>
-        <p>
-            Somos a AZI, uma consultoria empresarial focada em soluções inteligentes para pequenas, médias e grandes empresas.
-            Nosso objetivo é impulsionar resultados por meio de gestão estratégica, análise financeira e desenvolvimento empresarial.
-        </p>
-    </section>
-
-    <!-- Áreas de Atuação -->
-    <section id="areas" class="areas">
-        <h2>Áreas de Atuação</h2>
-        <div class="cards">
-
-            <div class="card">
-                <img src="iago.jpg" alt="Imagem Serviços">
-                <h3>Consultoria Financeira</h3>
-                <p>Gestão de custos, fluxo de caixa, análises e projeções estratégicas.</p>
-            </div>
-
-            <div class="card">
-                <img src="pamella.jpg" alt="Imagem Serviços">
-                <h3>Marketing e Branding</h3>
-                <p>Construção de marca, posicionamento e estratégias de crescimento.</p>
-            </div>
-
-            <div class="card">
-                <img src="giovani.jpg" alt="Imagem Serviços">
-                <h3>Gestão Empresarial</h3>
-                <p>Implantação de processos, acompanhamento e melhoria contínua.</p>
-            </div>
-
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <a href="#inicio" class="brand" aria-label="BSC Advogados Associados">
+        <img src="assets/logo.png" alt="Logo BSC Advogados" class="brand-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2270%22 height=%2270%22><rect width=%2270%22 height=%2270%22 rx=%2212%22 fill=%22%231a5f3f%22/><text x=%2235%22 y=%2245%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23d4a76a%22 font-family=%22sans-serif%22>⚖</text></svg>';">
+        <div class="brand-text">
+          <h1>BSC Advogados</h1>
+          <p>Associados — Direito Agrário</p>
         </div>
-    </section>
+      </a>
 
-    <!-- Equipe -->
-    <section id="equipe" class="equipe">
-        <h2>Nosso Time</h2>
+      <nav class="main-nav" role="navigation" aria-label="Menu principal">
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#socios">Sócios</a></li>
+          <li><a href="#organograma">Organograma</a></li>
+          <li><a href="#mapa">Capilaridade</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
 
-        <div class="cards">
+      <div class="header-actions">
+        <a href="https://www.instagram.com/bsecadvogados/" target="_blank" class="icon-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5563992699118" target="_blank" class="contact-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i> Fale Conosco</a>
+      </div>
+    </div>
+  </header>
 
-            <div class="card equipe-card">
-                <img src="iago.jpg" alt="Iago">
-                <h3>Iago Manguary</h3>
-                <p>Especialista em Finanças e Estratégia</p>
-            </div>
-
-            <div class="card equipe-card">
-                <img src="pamella.jpg" alt="Pamella">
-                <h3>Pamella Souza</h3>
-                <p>Especialista em Marketing e Posicionamento</p>
-            </div>
-
-            <div class="card equipe-card">
-                <img src="abimael.jpg" alt="Abimael">
-                <h3>Abimael Araújo</h3>
-                <p>Gestão e Desenvolvimento Comercial</p>
-            </div>
-
-            <div class="card equipe-card">
-                <img src="giovani.jpg" alt="Giovani">
-                <h3>Giovani Silva</h3>
-                <p>Processos e Análise Organizacional</p>
-            </div>
-
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-left">
+        <h2>Excelência em <span class="accent">Direito Agrário</span></h2>
+        <p class="lead">Soluções jurídicas para o agronegócio brasileiro: regularização fundiária, contratos, litígios e planejamento sucessório.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contato">Solicitar Consulta</a>
+          <a class="btn btn-ghost" href="#mapa">Ver Capilaridade</a>
         </div>
-    </section>
+      </div>
+      <div class="hero-right">
+        <div class="stats-cards">
+          <div class="stat">
+            <div class="stat-value" id="ui-socios">3</div>
+            <div class="stat-label">Sócios</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="ui-locais">0</div>
+            <div class="stat-label">Locais</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="ui-paises">0</div>
+            <div class="stat-label">Países</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contato -->
-    <section id="contato" class="contato">
-        <h2>Contato</h2>
+  <!-- SÓCIOS -->
+  <section id="socios" class="section container">
+    <div class="section-head">
+      <h3>Nossos Sócios</h3>
+      <p class="subtitle">Liderança com profundo conhecimento no agronegócio</p>
+    </div>
 
-        <form class="form">
-            <input type="text" placeholder="Seu nome" required>
-            <input type="email" placeholder="Seu e-mail" required>
-            <textarea placeholder="Digite sua mensagem" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
+    <div class="socios-grid" aria-live="polite">
+      <!-- Card 1 -->
+      <article class="socio-card">
+        <div class="socio-photo">
+          <img src="assets/giovani.jpg" alt="Dr. Giovani de Góuvani — Sócio Fundador">
+        </div>
+        <h4>Dr. Giovani de Góuvani</h4>
+        <p class="cargo">Sócio Fundador</p>
+        <p class="desc">Especialista em Direito Agrário e Ambiental, com vasta experiência em regularização fundiária e conflitos agrários.</p>
+        <div class="tags"><span>Direito Agrário</span><span>Regularização Fundiária</span></div>
+      </article>
 
-        <p class="rodape">© 2025 AZI Consultoria Empresarial — Todos os direitos reservados.</p>
-    </section>
+      <!-- Card 2 -->
+      <article class="socio-card">
+        <div class="socio-photo">
+          <img src="assets/pamella.jpg" alt="Dra. Pamella — Sócia">
+        </div>
+        <h4>Dra. Pamella</h4>
+        <p class="cargo">Sócia</p>
+        <p class="desc">Atuação em contratos agrários, negociações e planejamento sucessório para propriedades rurais.</p>
+        <div class="tags"><span>Contratos Agrários</span><span>Sucessões</span></div>
+      </article>
 
-    <script src="script.js"></script>
+      <!-- Card 3 -->
+      <article class="socio-card">
+        <div class="socio-photo">
+          <img src="assets/abimael.jpg" alt="Dr. Abimael — Sócio">
+        </div>
+        <h4>Dr. Abimael</h4>
+        <p class="cargo">Sócio</p>
+        <p class="desc">Especialista em litígios agrários e consultoria preventiva para propriedades, cooperativas e empresas rurais.</p>
+        <div class="tags"><span>Litígios Agrários</span><span>Consultoria</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ORGANOGRAMA INTERATIVO -->
+  <section id="organograma" class="section container">
+    <div class="section-head">
+      <h3>Organograma</h3>
+      <p class="subtitle">Estrutura, responsabilidades e responsáveis por localidades parceiras</p>
+    </div>
+
+    <div class="org-wrapper">
+      <div class="org-chart" id="orgChart" aria-hidden="false">
+        <div class="org-root">
+          <img src="assets/logo.png" alt="Logo BSC" class="org-logo">
+          <div class="org-title">
+            <strong>BSC Advogados Associados</strong>
+            <small>Direito Agrário</small>
+          </div>
+        </div>
+
+        <div class="org-level">
+          <div class="org-node" data-name="Dr. Giovani de Góuvani">
+            <div class="person">
+              <div class="avatar" style="background-image:url('assets/giovani.jpg')"></div>
+              <div class="meta">
+                <strong>Dr. Giovani</strong>
+                <small>Sócio Fundador</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="org-node" data-name="Dra. Pamella">
+            <div class="person">
+              <div class="avatar" style="background-image:url('assets/pamella.jpg')"></div>
+              <div class="meta">
+                <strong>Dra. Pamella</strong>
+                <small>Sócia</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="org-node" data-name="Dr. Abimael">
+            <div class="person">
+              <div class="avatar" style="background-image:url('assets/abimael.jpg')"></div>
+              <div class="meta">
+                <strong>Dr. Abimael</strong>
+                <small>Sócio</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="org-actions">
+        <p>Clique em um sócio para filtrar os locais parceiros no mapa.</p>
+        <button id="resetFilter" class="btn">Limpar filtro</button>
+        <hr>
+        <h4>Gerenciar Parceiros</h4>
+        <button id="openAddModal" class="btn btn-outline">Adicionar Local</button>
+        <button id="exportBtn" class="btn btn-ghost">Exportar parceiros (JSON)</button>
+        <input id="importFile" type="file" accept="application/json" style="display:none" />
+        <button id="importBtn" class="btn btn-ghost">Importar parceiros</button>
+      </aside>
+    </div>
+  </section>
+
+  <!-- MAPA & PARCEIROS -->
+  <section id="mapa" class="map-section container">
+    <div class="section-head">
+      <h3>Capilaridade</h3>
+      <p class="subtitle">Locais parceiros e responsáveis — atualizado em tempo real</p>
+    </div>
+
+    <div class="map-panel">
+      <div id="map" class="map" role="application" aria-label="Mapa de locais parceiros"></div>
+
+      <div class="partners-panel" aria-live="polite">
+        <div class="panel-header">
+          <h4>Locais Parceiros</h4>
+          <div class="panel-stats">
+            <div><strong id="totalLocais">0</strong><small>Locais</small></div>
+            <div><strong id="totalPaises">0</strong><small>Países</small></div>
+          </div>
+        </div>
+
+        <div id="parceirosList" class="parceiros-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL ADICIONAR/EDITAR PARCEIRO -->
+  <div class="modal" id="parceiroModal" aria-hidden="true" role="dialog">
+    <div class="modal-content" role="document">
+      <div class="modal-header">
+        <h3 id="modalTitle">Adicionar Local Parceiro</h3>
+        <button class="close" id="closeModal" aria-label="Fechar">&times;</button>
+      </div>
+
+      <form id="parceiroForm" class="form">
+        <input type="hidden" id="parceiroId" value="">
+        <label>Nome do Local (ex.: Escritório Palmas)</label>
+        <input id="cidade" required placeholder="Ex: Palmas — Unidade" />
+
+        <label>Estado / Província</label>
+        <input id="estado" required placeholder="Ex: Tocantins" />
+
+        <label>País</label>
+        <input id="pais" required placeholder="Ex: Brasil" value="Brasil" />
+
+        <div class="grid-2">
+          <div>
+            <label>Latitude</label>
+            <input id="latitude" type="number" step="any" required placeholder="-10.1834" />
+          </div>
+          <div>
+            <label>Longitude</label>
+            <input id="longitude" type="number" step="any" required placeholder="-48.3336" />
+          </div>
+        </div>
+
+        <label>Responsável</label>
+        <select id="responsavel" required>
+          <option value="">Selecione...</option>
+          <option>Dr. Giovani de Góuvani</option>
+          <option>Dra. Pamella</option>
+          <option>Dr. Abimael</option>
+          <option value="Outro">Outro</option>
+        </select>
+
+        <div id="outroGroup" style="display:none">
+          <label>Nome do profissional</label>
+          <input id="outroResponsavel" placeholder="Nome do profissional" />
+        </div>
+
+        <label>Observações (opcional)</label>
+        <textarea id="observacoes" rows="3" placeholder="Ex.: atendimento externo, plantão..."></textarea>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="cancelBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="saveBtn">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contato" class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-about">
+        <img src="assets/logo.png" alt="BSC Advogados" class="footer-logo" />
+        <h4>BSC Advogados Associados</h4>
+        <p>Escritório especializado em Direito Agrário e consultoria jurídica ao agronegócio.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/bsecadvogados/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/5563992699118" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h5>Contato</h5>
+        <div class="contact-item"><i class="fas fa-phone"></i> <a href="https://wa.me/5563992699118">+55 (63) 99269-9118</a></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:contato@bscadvogados.com.br">contato@bscadvogados.com.br</a></div>
+      </div>
+
+      <div class="footer-links">
+        <h5>Serviços</h5>
+        <ul>
+          <li>Regularização Fundiária</li>
+          <li>Contratos Agrários</li>
+          <li>Litígios Agrários</li>
+          <li>Consultoria Preventiva</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <small>© <span id="year"></span> BSC Advogados Associados — Todos os direitos reservados.</small>
+    </div>
+  </footer>
+
 </body>
 </html>

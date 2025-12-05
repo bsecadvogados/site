@@ -1,62 +1,70 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ================= DADOS =================
+    // Dados Brasil
     const brazilData = [
-        { state: "Tocantins", city: "Palmas (Matriz)", partner: "Equipe BSC Sede" },
-        { state: "Tocantins", city: "Arraias", partner: "Parceiro Local" },
-        { state: "Rio Grande do Sul", city: "Porto Alegre", partner: "Representação Capital" },
-        { state: "Rio Grande do Sul", city: "Ibirubá", partner: "Dr. João da Silva" },
-        { state: "Bahia", city: "Luís Eduardo Magalhães", partner: "Especialista Soja/Algodão" },
-        { state: "Bahia", city: "Salvador", partner: "Consultoria Jurídica" },
-        { state: "Mato Grosso", city: "Sinop", partner: "Base Norte" },
-        { state: "Mato Grosso", city: "Rondonópolis", partner: "Base Sul" },
-        { state: "Mato Grosso do Sul", city: "Sonora", partner: "Escritório Associado MS" },
-        { state: "Distrito Federal", city: "Brasília", partner: "Tribunais Superiores" },
-        { state: "Minas Gerais", city: "Belo Horizonte", partner: "Atuação Estratégica" },
-        { state: "Santa Catarina", city: "Joinville", partner: "Atuação Estratégica" }
+        { state: "Tocantins (Matriz)", cities: [{name: "Palmas", p: "Equipe BSC Sede"}, {name: "Arraias", p: "Parceiro Local"}] },
+        { state: "Rio Grande do Sul", cities: [{name: "Porto Alegre", p: "Representação Capital"}, {name: "Ibirubá", p: "Dr. João da Silva"}] },
+        { state: "Mato Grosso", cities: [{name: "Sinop", p: "Base Norte"}, {name: "Rondonópolis", p: "Base Sul"}] },
+        { state: "Bahia", cities: [{name: "Salvador", p: "Consultor Associado"}, {name: "LEM", p: "Especialista Agro"}] },
+        { state: "Distrito Federal", cities: [{name: "Brasília", p: "Tribunais Superiores"}] }
     ];
 
+    // Dados EUA
     const usaData = [
-        { state: "Flórida", city: "Orlando", partner: "International Desk" }
+        { state: "Flórida", cities: [{name: "Orlando", p: "International Desk"}] }
     ];
 
-    // ================= RENDERIZAÇÃO =================
-    function renderLocations(data, containerId) {
+    function renderGrid(data, containerId) {
         const container = document.getElementById(containerId);
-        
         data.forEach(item => {
             const div = document.createElement('div');
             div.className = 'location-item';
             
-            div.innerHTML = `
-                <span class="loc-state">${item.state}</span>
-                <span class="loc-city">${item.city}</span>
-                <div class="loc-partner">
-                    <i class="fas fa-user-check"></i> ${item.partner}
+            const citiesHtml = item.cities.map(c => `
+                <div class="city-row">
+                    <span class="city-label">${c.name}</span>
+                    <span class="partner-val"><i class="fas fa-check"></i> ${c.p}</span>
                 </div>
+            `).join('');
+
+            div.innerHTML = `
+                <div class="location-header">
+                    <span class="loc-name">${item.state}</span>
+                    <i class="fas fa-chevron-down loc-icon"></i>
+                </div>
+                <div class="location-body">${citiesHtml}</div>
             `;
+
+            const header = div.querySelector('.location-header');
+            const body = div.querySelector('.location-body');
+
+            header.addEventListener('click', () => {
+                div.classList.toggle('active');
+                if(body.style.maxHeight) body.style.maxHeight = null;
+                else body.style.maxHeight = body.scrollHeight + "px";
+            });
+
             container.appendChild(div);
         });
     }
 
-    renderLocations(brazilData, 'brazilGrid');
-    renderLocations(usaData, 'usaGrid');
+    renderGrid(brazilData, 'brazilGrid');
+    renderGrid(usaData, 'usaGrid');
 
-    // ================= ANIMAÇÃO AO ROLAR =================
-    const fadeElements = document.querySelectorAll('.js-scroll-fade');
-    const observer = new IntersectionObserver((entries) => {
+    // Fade Animation
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if(entry.isIntersecting) {
                 entry.target.style.opacity = 1;
                 entry.target.style.transform = 'translateY(0)';
             }
         });
-    }, { threshold: 0.1 });
+    });
 
-    fadeElements.forEach(el => {
+    document.querySelectorAll('.js-scroll-fade').forEach(el => {
         el.style.opacity = 0;
         el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s ease-out';
+        el.style.transition = 'all 0.8s ease';
         observer.observe(el);
     });
 });

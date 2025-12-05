@@ -32,13 +32,14 @@ header{
 .header-container{
     max-width:1320px;
     margin:0 auto;
-    padding:0.8rem 2.5rem;
+    padding:0.6rem 2.5rem;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:2rem;
 }
 
+/* LOGO como card profissional */
 .logo-container{
     display:flex;
     align-items:center;
@@ -46,21 +47,23 @@ header{
 }
 
 .logo{
-    width:72px;
-    height:72px;
-    border-radius:14px;
+    width:84px;
+    height:84px;
+    border-radius:22px;
     overflow:hidden;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#fff;
-    box-shadow:0 4px 14px rgba(0,0,0,0.12);
+    background:radial-gradient(circle at 30% 0,#ffffff 0,#f0f3f6 45%,#e2e6ea 100%);
+    box-shadow:
+        0 14px 35px rgba(0,0,0,0.18),
+        0 0 0 1px rgba(0,0,0,0.02);
 }
 
 .logo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    width:88%;
+    height:88%;
+    object-fit:contain;
 }
 
 .brand-text h1{
@@ -111,23 +114,21 @@ nav a:hover::after{
     width:100%;
 }
 
-/* Botão WhatsApp topo */
+/* Botão WhatsApp topo – só ícone */
 .whatsapp-btn{
     background:linear-gradient(135deg,#00b853,#00a146);
     color:#fff;
-    padding:1rem 2.8rem;
+    width:44px;
+    height:44px;
     border-radius:999px;
-    text-decoration:none;
-    font-weight:700;
-    font-size:1rem;
-    display:inline-flex;
+    display:flex;
     align-items:center;
-    gap:0.7rem;
-    min-height:52px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.18);
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 8px 20px rgba(0,0,0,0.18);
 }
 .whatsapp-btn i{
-    font-size:1.4rem;
+    font-size:1.3rem;
 }
 
 /* HERO */
@@ -194,7 +195,7 @@ nav a:hover::after{
     margin-bottom:1.5rem;
 }
 
-/* Botões hero */
+/* Botões hero (mais interativos) */
 .hero-cta{
     display:flex;
     flex-wrap:wrap;
@@ -213,6 +214,7 @@ nav a:hover::after{
     align-items:center;
     gap:0.5rem;
     text-decoration:none;
+    transition:transform 0.15s ease,box-shadow 0.15s ease,filter 0.15s ease;
 }
 
 .primary-btn-whats{
@@ -224,14 +226,40 @@ nav a:hover::after{
 .primary-btn-whats i{
     font-size:1.4rem;
 }
-
-.secondary-link{
-    color:#fff;
-    text-decoration:underline;
-    font-size:0.9rem;
+.primary-btn-whats:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.05);
+    box-shadow:0 16px 40px rgba(0,0,0,0.3);
 }
 
-/* ORGANOGRAMA SIMPLES */
+/* link secundário com sublinhado animado */
+.secondary-link{
+    position:relative;
+    color:#e5f2ea;
+    font-size:0.9rem;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:0.35rem;
+}
+.secondary-link span{position:relative;}
+.secondary-link::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-2px;
+    height:1px;
+    width:100%;
+    background:#e5f2ea;
+    transform-origin:left;
+    transform:scaleX(1);
+    transition:transform 0.2s ease;
+}
+.secondary-link:hover::after{
+    transform:scaleX(1.15);
+}
+
+/* ORGANOGRAMA SIMPLES (com Iago ao centro) */
 .org-panel{
     background:radial-gradient(circle at top left,#2f8b5d 0,#0b3a26 55%,#062016 100%);
     border-radius:30px;
@@ -265,7 +293,6 @@ nav a:hover::after{
     margin-top:0.8rem;
 }
 
-/* cartão dos sócios / apoio */
 .org-simple-card{
     width:180px;
     background:rgba(0,0,0,0.25);

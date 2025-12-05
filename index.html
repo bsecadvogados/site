@@ -1,144 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BSC Advogados – Direito Agrário</title>
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
         body {
             margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f7f7f7;
-            color: #222;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background: #f4f7f5;
+            color: #1d2d25;
         }
 
         /* HEADER */
         header {
-            background: #0a4f36;
+            background: linear-gradient(135deg, #0a4f36, #0c6b47);
             color: white;
-            padding: 25px;
+            padding: 30px 50px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: space-between;
+        }
+
+        header .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
         }
 
         header img {
-            width: 60px;
-        }
-
-        header h1 {
-            font-size: 32px;
-            margin: 0;
-        }
-
-        nav {
-            background: #0d6b47;
-            padding: 12px 25px;
+            width: 65px;
         }
 
         nav a {
             color: white;
-            margin-right: 18px;
             text-decoration: none;
+            margin-left: 25px;
             font-weight: 500;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            opacity: .8;
         }
 
-        /* CONTAINER GERAL */
+        /* HERO */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1520085601670-ee14aa5fa3e8?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            padding: 50px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            max-width: 600px;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+        }
+
+        /* CONTAINER */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
-            padding: 25px;
+            padding: 50px 30px;
         }
 
         h2 {
-            margin-top: 40px;
-            font-size: 28px;
-            color: #0a3d2a;
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #0a4f36;
         }
 
         p {
             font-size: 17px;
         }
 
-        /* BLOCOS DE ESTATISTICAS */
+        /* ESTATÍSTICAS */
         .stats {
             display: flex;
-            gap: 30px;
-            margin-top: 25px;
+            gap: 25px;
+            margin-top: 35px;
+            flex-wrap: wrap;
         }
 
         .statBox {
             background: white;
-            padding: 25px;
-            width: 160px;
-            border-radius: 12px;
+            padding: 30px;
+            border-radius: 16px;
+            width: 240px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: .2s;
+        }
+
+        .statBox:hover {
+            transform: translateY(-6px);
         }
 
         .statBox h3 {
-            font-size: 22px;
+            font-size: 36px;
             margin: 0;
             color: #0a4f36;
         }
 
-        .statBox p {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        /* BOTÕES */
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #0a4f36;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 20px;
-        }
-
-        .btn:hover {
-            background: #087042;
-        }
-
         /* SÓCIOS */
-        .socio {
-            margin-top: 35px;
-            padding: 25px;
-            background: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .socios-area {
+            margin-top: 60px;
         }
 
-        .socio img {
-            width: 120px;
-            height: 120px;
+        .socios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .socio-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .socio-card img {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #0a4f36;
+            border: 4px solid #0a4f36;
         }
 
+        .socio-card h3 {
+            margin-top: 15px;
+            color: #0a4f36;
+        }
+
+        /* MAPA */
+        .map-section {
+            margin-top: 70px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border: none;
+        }
+
+        /* FOOTER */
         footer {
-            margin-top: 45px;
+            margin-top: 60px;
             background: #0a4f36;
             color: white;
             padding: 20px;
             text-align: center;
         }
 
-        footer a {
-            color: #99ffdd;
-        }
     </style>
 </head>
 
@@ -146,33 +170,33 @@
 
     <!-- HEADER -->
     <header>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Justice_scale_icon.svg/1024px-Justice_scale_icon.svg.png">
-        <h1>BSC Advogados</h1>
+        <div class="logo-area">
+            <img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/logo.png" alt="Logo BSC" />
+            <h1>BSC Advogados</h1>
+        </div>
+
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#socios">Sócios</a>
+            <a href="#capilaridade">Locais</a>
+            <a href="#contato">Contato</a>
+        </nav>
     </header>
 
-    <!-- MENU -->
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Sócios</a>
-        <a href="#">Organograma</a>
-        <a href="#">Capilaridade</a>
-        <a href="#">Contato</a>
-        <a href="https://wa.me/55DDNUMERO" target="_blank">Fale Conosco</a>
-    </nav>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <h1>Excelência em Direito Agrário e Consultoria Jurídica para o Agronegócio</h1>
+    </section>
 
     <!-- CONTEÚDO PRINCIPAL -->
     <div class="container">
 
-        <h2>Excelência em Direito Agrário</h2>
+        <h2>Soluções Jurídicas para o Agro</h2>
         <p>
-            Soluções jurídicas completas para o agronegócio: regularização fundiária, contratos, litígios,
-            consultoria técnica e planejamento sucessório de propriedades rurais.
+            Atuação completa em regularização fundiária, contratos agrícolas, litígios, mediação, consultoria técnica, compliance e planejamento sucessório.
         </p>
 
-        <a class="btn" href="#">Solicitar Consulta</a>
-        <a class="btn" href="#">Ver Capilaridade</a>
-
-        <!-- BLOCO DE ESTATISTICAS -->
+        <!-- ESTATÍSTICAS -->
         <div class="stats">
             <div class="statBox">
                 <h3>3</h3>
@@ -181,7 +205,7 @@
 
             <div class="statBox">
                 <h3>10+</h3>
-                <p>Locais de Atuação</p>
+                <p>Locais Atendidos</p>
             </div>
 
             <div class="statBox">
@@ -191,39 +215,43 @@
         </div>
 
         <!-- SÓCIOS -->
-        <h2>Nossos Sócios</h2>
-        <p>Liderança com profundo conhecimento técnico e reputação no agronegócio.</p>
+        <section class="socios-area" id="socios">
+            <h2>Nossos Sócios</h2>
 
-        <div class="socio">
-            <img src="https://i.postimg.cc/0Q3Q0R4J/user.png">
-            <div>
-                <h3>Dr. Giovani de Góuvani — Sócio Fundador</h3>
-                <p>Atuação especializada em direito fundiário, contencioso e estruturação jurídica no agronegócio.</p>
-            </div>
-        </div>
+            <div class="socios-grid">
+                <div class="socio-card">
+                    <img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/socio1.jpg" alt="Sócio 1" />
+                    <h3>Dr. Giovani de Góuvani</h3>
+                    <p>Sócio Fundador – Especialista em Direito Fundiário e Litígios Complexos.</p>
+                </div>
 
-        <div class="socio">
-            <img src="https://i.postimg.cc/0Q3Q0R4J/user.png">
-            <div>
-                <h3>Dra. Ana Beatriz — Sócia</h3>
-                <p>Especialista em contratos rurais, compliance ambiental e sucessão patrimonial agrícola.</p>
-            </div>
-        </div>
+                <div class="socio-card">
+                    <img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/socio2.jpg" alt="Sócio 2" />
+                    <h3>Dra. Ana Beatriz</h3>
+                    <p>Especialista em Contratos Rurais, Compliance Ambiental e Sucessão Patrimonial.</p>
+                </div>
 
-        <div class="socio">
-            <img src="https://i.postimg.cc/0Q3Q0R4J/user.png">
-            <div>
-                <h3>Dr. Lucas Ferreira — Sócio</h3>
-                <p>Atua em litígios complexos envolvendo propriedades rurais e proteção jurídica do produtor.</p>
+                <div class="socio-card">
+                    <img src="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/socio3.jpg" alt="Sócio 3" />
+                    <h3>Dr. Lucas Ferreira</h3>
+                    <p>Atuação em Litígios Agrários e Proteção Jurídica do Produtor.</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- MAPA E LOCais-->
+        <section class="map-section" id="capilaridade">
+            <h2>Locais de Atuação e Parceiros</h2>
+            <p>Veja abaixo nossa presença geográfica e parceiros no Brasil.</p>
+
+            <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3836534.54035331!2d-52.5!3d-10.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92d90f5c5c0c0c0%3A0xabc!2sTocantins!5e0!3m2!1spt-BR!2sbr!4v1700000000000"></iframe>
+        </section>
 
     </div>
 
-    <!-- RODAPÉ -->
-    <footer>
-        © 2025 BSC Advogados — Especialistas em Direito Agrário •  
-        <a href="#">Política de Privacidade</a>
+    <!-- FOOTER -->
+    <footer id="contato">
+        © 2025 BSC Advogados — Direito Agrário • Todos os direitos reservados.
     </footer>
 
 </body>

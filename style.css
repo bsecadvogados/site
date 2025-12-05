@@ -1,19 +1,13 @@
-/* --- 1. DEFINIÇÕES GERAIS E VARIÁVEIS --- */
+/* --- RESET E VARIÁVEIS --- */
 :root {
-    /* Paleta de Cores Premium */
-    --bsc-green: #153e32;       /* Verde Profundo, quase preto */
+    --bsc-green: #153e32;       /* Verde Profundo */
     --bsc-gold: #c5a059;        /* Dourado Nobre */
-    --bsc-gold-light: #e0c895;  /* Dourado Claro para detalhes */
-    --white-soft: #fcfcfc;      /* Branco Off-White (Papel) */
-    --gray-text: #4a4a4a;       /* Cinza para textos longos */
-    
-    /* Tipografia */
+    --white-soft: #fcfcfc;      /* Branco Off-White */
+    --gray-text: #4a4a4a;
     --font-serif: 'Cinzel', serif;
     --font-sans: 'Lato', sans-serif;
-    
-    /* Espaçamentos e Medidas */
-    --card-radius: 6px;
-    --line-thickness: 2px;      /* Espessura das linhas do organograma */
+    --card-radius: 8px;
+    --line-thickness: 2px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,10 +16,10 @@ body {
     background-color: var(--white-soft);
     font-family: var(--font-sans);
     color: var(--gray-text);
-    overflow-x: hidden; /* Evita rolagem lateral indesejada */
+    overflow-x: hidden;
 }
 
-/* Textura de fundo sutil (Grid pontilhado) */
+/* Textura de fundo */
 .bg-texture {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
@@ -37,39 +31,45 @@ body {
 .organogram-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 60px 20px 100px; /* Padding bottom extra para o footer */
+    padding: 60px 20px 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* --- 2. NÍVEL 1: A MARCA --- */
+/* --- ESTILOS DA MARCA (TOPO) --- */
 .level-brand {
     text-align: center;
     position: relative;
     z-index: 10;
-    margin-bottom: 0; /* A margem é controlada pela linha conectora */
 }
 
 .brand-card {
     background: white;
-    padding: 30px 60px;
+    padding: 30px 50px;
     border-radius: var(--card-radius);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08); /* Sombra elegante */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     border-top: 5px solid var(--bsc-green);
     display: inline-block;
     position: relative;
+    max-width: 90%;
 }
 
-.logo-img { height: 90px; width: auto; display: block; margin: 0 auto 15px; }
+.logo-img { 
+    height: 80px; 
+    width: auto; 
+    display: block; 
+    margin: 0 auto 15px;
+    max-width: 100%; 
+}
 
 .brand-name {
     font-family: var(--font-serif);
     color: var(--bsc-green);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    letter-spacing: 1px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .brand-category {
@@ -77,11 +77,10 @@ body {
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     margin-top: 5px;
 }
 
-/* Linha que sai da Marca para baixo */
 .connector-main-vertical {
     width: var(--line-thickness);
     height: 50px;
@@ -89,15 +88,11 @@ body {
     margin: 0 auto;
 }
 
-/* --- 3. NÍVEL 2: OS SÓCIOS (ESTRUTURA DE ÁRVORE) --- */
-.level-partners {
-    width: 100%;
-    position: relative;
-}
+/* --- ESTILOS DOS SÓCIOS --- */
+.level-partners { width: 100%; position: relative; }
 
-/* Barra Horizontal que conecta os 3 sócios */
 .connector-horizontal-bar {
-    width: 66%; /* Largura ajustada para cobrir o centro dos cards laterais */
+    width: 66%;
     height: var(--line-thickness);
     background-color: var(--bsc-gold);
     margin: 0 auto;
@@ -107,25 +102,22 @@ body {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 0;
 }
 
 .partner-node {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
     width: 300px;
+    position: relative;
 }
 
-/* Pequena linha vertical que conecta a barra horizontal ao card do sócio */
 .connector-node-vertical {
     width: var(--line-thickness);
     height: 30px;
     background-color: var(--bsc-gold);
 }
 
-/* CARD DO SÓCIO (DESIGN SOFISTICADO) */
 .partner-card {
     background: white;
     width: 100%;
@@ -137,8 +129,8 @@ body {
 }
 
 .partner-card:hover {
-    transform: translateY(-8px); /* Eleva o card suavemente */
-    box-shadow: 0 20px 40px rgba(21, 62, 50, 0.15); /* Sombra esverdeada sutil */
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(21, 62, 50, 0.15);
     border-color: var(--bsc-gold);
 }
 
@@ -147,30 +139,23 @@ body {
     height: 320px;
     overflow: hidden;
     position: relative;
+    background: #f0f0f0; /* Cor de fundo caso a imagem falhe */
 }
 
 .photo-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Efeito P&B Inicial */
-    filter: grayscale(100%) contrast(1.1);
+    filter: grayscale(100%);
     transition: transform 0.6s ease, filter 0.6s ease;
 }
 
-/* Overlay sutil para escurecer a base da foto e destacar texto se houver */
-.photo-container .overlay {
-    position: absolute; bottom: 0; left: 0; width: 100%; height: 30%;
-    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-    opacity: 0; transition: 0.3s;
-}
-
 .partner-card:hover .photo-container img {
-    filter: grayscale(0%) contrast(1); /* Volta a cor */
-    transform: scale(1.05); /* Zoom suave */
+    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
-.info-container { padding: 25px 20px; text-align: center; background: white; position: relative; }
+.info-container { padding: 25px 20px; text-align: center; }
 
 .info-container h3 {
     font-family: var(--font-serif);
@@ -195,26 +180,22 @@ body {
 
 .partner-card:hover .gold-line { width: 80px; }
 
-/* Linha que conecta o Sócio Central à Rede (Embaixo) */
 .connector-partners-to-network {
     width: var(--line-thickness);
     height: 60px;
     background-color: var(--bsc-gold);
-    margin-top: -5px; /* Ajuste fino */
+    margin-top: -5px;
 }
 
-/* --- 4. NÍVEL 3: A REDE --- */
-.level-network {
-    width: 100%;
-    max-width: 1000px;
-}
+/* --- ESTILOS DA REDE (CARDÁPIO INTERATIVO) --- */
+.level-network { width: 100%; max-width: 1000px; margin-top: 10px; }
 
 .section-header {
     text-align: center;
     margin-bottom: 40px;
     background: white;
-    padding: 20px;
-    border-radius: 50px; /* Formato de pílula */
+    padding: 15px 30px;
+    border-radius: 50px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     border: 1px solid #eee;
     display: inline-block;
@@ -223,7 +204,7 @@ body {
 }
 
 .icon-header { font-size: 1.5rem; color: var(--bsc-gold); display: block; margin-bottom: 5px; }
-.section-header h2 { font-family: var(--font-serif); color: var(--bsc-green); font-size: 1.4rem; }
+.section-header h2 { font-family: var(--font-serif); color: var(--bsc-green); font-size: 1.3rem; }
 .section-header p { font-size: 0.9rem; color: #999; margin-top: 5px; font-style: italic; }
 
 .network-grid {
@@ -232,18 +213,17 @@ body {
     gap: 20px;
 }
 
-/* Cards de Estado (Accordion) */
 .state-card {
     background: white;
     border: 1px solid #eee;
-    border-left: 4px solid var(--bsc-gold); /* Identidade visual lateral */
+    border-left: 4px solid var(--bsc-gold);
     border-radius: 4px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .state-header {
-    padding: 20px;
+    padding: 18px 20px;
     cursor: pointer;
     display: flex; justify-content: space-between; align-items: center;
     background: white;
@@ -251,56 +231,59 @@ body {
 }
 
 .state-header:hover { background: #fdfdfd; }
-
-.state-name {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    color: var(--bsc-green);
-}
-
+.state-name { font-family: var(--font-serif); font-weight: 700; color: var(--bsc-green); }
 .toggle-icon { font-size: 0.8rem; color: var(--bsc-gold); transition: transform 0.3s; }
 
-/* Estado Ativo (Aberto) */
 .state-card.active { box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
 .state-card.active .toggle-icon { transform: rotate(180deg); }
-.state-card.active .state-header { border-bottom: 1px solid #f0f0f0; }
 
-/* Conteúdo Interno (Lista de Parceiros) */
 .state-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out; /* Animação suave de slide */
+    transition: max-height 0.4s ease-out;
     background: #fafafa;
 }
 
-.city-block { padding: 15px 20px; border-bottom: 1px solid rgba(0,0,0,0.03); }
-.city-block:last-child { border-bottom: none; }
+.city-block { padding: 12px 20px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.city-name { font-size: 0.75rem; font-weight: 800; color: #aaa; text-transform: uppercase; display: block; margin-bottom: 4px;}
+.partner-name { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--bsc-green); font-weight: 600; }
+.partner-name i { color: var(--bsc-gold); font-size: 0.8rem; }
 
-.city-name {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #aaa;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.partner-name {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 0.95rem; color: var(--bsc-green); font-weight: 600;
-}
-.partner-name i { font-size: 0.8rem; color: var(--bsc-gold); }
-
-/* --- 5. RODAPÉ E EXTRAS --- */
+/* --- FOOTER E EXTRAS --- */
 .simple-footer {
     width: 100%; text-align: center;
-    padding: 20px; margin-top: 40px; border-top: 1px solid #eee;
+    padding: 20px; margin-top: 60px; border-top: 1px solid #eee;
     font-size: 0.8rem; color: #aaa;
 }
 
 .float-whatsapp {
-    position: fixed; bottom: 30px; right: 30px;
+    position: fixed; bottom: 20px; right: 20px;
     background: #25D366; color: white;
-    width: 60px; height: 60px; border-radius: 50%;
+    width: 55px; height: 55px; border-radius: 50%;
     display: flex; justify-content: center; align-items: center;
-    font-size:
+    font-size: 28px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+    transition: 0.3s; z-index: 100;
+    text-decoration: none;
+}
+.float-whatsapp:hover { transform: scale(1.1); background: #20b857; }
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 900px) {
+    .connector-horizontal-bar { display: none; }
+    .partners-grid { flex-direction: column; align-items: center; gap: 0; }
+    
+    .partner-node { width: 100%; max-width: 350px; margin-bottom: 0; }
+    .connector-node-vertical { height: 40px; }
+    .connector-partners-to-network { display: none; }
+    
+    /* Conector manual para mobile */
+    .partner-card::after {
+        content: ''; display: block; width: 2px; height: 20px; 
+        background: var(--bsc-gold); margin: 0 auto;
+        position: absolute; bottom: -20px; left: 50%;
+    }
+    .partner-node:last-child .partner-card::after { height: 60px; } /* Último conecta à rede */
+    
+    .brand-name { font-size: 1.2rem; }
+    .organogram-container { padding-top: 30px; }
+}

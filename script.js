@@ -1,14 +1,16 @@
-// Dados iniciais de locais/parceiros
+// LOCais fixos (Estados / Cidades do organograma + Orlando)
 const locaisInicial = [
+  // Brasil – nível Brasil (para referência)
   {
-    cidade: "Palmas",
-    estado: "Tocantins",
+    cidade: "Brasil",
+    estado: "Brasil",
     pais: "Brasil",
-    lat: -10.184,
-    lng: -48.3336,
-    responsavel: "Dr. Giovani de Góuvani",
-    tipo: "Escritório sede"
+    lat: -14.235,
+    lng: -51.9253,
+    responsavel: "BSC Advogados",
+    tipo: "País"
   },
+  // Rio Grande do Sul
   {
     cidade: "Porto Alegre",
     estado: "Rio Grande do Sul",
@@ -16,8 +18,124 @@ const locaisInicial = [
     lat: -30.0346,
     lng: -51.2177,
     responsavel: "Parceiro Local",
-    tipo: "Parceiro regional"
+    tipo: "Capital / Escritório parceiro"
   },
+  {
+    cidade: "Ibirubá",
+    estado: "Rio Grande do Sul",
+    pais: "Brasil",
+    lat: -28.6306,
+    lng: -53.0965,
+    responsavel: "Parceiro Local",
+    tipo: "Cidade"
+  },
+  // Mato Grosso do Sul
+  {
+    cidade: "Sonora",
+    estado: "Mato Grosso do Sul",
+    pais: "Brasil",
+    lat: -17.5694,
+    lng: -54.7555,
+    responsavel: "Parceiro Local",
+    tipo: "Cidade"
+  },
+  // Tocantins
+  {
+    cidade: "Palmas",
+    estado: "Tocantins",
+    pais: "Brasil",
+    lat: -10.184,
+    lng: -48.3336,
+    responsavel: "Dr. Giovani",
+    tipo: "Escritório sede"
+  },
+  {
+    cidade: "Arraias",
+    estado: "Tocantins",
+    pais: "Brasil",
+    lat: -12.935,
+    lng: -46.9356,
+    responsavel: "Parceiro Local",
+    tipo: "Cidade"
+  },
+  // Bahia
+  {
+    cidade: "Salvador",
+    estado: "Bahia",
+    pais: "Brasil",
+    lat: -12.9777,
+    lng: -38.5016,
+    responsavel: "Parceiro Local",
+    tipo: "Capital"
+  },
+  {
+    cidade: "Luís Eduardo Magalhães",
+    estado: "Bahia",
+    pais: "Brasil",
+    lat: -12.0959,
+    lng: -45.7866,
+    responsavel: "Parceiro Local",
+    tipo: "Cidade"
+  },
+  // Mato Grosso
+  {
+    cidade: "Sinop",
+    estado: "Mato Grosso",
+    pais: "Brasil",
+    lat: -11.855,
+    lng: -55.506, // Sinop [web:158]
+    responsavel: "Parceiro Local",
+    tipo: "Cidade"
+  },
+  {
+    cidade: "Rondonópolis",
+    estado: "Mato Grosso",
+    pais: "Brasil",
+    lat: -16.4673,
+    lng: -54.6372,
+    responsavel: "Parceiro Local",
+    tipo: "Cidade"
+  },
+  {
+    cidade: "Comodoro",
+    estado: "Mato Grosso",
+    pais: "Brasil",
+    lat: -13.6591,
+    lng: -59.7848,
+    responsavel: "Parceiro Local",
+    tipo: "Cidade"
+  },
+  // Distrito Federal
+  {
+    cidade: "Brasília",
+    estado: "Distrito Federal",
+    pais: "Brasil",
+    lat: -15.7939,
+    lng: -47.8828,
+    responsavel: "Parceiro Local",
+    tipo: "Capital"
+  },
+  // Minas Gerais
+  {
+    cidade: "Belo Horizonte",
+    estado: "Minas Gerais",
+    pais: "Brasil",
+    lat: -19.9167,
+    lng: -43.9345,
+    responsavel: "Parceiro Local",
+    tipo: "Capital"
+  },
+  // Santa Catarina
+  {
+    cidade: "Joinville",
+    estado: "Santa Catarina",
+    pais: "Brasil",
+    lat: -26.3045,
+    lng: -48.8487,
+    responsavel: "Parceiro Local",
+    tipo: "Cidade"
+  },
+  // Estados Unidos
   {
     cidade: "Orlando",
     estado: "Flórida",
@@ -34,6 +152,7 @@ let marcadores = [];
 let locais = [...locaisInicial];
 let geocoder;
 
+// Inicializa mapa
 function initMap() {
   mapa = L.map("map").setView([-15.8, -47.9], 4);
 
@@ -51,7 +170,7 @@ function initMap() {
     })
       .on("markgeocode", function (e) {
         const center = e.geocode.center;
-        mapa.setView(center, 8);
+        mapa.setView(center, 7);
       })
       .addTo(mapa);
   }
@@ -59,6 +178,7 @@ function initMap() {
   renderLocais();
 }
 
+// Renderiza marcadores e lista
 function renderLocais() {
   marcadores.forEach((m) => mapa.removeLayer(m));
   marcadores = [];
@@ -106,22 +226,22 @@ function renderLocais() {
   document.getElementById("totalPaises").textContent = paises.size.toString();
 }
 
+// Modal
 function openModal() {
   document.getElementById("parceiroModal").classList.add("active");
 }
-
 function closeModal() {
   document.getElementById("parceiroModal").classList.remove("active");
   document.getElementById("parceiroForm").reset();
   document.getElementById("outroResponsavelGroup").style.display = "none";
 }
-
 function toggleOutroResponsavel() {
   const resp = document.getElementById("responsavel").value;
   document.getElementById("outroResponsavelGroup").style.display =
     resp === "outro" ? "block" : "none";
 }
 
+// Geocodificação por texto
 function geocodificarEndereco(pais, estado, cidade, complemento) {
   return new Promise((resolve, reject) => {
     if (!geocoder) {
@@ -140,6 +260,7 @@ function geocodificarEndereco(pais, estado, cidade, complemento) {
   });
 }
 
+// Adiciona novo local
 async function addParceiro(event) {
   event.preventDefault();
 

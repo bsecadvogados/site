@@ -1,9 +1,9 @@
 /* --- CONFIGURAÇÕES GERAIS (AGRO PREMIUM) --- */
 :root {
-    --agro-green: #1a3c34;      /* Verde BSC Profundo */
-    --agro-gold: #d4af37;       /* Dourado Ouro Velho */
-    --earth-brown: #4a403a;     /* Marrom Terra */
-    --cream-bg: #f5f2eb;        /* Fundo Creme Papel */
+    --agro-green: #1a3c34;      /* Verde Escuro */
+    --agro-gold: #d4af37;       /* Dourado */
+    --earth-brown: #4a403a;     /* Marrom */
+    --cream-bg: #f5f2eb;        /* Creme */
     --white: #ffffff;
     
     --font-title: 'Playfair Display', serif;
@@ -22,14 +22,14 @@ body {
     overflow-x: hidden;
 }
 
-/* Efeito de Hover Global */
+/* Hover Effect */
 .glow-hover { transition: all 0.3s ease; }
 .glow-hover:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
 
 /* --- HERO SECTION --- */
 .hero-agro {
     position: relative; height: 85vh; width: 100%;
-    /* Imagem de fundo de plantação */
+    /* Imagem de Fundo (Soja/Trigo) */
     background: url('https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=1931&auto=format&fit=crop') center/cover no-repeat fixed;
     display: flex; justify-content: center; align-items: center; text-align: center;
 }
@@ -51,10 +51,10 @@ body {
 .hero-subtitle { font-size: 1.1rem; color: var(--agro-gold); text-transform: uppercase; letter-spacing: 4px; font-weight: 300; }
 .gold-separator { width: 80px; height: 3px; background: var(--agro-gold); margin: 20px auto 0; }
 
-/* --- CONTEÚDO PRINCIPAL --- */
+/* --- CONTEÚDO --- */
 .content-wrapper { position: relative; top: -60px; z-index: 20; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- SÓCIOS (COM FOTO) --- */
+/* --- SÓCIOS --- */
 .section-board { margin-bottom: 40px; }
 .section-title {
     text-align: center; font-family: var(--font-title); font-size: 2rem; color: #fff;
@@ -65,6 +65,8 @@ body {
     background: #fff; width: 300px; border-radius: 4px; overflow: hidden;
     box-shadow: var(--card-shadow); border-bottom: 4px solid var(--agro-gold);
 }
+.center-card { transform: scale(1.05); z-index: 5; } /* Destaque leve para o centro */
+
 .card-image-wrapper { height: 320px; width: 100%; overflow: hidden; position: relative; }
 .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: sepia(20%); transition: 0.5s; }
 .profile-card:hover img { filter: sepia(0%); transform: scale(1.05); }
@@ -76,7 +78,7 @@ body {
 }
 .wheat-icon { margin-top: 15px; color: #e0e0e0; font-size: 1.2rem; }
 
-/* --- IAGO (SEM FOTO - TEXTO) --- */
+/* --- IAGO (TEXTO) --- */
 .section-management { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
 .connector-line-vertical { height: 40px; width: 2px; background: var(--agro-gold); opacity: 0.6; margin: 0 auto; }
 .connector-line-vertical.short { height: 20px; }
@@ -85,14 +87,13 @@ body {
 .text-only-card {
     background: var(--white); padding: 25px 50px; border-radius: 4px;
     text-align: center; box-shadow: var(--card-shadow);
-    border: 2px solid var(--agro-green); min-width: 300px; position: relative;
-    z-index: 6;
+    border: 2px solid var(--agro-green); min-width: 300px; position: relative; z-index: 6;
 }
 .text-only-card h3 { font-family: var(--font-title); color: var(--agro-green); font-size: 1.5rem; margin-bottom: 10px; }
 .controller-style .role-tag { background: var(--earth-brown); color: #fff; }
 .wheat-icon-small { color: var(--agro-gold); margin-top: 10px; font-size: 1rem; }
 
-/* --- ORGANOGRAMA DE REDE (ESTILO ÁRVORE) --- */
+/* --- ORGANOGRAMA REDE --- */
 .section-network-tree { background: #fff; padding: 60px 20px; border-radius: 8px; box-shadow: var(--card-shadow); margin-bottom: 80px; }
 .network-header { text-align: center; margin-bottom: 40px; }
 .network-header h2 { font-family: var(--font-title); color: var(--agro-green); font-size: 2.2rem; }
@@ -112,31 +113,25 @@ body {
     padding: 10px 25px; border-radius: 4px; font-weight: 700; text-transform: uppercase;
     display: flex; align-items: center; gap: 10px; color: var(--white); position: relative; font-size: 0.85rem;
 }
-.node-br { background: #009c3b; /* Verde Brasil */ }
-.node-intl { background: #003366; /* Azul Intl */ }
+.node-br { background: #009c3b; }
+.node-intl { background: #003366; }
 .flag-small { width: 24px; border-radius: 2px; }
-
 .up-connector { margin-top: -20px; height: 20px; }
 
-/* Grid dos cards */
 .tree-grid-container {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 15px; width: 100%; padding: 20px 0; position: relative;
 }
 .tree-grid-container.one-col { grid-template-columns: 1fr; max-width: 250px; }
-
-/* Linha horizontal superior do grid */
 .tree-grid-container::before {
     content: ''; position: absolute; top: 0; left: 10%; right: 10%;
     height: 2px; background: var(--agro-gold); opacity: 0.4;
 }
 
-/* Cartão do Nó (Estado) */
 .node-card {
     background: var(--cream-bg); border: 1px solid #e0d8c0; border-radius: 4px;
     text-align: center; overflow: hidden; position: relative; transition: 0.3s;
 }
-/* Linha conectora vertical do card */
 .node-card::before {
     content: ''; position: absolute; top: -15px; left: 50%; width: 2px; height: 15px;
     background: var(--agro-gold); opacity: 0.4;
@@ -162,8 +157,7 @@ footer { background: var(--agro-green); color: #fff; text-align: center; padding
     .connector-bar-horizontal { display: none; }
     .tree-branches-row { flex-direction: column; width: 100%; gap: 30px; }
     .up-connector { display: none; }
-    /* Linha manual para o cabeçalho do ramo no mobile */
     .branch-head::before { content: ''; position: absolute; top: -20px; left: 50%; width: 2px; height: 20px; background: var(--agro-gold); opacity: 0.6; }
-    .tree-grid-container::before { display: none; } 
+    .tree-grid-container::before { display: none; }
     .tree-grid-container { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
 }

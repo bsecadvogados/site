@@ -1,163 +1,316 @@
-/* --- CONFIGURAÇÕES GERAIS (AGRO PREMIUM) --- */
+/* --- VARIÁVEIS & RESET (Paleta Dark Premium) --- */
 :root {
-    --agro-green: #1a3c34;      /* Verde Escuro */
-    --agro-gold: #d4af37;       /* Dourado */
-    --earth-brown: #4a403a;     /* Marrom */
-    --cream-bg: #f5f2eb;        /* Creme */
-    --white: #ffffff;
+    --bg-dark: #0a1f18;         /* Fundo Verde/Preto Profundo */
+    --bg-card: #132a22;         /* Fundo dos Cards */
+    --primary-green: #009c3b;   /* Verde Destaque */
+    --primary-gold: #d4af37;    /* Dourado Rico */
+    --text-light: #f0f0f0;      /* Texto Claro */
+    --text-muted: #a0b3b0;      /* Texto Secundário */
     
-    --font-title: 'Playfair Display', serif;
-    --font-text: 'Lato', sans-serif;
+    --font-titles: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
     
-    --card-shadow: 0 10px 30px rgba(26, 60, 52, 0.15);
-    --hover-shadow: 0 15px 40px rgba(212, 175, 55, 0.25);
+    --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    --gold-glow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--cream-bg);
-    font-family: var(--font-text);
-    color: var(--earth-brown);
-    overflow-x: hidden;
+    background-color: var(--bg-dark);
+    font-family: var(--font-body);
+    color: var(--text-light);
+    background-image: radial-gradient(circle at top, #1a3c34 0%, var(--bg-dark) 60%);
+    min-height: 100vh;
 }
-
-/* Hover Effect */
-.glow-hover { transition: all 0.3s ease; }
-.glow-hover:hover { transform: translateY(-5px); box-shadow: var(--hover-shadow); }
 
 /* --- HERO SECTION --- */
-.hero-agro {
-    position: relative; height: 85vh; width: 100%;
-    /* Imagem de Fundo (Soja/Trigo) */
-    background: url('https://images.unsplash.com/photo-1625246333195-58197bd47d26?q=80&w=1931&auto=format&fit=crop') center/cover no-repeat fixed;
-    display: flex; justify-content: center; align-items: center; text-align: center;
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, rgba(10,31,24,0.8), var(--bg-dark));
+    border-bottom: 3px solid var(--primary-gold);
 }
-.hero-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(10, 26, 22, 0.7), rgba(26, 60, 52, 0.9));
-}
-.brand-spotlight { position: relative; z-index: 10; padding: 0 20px; animation: fadeInUp 1.2s ease-out; }
-.logo-container-glow {
-    display: inline-block; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(5px);
-    border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 50%; padding: 30px; margin-bottom: 25px;
-    box-shadow: 0 0 50px rgba(212, 175, 55, 0.2);
-}
-.hero-logo { height: 140px; width: auto; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
-.hero-title {
-    font-family: var(--font-title); font-size: 2.5rem; color: #fff; text-transform: uppercase;
-    letter-spacing: 2px; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-.hero-subtitle { font-size: 1.1rem; color: var(--agro-gold); text-transform: uppercase; letter-spacing: 4px; font-weight: 300; }
-.gold-separator { width: 80px; height: 3px; background: var(--agro-gold); margin: 20px auto 0; }
 
-/* --- CONTEÚDO --- */
-.content-wrapper { position: relative; top: -60px; z-index: 20; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.hero-logo {
+    max-width: 280px;
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+}
+
+.hero-section h1 {
+    font-family: var(--font-titles);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-gold);
+}
+
+.gold-divider {
+    width: 100px;
+    height: 3px;
+    background: var(--primary-gold);
+    margin: 20px auto;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    font-family: var(--font-titles);
+    text-align: center;
+    font-size: 2rem;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    position: relative;
+}
 
 /* --- SÓCIOS --- */
-.section-board { margin-bottom: 40px; }
-.section-title {
-    text-align: center; font-family: var(--font-title); font-size: 2rem; color: #fff;
-    margin-bottom: 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+.partners-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
 }
-.partners-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-.profile-card {
-    background: #fff; width: 300px; border-radius: 4px; overflow: hidden;
-    box-shadow: var(--card-shadow); border-bottom: 4px solid var(--agro-gold);
+
+.partner-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
 }
-.center-card { transform: scale(1.05); z-index: 5; } /* Destaque leve para o centro */
 
-.card-image-wrapper { height: 320px; width: 100%; overflow: hidden; position: relative; }
-.card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: sepia(20%); transition: 0.5s; }
-.profile-card:hover img { filter: sepia(0%); transform: scale(1.05); }
-.card-content { padding: 25px; text-align: center; }
-.card-content h3 { font-family: var(--font-title); color: var(--agro-green); font-size: 1.3rem; margin-bottom: 8px; }
-.role-tag {
-    display: inline-block; padding: 5px 12px; background: var(--agro-green); color: var(--agro-gold);
-    font-size: 0.75rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;
+/* Destaque para o card central (Abimael) */
+.center-focus {
+    transform: scale(1.1);
+    border-color: var(--primary-gold);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6), var(--gold-glow);
+    z-index: 10;
 }
-.wheat-icon { margin-top: 15px; color: #e0e0e0; font-size: 1.2rem; }
 
-/* --- IAGO (TEXTO) --- */
-.section-management { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
-.connector-line-vertical { height: 40px; width: 2px; background: var(--agro-gold); opacity: 0.6; margin: 0 auto; }
-.connector-line-vertical.short { height: 20px; }
-.connector-line-vertical.no-margin-bottom { margin-bottom: -20px; position: relative; z-index: 5; }
-
-.text-only-card {
-    background: var(--white); padding: 25px 50px; border-radius: 4px;
-    text-align: center; box-shadow: var(--card-shadow);
-    border: 2px solid var(--agro-green); min-width: 300px; position: relative; z-index: 6;
+.partner-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary-gold);
 }
-.text-only-card h3 { font-family: var(--font-title); color: var(--agro-green); font-size: 1.5rem; margin-bottom: 10px; }
-.controller-style .role-tag { background: var(--earth-brown); color: #fff; }
-.wheat-icon-small { color: var(--agro-gold); margin-top: 10px; font-size: 1rem; }
+.center-focus:hover { transform: translateY(-10px) scale(1.12); }
 
-/* --- ORGANOGRAMA REDE --- */
-.section-network-tree { background: #fff; padding: 60px 20px; border-radius: 8px; box-shadow: var(--card-shadow); margin-bottom: 80px; }
-.network-header { text-align: center; margin-bottom: 40px; }
-.network-header h2 { font-family: var(--font-title); color: var(--agro-green); font-size: 2.2rem; }
-.network-header p { color: var(--earth-brown); font-style: italic; }
-
-.tree-structure { display: flex; flex-direction: column; align-items: center; }
-.tree-root-node {
-    background: var(--agro-green); color: var(--agro-gold); padding: 12px 35px;
-    border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-    display: flex; align-items: center; gap: 10px; font-size: 0.9rem;
+.img-frame {
+    height: 320px;
+    overflow: hidden;
+    position: relative;
 }
-.connector-bar-horizontal { width: 60%; height: 2px; background: var(--agro-gold); opacity: 0.6; }
-.tree-branches-row { display: flex; justify-content: space-around; width: 90%; margin-top: 0; }
-.tree-branch { display: flex; flex-direction: column; align-items: center; flex: 1; }
 
-.branch-head {
-    padding: 10px 25px; border-radius: 4px; font-weight: 700; text-transform: uppercase;
-    display: flex; align-items: center; gap: 10px; color: var(--white); position: relative; font-size: 0.85rem;
+.img-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Filtro levemente dourado/sepia para sofisticar */
+    filter: sepia(20%) contrast(1.1);
+    transition: 0.5s;
 }
-.node-br { background: #009c3b; }
-.node-intl { background: #003366; }
-.flag-small { width: 24px; border-radius: 2px; }
-.up-connector { margin-top: -20px; height: 20px; }
 
-.tree-grid-container {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px; width: 100%; padding: 20px 0; position: relative;
+.partner-card:hover img { filter: sepia(0%); transform: scale(1.05); }
+
+.card-info { padding: 20px; }
+
+.card-info h3 {
+    font-family: var(--font-titles);
+    color: var(--primary-gold);
+    margin-bottom: 10px;
+    font-size: 1.3rem;
 }
-.tree-grid-container.one-col { grid-template-columns: 1fr; max-width: 250px; }
-.tree-grid-container::before {
+
+.role-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 20px;
+}
+
+/* --- GESTÃO (IAGO) & CONECTORES --- */
+.section-management {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+}
+
+/* Linhas Douradas do Organograma */
+.connector-vertical-line {
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary-gold), rgba(212, 175, 55, 0.3));
+    height: 50px;
+}
+.main-line { height: 60px; }
+.short { height: 25px; background: var(--primary-gold); }
+
+.management-card {
+    display: flex;
+    align-items: center;
+    background: var(--bg-card);
+    border: 2px solid var(--primary-green);
+    padding: 15px 30px;
+    border-radius: 50px; /* Formato de pílula */
+    gap: 20px;
+    box-shadow: var(--gold-glow);
+}
+
+.img-frame-small {
+    width: 70px; height: 70px;
+    border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--primary-gold);
+}
+.img-frame-small img { width: 100%; height: 100%; object-fit: cover; }
+
+.card-info-side h3 {
+    font-family: var(--font-titles);
+    color: var(--primary-gold);
+    font-size: 1.2rem; margin-bottom: 5px;
+}
+.role-badge.dark { background: var(--bg-dark); color: var(--primary-gold); border: 1px solid var(--primary-gold); }
+
+/* --- ORGANOGRAMA DE CAPILARIDADE (ÁRVORE VISUAL) --- */
+.section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 40px; margin-top: -30px; }
+
+.tree-diagram-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tree-root {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    padding: 12px 35px;
+    border-radius: 30px;
+    font-weight: 700; font-size: 1.1rem;
+    box-shadow: var(--gold-glow);
+}
+
+/* Barra horizontal que divide Brasil e Intl */
+.connector-horizontal-bar {
+    width: 60%;
+    height: 2px;
+    background: var(--primary-gold);
+    position: relative;
+}
+
+.tree-branches-wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.tree-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+/* Conector que sobe da header do ramo para a barra horizontal */
+.connector-up { margin-top: -25px; }
+
+.branch-header {
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
+    color: white;
+    border: 2px solid var(--primary-gold);
+}
+.br-header { background: linear-gradient(45deg, #009c3b, #005f24); }
+.intl-header { background: linear-gradient(45deg, #003366, #001f3f); }
+.flag-icon { width: 24px; border-radius: 2px; }
+
+/* Grid dos nós (cards de cidade) */
+.tree-nodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    width: 100%;
+    padding-top: 10px;
+    position: relative;
+}
+.one-column { grid-template-columns: 1fr; max-width: 220px; }
+
+/* Linha horizontal superior dentro do grid para conectar os nós */
+.tree-nodes-grid::before {
     content: ''; position: absolute; top: 0; left: 10%; right: 10%;
-    height: 2px; background: var(--agro-gold); opacity: 0.4;
+    height: 2px; background: var(--primary-gold); opacity: 0.5;
 }
 
+/* CARD DO NÓ (LOCAL) */
 .node-card {
-    background: var(--cream-bg); border: 1px solid #e0d8c0; border-radius: 4px;
-    text-align: center; overflow: hidden; position: relative; transition: 0.3s;
+    background: var(--bg-card);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 6px;
+    text-align: center;
+    position: relative;
+    transition: 0.3s;
+    overflow: hidden;
 }
+
+/* Linha conectora vertical do nó individual */
 .node-card::before {
-    content: ''; position: absolute; top: -15px; left: 50%; width: 2px; height: 15px;
-    background: var(--agro-gold); opacity: 0.4;
+    content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+    width: 2px; height: 15px; background: var(--primary-gold); opacity: 0.5;
 }
-.node-card:hover { border-color: var(--agro-gold); background: #fff; transform: translateY(-3px); }
 
-.node-header { background: var(--agro-green); color: var(--agro-gold); padding: 6px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+.node-card:hover {
+    border-color: var(--primary-gold);
+    box-shadow: var(--gold-glow);
+    transform: translateY(-5px);
+}
+
+.node-state-header {
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--primary-gold);
+    padding: 5px;
+    font-size: 0.8rem; font-weight: 700;
+}
 .node-body { padding: 10px; }
-.city-name { font-weight: 700; font-size: 0.8rem; color: var(--earth-brown); display: block; }
-.partner-name { font-size: 0.75rem; color: #666; margin-top: 4px; display: block; }
+.city-name { display: block; font-weight: 700; color: var(--text-light); margin-bottom: 5px; }
+.partner-name { display: block; font-size: 0.8rem; color: var(--text-muted); }
 
-/* --- FOOTER --- */
-footer { background: var(--agro-green); color: #fff; text-align: center; padding: 40px 20px; }
-.footer-slogan { font-family: var(--font-title); color: var(--agro-gold); margin-top: 10px; font-size: 1.1rem; }
+/* FOOTER */
+footer {
+    text-align: center; padding: 30px;
+    background: #05110d; color: var(--text-muted);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
 
-/* Animações */
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-/* Mobile */
+/* --- RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 900px) {
-    .hero-title { font-size: 1.8rem; } .hero-logo { height: 100px; } .content-wrapper { top: -30px; }
-    .partners-row { flex-direction: column; align-items: center; }
-    .connector-bar-horizontal { display: none; }
-    .tree-branches-row { flex-direction: column; width: 100%; gap: 30px; }
-    .up-connector { display: none; }
-    .branch-head::before { content: ''; position: absolute; top: -20px; left: 50%; width: 2px; height: 20px; background: var(--agro-gold); opacity: 0.6; }
-    .tree-grid-container::before { display: none; }
-    .tree-grid-container { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+    .hero-title { font-size: 1.8rem; }
+    .partners-grid { flex-direction: column; align-items: center; gap: 40px; }
+    .center-focus { transform: scale(1); } /* Remove escala no mobile */
+    
+    /* Desmonta a árvore horizontal e empilha no mobile */
+    .connector-horizontal-bar { display: none; }
+    .tree-branches-wrapper { flex-direction: column; gap: 40px; width: 100%; }
+    .connector-up { display: none; }
+    .tree-nodes-grid::before { display: none; } /* Remove linha do grid */
+    .tree-nodes-grid { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
 }

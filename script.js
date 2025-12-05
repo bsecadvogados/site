@@ -32,6 +32,7 @@ const locaisInicial = [
 let mapa;
 let marcadores = [];
 let locais = [...locaisInicial];
+let geocoder;
 
 function initMap() {
   mapa = L.map("map").setView([-15.8, -47.9], 4);
@@ -41,11 +42,24 @@ function initMap() {
     attribution: "&copy; OpenStreetMap contributors"
   }).addTo(mapa);
 
+  if (L.Control.Geocoder) {
+    geocoder = L.Control.Geocoder.nominatim();
+    L.Control.geocoder({
+      collapsed: true,
+      defaultMarkGeocode: false,
+      geocoder
+    })
+      .on("markgeocode", function (e) {
+        const center = e.geocode.center;
+        mapa.setView(center, 8);
+      })
+      .addTo(mapa);
+  }
+
   renderLocais();
 }
 
 function renderLocais() {
-  // limpar marcadores antigos
   marcadores.forEach((m) => mapa.removeLayer(m));
   marcadores = [];
 
@@ -57,7 +71,6 @@ function renderLocais() {
   locais.forEach((loc) => {
     paises.add(loc.pais.trim().toLowerCase());
 
-    // marcador no mapa
     const marker = L.marker([loc.lat, loc.lng]).addTo(mapa);
     marker.bindPopup(
       `<div class="popup-title">${loc.cidade} – ${loc.estado}</div>
@@ -69,7 +82,6 @@ function renderLocais() {
     );
     marcadores.push(marker);
 
-    // item visual na lista
     const item = document.createElement("div");
     item.className = "parceiro-item";
     item.onclick = () => {
@@ -110,14 +122,31 @@ function toggleOutroResponsavel() {
     resp === "outro" ? "block" : "none";
 }
 
-function addParceiro(event) {
+function geocodificarEndereco(pais, estado, cidade, complemento) {
+  return new Promise((resolve, reject) => {
+    if (!geocoder) {
+      reject("Geocoder não disponível.");
+      return;
+    }
+    const consulta = [cidade, estado, pais, complemento].filter(Boolean).join(", ");
+    geocoder.geocode(consulta, (results) => {
+      if (results && results.length > 0) {
+        const c = results[0].center;
+        resolve({ lat: c.lat, lng: c.lng });
+      } else {
+        reject("Local não encontrado.");
+      }
+    });
+  });
+}
+
+async function addParceiro(event) {
   event.preventDefault();
 
   const cidade = document.getElementById("cidade").value.trim();
   const estado = document.getElementById("estado").value.trim();
   const pais = document.getElementById("pais").value.trim();
-  const lat = parseFloat(document.getElementById("latitude").value);
-  const lng = parseFloat(document.getElementById("longitude").value);
+  const enderecoBusca = document.getElementById("enderecoBusca").value.trim();
   const respSelect = document.getElementById("responsavel").value;
   const outroResp = document.getElementById("outroResponsavel").value.trim();
 
@@ -126,23 +155,30 @@ function addParceiro(event) {
     responsavel = outroResp;
   }
 
-  if (!cidade || !estado || !pais || isNaN(lat) || isNaN(lng) || !responsavel) {
-    alert("Preencha corretamente todos os campos.");
+  if (!cidade || !estado || !pais || !responsavel) {
+    alert("Preencha corretamente todos os campos obrigatórios.");
     return;
   }
 
-  locais.push({
-    cidade,
-    estado,
-    pais,
-    lat,
-    lng,
-    responsavel,
-    tipo: "Parceiro cadastrado"
-  });
+  try {
+    const { lat, lng } = await geocodificarEndereco(pais, estado, cidade, enderecoBusca);
 
-  renderLocais();
-  closeModal();
+    locais.push({
+      cidade,
+      estado,
+      pais,
+      lat,
+      lng,
+      responsavel,
+      tipo: "Parceiro cadastrado"
+    });
+
+    renderLocais();
+    closeModal();
+  } catch (e) {
+    alert("Não foi possível localizar o endereço no mapa. Tente detalhar cidade, estado e país.");
+    console.error(e);
+  }
 }
 
 window.addEventListener("load", initMap);

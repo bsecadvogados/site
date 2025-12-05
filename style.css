@@ -1,398 +1,819 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BSC Advogados Associados | Direito Agrário e Agronegócio</title>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    <!-- Fontes e ícones -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+:root{
+    --primary-green:#1a5f3f;
+    --secondary-green:#2d7a52;
+    --gold:#c4975b;
+    --light-gold:#d4a76a;
+    --dark-bg:#0f1419;
+    --light-bg:#f8f9fa;
+    --text-dark:#1a1a1a;
+    --text-light:#666;
+}
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+body{
+    font-family:'Montserrat',sans-serif;
+    color:var(--text-dark);
+    background:var(--light-bg);
+    overflow-x:hidden;
+}
 
-    <!-- CSS do site -->
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <!-- HEADER -->
-    <header>
-        <div class="header-container">
-            <div class="logo-container">
-                <div class="logo">
-                    <img src="logo.png" alt="BSC Advogados Associados">
-                </div>
-                <div class="brand-text">
-                    <h1>BSC ADVOGADOS</h1>
-                    <p>ASSOCIADOS</p>
-                </div>
-            </div>
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:rgba(255,255,255,0.98);
+    box-shadow:0 2px 15px rgba(0,0,0,0.08);
+    z-index:1000;
+}
 
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#socios">Sócios</a></li>
-                    <li><a href="#capilaridade">Capilaridade</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </nav>
+.header-container{
+    max-width:1320px;
+    margin:0 auto;
+    padding:0.8rem 2.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:2rem;
+}
 
-            <a class="whatsapp-btn" href="https://wa.me/5563992699118" target="_blank" rel="noopener">
-                <i class="fab fa-whatsapp"></i>
-                <span>(63) 99269‑9118</span>
-            </a>
-        </div>
-    </header>
+.logo-container{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
 
-    <!-- HERO / ORGANOGRAMA -->
-    <section id="inicio" class="hero">
-        <div class="hero-inner">
-            <div class="hero-left">
-                <div class="hero-badge">
-                    <span></span>
-                    Excelência em Direito Agrário e do Agronegócio
-                </div>
-                <h1 class="hero-title">
-                    Estrutura jurídica completa para o
-                    <strong>produtor rural e empresas do campo</strong>.
-                </h1>
-                <p class="hero-text">
-                    A BSC Advogados Associados é um escritório especializado em Direito Agrário e do Agronegócio, focado em regularização fundiária, contratos rurais, governança patrimonial e solução de conflitos complexos em todo o território nacional. [web:9][web:58]
-                </p>
+.logo{
+    width:72px;
+    height:72px;
+    border-radius:14px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+    box-shadow:0 4px 14px rgba(0,0,0,0.12);
+}
 
-                <div class="hero-highlights">
-                    <div class="hero-highlight">
-                        <i class="fa-solid fa-seedling"></i>
-                        <span>Atuação estratégica voltada ao agronegócio.</span>
-                    </div>
-                    <div class="hero-highlight">
-                        <i class="fa-solid fa-scale-balanced"></i>
-                        <span>Equipe dedicada em Direito Agrário e Ambiental.</span>
-                    </div>
-                    <div class="hero-highlight">
-                        <i class="fa-solid fa-globe-americas"></i>
-                        <span>Rede de parceiros no Brasil e exterior.</span>
-                    </div>
-                </div>
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
-                <div class="hero-cta">
-                    <a href="https://wa.me/5563992699118" target="_blank" rel="noopener" class="primary-btn">
-                        <i class="fa-solid fa-comments"></i>
-                        Agendar uma reunião
-                    </a>
-                    <a href="#capilaridade" class="secondary-link">
-                        Ver organograma de atuação
-                        <i class="fa-solid fa-arrow-down-long"></i>
-                    </a>
-                </div>
-            </div>
+.brand-text h1{
+    font-family:'Playfair Display',serif;
+    font-size:1.9rem;
+    color:var(--primary-green);
+    letter-spacing:1px;
+}
 
-            <div class="hero-right">
-                <div class="org-title">Organograma BSC Advogados</div>
-                <div class="org-sub">Estrutura de liderança e rede de atuação</div>
+.brand-text p{
+    font-size:0.8rem;
+    color:var(--gold);
+    letter-spacing:2px;
+    margin-top:2px;
+}
 
-                <div class="org-grid">
-                    <!-- Giovani principal -->
-                    <div class="org-card main">
-                        <div class="org-avatar">
-                            <img src="giovani.jpg" alt="Dr. Giovani de Góuvani">
-                        </div>
-                        <div class="org-info">
-                            <h4>Dr. Giovani de Góuvani</h4>
-                            <p>Sócio Fundador · Direito Agrário, Ambiental e Regularização Fundiária</p>
-                        </div>
-                        <span class="org-tag">Founder</span>
-                    </div>
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:2rem;
+}
 
-                    <!-- Pamella -->
-                    <div class="org-card">
-                        <div class="org-avatar">
-                            <img src="pamella.jpg" alt="Dra. Pamella">
-                        </div>
-                        <div class="org-info">
-                            <h4>Dra. Pamella</h4>
-                            <p>Contratos Agrários, Planejamento Patrimonial e Sucessório Rural</p>
-                        </div>
-                    </div>
+nav a{
+    text-decoration:none;
+    color:var(--text-dark);
+    font-weight:500;
+    font-size:0.95rem;
+    position:relative;
+    padding-bottom:4px;
+}
 
-                    <!-- Abimael -->
-                    <div class="org-card">
-                        <div class="org-avatar">
-                            <img src="abimael.jpg" alt="Dr. Abimael">
-                        </div>
-                        <div class="org-info">
-                            <h4>Dr. Abimael</h4>
-                            <p>Litígios Agrários, Recuperação de Crédito e Consultoria Preventiva</p>
-                        </div>
-                    </div>
+nav a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:0;
+    height:2px;
+    width:0;
+    background:var(--gold);
+    transition:width 0.3s;
+}
 
-                    <!-- Iago como apoio (exemplo: consultor jurídico/tributário) -->
-                    <div class="org-card">
-                        <div class="org-avatar">
-                            <img src="iago.jpg" alt="Iago">
-                        </div>
-                        <div class="org-info">
-                            <h4>Iago</h4>
-                            <p>Consultoria em negócios e apoio estratégico ao agronegócio</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+nav a:hover{
+    color:var(--primary-green);
+}
 
-    <!-- SÓCIOS -->
-    <section id="socios">
-        <div class="section-wrapper">
-            <div class="section-heading">
-                <div class="pill">
-                    <i class="fa-solid fa-user-tie"></i>
-                    Sócios
-                </div>
-                <h2>Liderança especializada no agronegócio</h2>
-                <p>
-                    A equipe de sócios alia experiência técnica em Direito Agrário, visão empresarial e proximidade com o campo, oferecendo decisões jurídicas alinhadas à realidade do produtor rural. [web:55]
-                </p>
-            </div>
+nav a:hover::after{
+    width:100%;
+}
 
-            <div class="socios-grid">
-                <!-- Giovani -->
-                <article class="socio-card">
-                    <div class="socio-photo">
-                        <img src="giovani.jpg" alt="Dr. Giovani de Góuvani">
-                    </div>
-                    <h3 class="socio-name">Dr. Giovani de Góuvani</h3>
-                    <p class="socio-title">SÓCIO FUNDADOR</p>
-                    <div class="socio-badges">
-                        <span class="badge">Direito Agrário</span>
-                        <span class="badge">Direito Ambiental</span>
-                        <span class="badge">Regularização Fundiária</span>
-                    </div>
-                    <p class="socio-desc">
-                        Conduz projetos de regularização de imóveis rurais, defesa da propriedade e estruturação jurídica de empreendimentos agrícolas, buscando segurança de longo prazo para a atividade. [web:9][web:40]
-                    </p>
-                    <div class="socio-footer">
-                        <span><i class="fa-solid fa-location-dot"></i>Atuação nacional</span>
-                        <span><i class="fa-solid fa-tractor"></i>Foco no agronegócio</span>
-                    </div>
-                </article>
+.whatsapp-btn{
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    color:#fff;
+    padding:0.7rem 1.6rem;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.9rem;
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+    box-shadow:0 4px 14px rgba(18,140,126,0.4);
+}
 
-                <!-- Pamella -->
-                <article class="socio-card">
-                    <div class="socio-photo">
-                        <img src="pamella.jpg" alt="Dra. Pamella">
-                    </div>
-                    <h3 class="socio-name">Dra. Pamella</h3>
-                    <p class="socio-title">SÓCIA</p>
-                    <div class="socio-badges">
-                        <span class="badge">Contratos Agrários</span>
-                        <span class="badge">Planejamento Sucessório</span>
-                        <span class="badge">Gestão Patrimonial Rural</span>
-                    </div>
-                    <p class="socio-desc">
-                        Estrutura contratos de arrendamento, parceria, integração e planejamento sucessório, protegendo o patrimônio rural e fortalecendo a governança familiar. [web:9][web:60]
-                    </p>
-                    <div class="socio-footer">
-                        <span><i class="fa-solid fa-file-signature"></i>Contratos rurais</span>
-                        <span><i class="fa-solid fa-people-roof"></i>Família e sucessões</span>
-                    </div>
-                </article>
+.whatsapp-btn i{font-size:1.1rem;}
 
-                <!-- Abimael -->
-                <article class="socio-card">
-                    <div class="socio-photo">
-                        <img src="abimael.jpg" alt="Dr. Abimael">
-                    </div>
-                    <h3 class="socio-name">Dr. Abimael</h3>
-                    <p class="socio-title">SÓCIO</p>
-                    <div class="socio-badges">
-                        <span class="badge">Litígios Agrários</span>
-                        <span class="badge">Recuperação de Crédito</span>
-                        <span class="badge">Consultoria Preventiva</span>
-                    </div>
-                    <p class="socio-desc">
-                        Atua em disputas judiciais e negociais envolvendo terras, contratos de produção, garantias rurais e operações estruturadas, integrando estratégias contenciosas e preventivas. [web:19][web:58]
-                    </p>
-                    <div class="socio-footer">
-                        <span><i class="fa-solid fa-gavel"></i>Contencioso especializado</span>
-                        <span><i class="fa-solid fa-handshake"></i>Negociação estratégica</span>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
+/* HERO */
+.hero{
+    margin-top:88px;
+    background:linear-gradient(135deg,var(--primary-green) 0%,var(--secondary-green) 55%,#0d3724 100%);
+    position:relative;
+    color:#fff;
+}
 
-    <!-- CAPILARIDADE / MAPA -->
-    <section id="capilaridade" class="map-section">
-        <div class="section-wrapper">
-            <div class="section-heading">
-                <div class="pill">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    Capilaridade
-                </div>
-                <h2>Rede de atuação e parceiros</h2>
-                <p>
-                    A BSC Advogados Associados organiza sua atuação em um organograma territorial, com base em Palmas‑TO e pontos parceiros em estados estratégicos e no exterior, permitindo atendimento ágil e local ao cliente. [web:40][web:58]
-                </p>
-            </div>
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:radial-gradient(circle at 0 0,rgba(255,255,255,0.18) 0,transparent 55%),
+                      radial-gradient(circle at 100% 100%,rgba(196,151,91,0.25) 0,transparent 60%);
+    opacity:0.75;
+}
 
-            <div class="map-layout">
-                <div>
-                    <div id="map"></div>
-                </div>
+.hero-inner{
+    max-width:1320px;
+    margin:0 auto;
+    padding:4.5rem 2.5rem 4rem;
+    position:relative;
+    display:grid;
+    grid-template-columns:1.7fr 1.3fr;
+    align-items:center;
+    gap:3rem;
+}
 
-                <aside class="map-side">
-                    <div class="stats-row">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
-                            <div class="stat-text">
-                                <h4 id="totalLocais">0</h4>
-                                <p>Locais de atuação</p>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fa-solid fa-flag"></i>
-                            </div>
-                            <div class="stat-text">
-                                <h4 id="totalPaises">0</h4>
-                                <p>Países</p>
-                            </div>
-                        </div>
-                    </div>
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    padding:0.4rem 0.8rem;
+    border-radius:999px;
+    background:rgba(0,0,0,0.3);
+    font-size:0.8rem;
+    margin-bottom:1rem;
+}
 
-                    <div class="parceiros-header">
-                        <h3>Locais e parceiros</h3>
-                        <button class="add-local-btn" type="button" onclick="openModal()">
-                            <i class="fa-solid fa-plus"></i> Adicionar local
-                        </button>
-                    </div>
+.hero-badge span{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#4ade80;
+}
 
-                    <div id="parceirosList" class="parceiros-list"></div>
-                </aside>
-            </div>
-        </div>
-    </section>
+.hero-title{
+    font-family:'Playfair Display',serif;
+    font-size:2.7rem;
+    line-height:1.3;
+    margin-bottom:1rem;
+}
 
-    <!-- MODAL CADASTRO PARCEIRO -->
-    <div id="parceiroModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-head">
-                <h3>Adicionar local parceiro</h3>
-                <button class="close-modal" type="button" onclick="closeModal()">&times;</button>
-            </div>
+.hero-title strong{
+    color:var(--light-gold);
+}
 
-            <form id="parceiroForm" onsubmit="addParceiro(event)">
-                <div class="form-group">
-                    <label for="cidade">Cidade</label>
-                    <input type="text" id="cidade" required placeholder="Ex.: Palmas" />
-                </div>
-                <div class="form-group">
-                    <label for="estado">Estado / Província</label>
-                    <input type="text" id="estado" required placeholder="Ex.: Tocantins" />
-                </div>
-                <div class="form-group">
-                    <label for="pais">País</label>
-                    <input type="text" id="pais" required placeholder="Ex.: Brasil" />
-                </div>
-                <div class="form-group">
-                    <label for="latitude">Latitude</label>
-                    <input type="number" step="any" id="latitude" required placeholder="-10.1834" />
-                </div>
-                <div class="form-group">
-                    <label for="longitude">Longitude</label>
-                    <input type="number" step="any" id="longitude" required placeholder="-48.3336" />
-                </div>
-                <div class="form-group">
-                    <label for="responsavel">Responsável</label>
-                    <select id="responsavel" required onchange="toggleOutroResponsavel()">
-                        <option value="">Selecione...</option>
-                        <option value="Dr. Giovani de Góuvani">Dr. Giovani de Góuvani</option>
-                        <option value="Dra. Pamella">Dra. Pamella</option>
-                        <option value="Dr. Abimael">Dr. Abimael</option>
-                        <option value="outro">Outro profissional parceiro</option>
-                    </select>
-                </div>
-                <div class="form-group" id="outroResponsavelGroup" style="display:none;">
-                    <label for="outroResponsavel">Nome do profissional parceiro</label>
-                    <input type="text" id="outroResponsavel" placeholder="Ex.: Dra. Maria Silva" />
-                </div>
+.hero-text{
+    font-size:1rem;
+    max-width:520px;
+    color:rgba(255,255,255,0.92);
+    margin-bottom:1.5rem;
+}
 
-                <button type="submit" class="submit-btn">
-                    Salvar local no organograma
-                </button>
-            </form>
-        </div>
-    </div>
+.hero-highlights{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1.5rem;
+    margin-bottom:2rem;
+}
 
-    <!-- CONTATO -->
-    <section id="contato" class="contact-section">
-        <div class="section-wrapper">
-            <div class="contact-grid">
-                <div class="contact-text">
-                    <div class="pill">
-                        <i class="fa-solid fa-headset"></i>
-                        Contato
-                    </div>
-                    <h3>Fale com a BSC Advogados Associados</h3>
-                    <p>
-                        Informe sua demanda e receba um retorno da equipe BSC com a estratégia jurídica mais adequada para o seu negócio rural, sempre em conformidade com a ética profissional da advocacia. [web:50][web:55]
-                    </p>
+.hero-highlight{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    font-size:0.9rem;
+}
 
-                    <div class="contact-items">
-                        <div class="contact-item">
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <span>WhatsApp: (63) 99269‑9118</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span>E-mail institucional: contato@bscadvogados.adv.br (ajuste para o e-mail oficial do escritório).</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-brands fa-instagram"></i>
-                            <span>Instagram: <a href="https://www.instagram.com/bsecadvogados/" target="_blank" rel="noopener">@bsecadvogados</a></span>
-                        </div>
-                    </div>
+.hero-highlight i{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/bsecadvogados/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/5563992699118" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </div>
+.hero-cta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1rem;
+    align-items:center;
+}
 
-                <div class="mini-form">
-                    <h4>Envie uma mensagem rápida</h4>
-                    <p>Formulário demonstrativo para apresentações. Em produção, conecte com seu provedor de e-mail ou CRM.</p>
+.primary-btn{
+    background:var(--gold);
+    color:#fff;
+    border-radius:999px;
+    padding:0.9rem 1.9rem;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    font-size:0.95rem;
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    text-decoration:none;
+}
 
-                    <form onsubmit="event.preventDefault(); alert('Mensagem enviada (exemplo). Integre com um serviço de e-mail em produção.');">
-                        <div class="form-group">
-                            <label for="nomeLead">Nome</label>
-                            <input id="nomeLead" type="text" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="emailLead">E-mail</label>
-                            <input id="emailLead" type="email" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="mensagemLead">Mensagem</label>
-                            <textarea id="mensagemLead" required></textarea>
-                        </div>
-                        <button type="submit">Enviar mensagem</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+.secondary-link{
+    color:#fff;
+    text-decoration:none;
+    font-size:0.9rem;
+    opacity:0.9;
+}
 
-    <footer>
-        BSC Advogados Associados · Direito Agrário e do Agronegócio · Conteúdo meramente informativo.
-    </footer>
+.secondary-link i{margin-left:0.25rem;}
 
-    <!-- JS do site -->
-    <script src="script.js"></script>
-</body>
-</html>
+.hero-right{
+    background:rgba(0,0,0,0.2);
+    border-radius:24px;
+    padding:1.8rem 1.8rem 1.5rem;
+    box-shadow:0 18px 45px rgba(0,0,0,0.45);
+}
+
+.org-title{
+    font-size:1.1rem;
+    font-weight:600;
+    margin-bottom:0.5rem;
+}
+
+.org-sub{
+    font-size:0.85rem;
+    color:rgba(255,255,255,0.75);
+    margin-bottom:1.2rem;
+}
+
+.org-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.1rem;
+}
+
+.org-card{
+    background:rgba(15,20,25,0.75);
+    border-radius:18px;
+    padding:0.9rem;
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.org-card.main{
+    grid-column:1/3;
+    background:linear-gradient(135deg,rgba(196,151,91,0.92),rgba(26,95,63,0.95));
+}
+
+.org-avatar{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid rgba(255,255,255,0.75);
+    flex-shrink:0;
+}
+
+.org-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.org-info h4{
+    font-size:0.9rem;
+    font-weight:600;
+}
+
+.org-info p{
+    font-size:0.78rem;
+    opacity:0.8;
+}
+
+.org-tag{
+    font-size:0.7rem;
+    padding:0.15rem 0.6rem;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,0.5);
+    margin-left:auto;
+    color:#fff;
+}
+
+/* SEÇÕES GERAIS */
+section{
+    padding:4rem 2.5rem;
+}
+
+.section-wrapper{
+    max-width:1320px;
+    margin:0 auto;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:2.8rem;
+}
+
+.section-heading h2{
+    font-family:'Playfair Display',serif;
+    font-size:2.2rem;
+    color:var(--primary-green);
+}
+
+.section-heading p{
+    font-size:0.95rem;
+    color:var(--text-light);
+    max-width:560px;
+    margin:0.6rem auto 0;
+}
+
+.pill{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    padding:0.2rem 0.9rem;
+    border-radius:999px;
+    background:rgba(26,95,63,0.06);
+    color:var(--primary-green);
+    font-size:0.75rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+}
+
+/* SÓCIOS */
+.socios-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:2.2rem;
+}
+
+.socio-card{
+    background:#fff;
+    border-radius:24px;
+    padding:2rem 1.6rem 1.7rem;
+    box-shadow:0 14px 40px rgba(0,0,0,0.07);
+    border-top:4px solid var(--gold);
+}
+
+.socio-photo{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    margin:0 auto 1.2rem;
+    border:4px solid rgba(196,151,91,0.65);
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(196,151,91,0.45);
+}
+
+.socio-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.socio-name{
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--primary-green);
+    text-align:center;
+    margin-bottom:0.25rem;
+}
+
+.socio-title{
+    text-align:center;
+    font-size:0.8rem;
+    letter-spacing:0.12em;
+    color:var(--gold);
+    margin-bottom:0.9rem;
+}
+
+.socio-badges{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:0.4rem;
+    margin-bottom:0.9rem;
+}
+
+.badge{
+    font-size:0.7rem;
+    padding:0.2rem 0.7rem;
+    border-radius:999px;
+    border:1px solid rgba(26,95,63,0.25);
+    color:var(--primary-green);
+    background:rgba(26,95,63,0.03);
+}
+
+.socio-desc{
+    font-size:0.85rem;
+    color:var(--text-light);
+    text-align:center;
+    line-height:1.6;
+    margin-bottom:1.1rem;
+}
+
+.socio-footer{
+    display:flex;
+    justify-content:center;
+    gap:1.3rem;
+    font-size:0.78rem;
+    color:var(--text-light);
+}
+
+.socio-footer span i{
+    color:var(--gold);
+    margin-right:0.25rem;
+}
+
+/* MAPA / CAPILARIDADE */
+.map-section{
+    background:#fff;
+}
+
+.map-layout{
+    display:grid;
+    grid-template-columns:1.7fr 1.3fr;
+    gap:2.2rem;
+    align-items:flex-start;
+}
+
+#map{
+    width:100%;
+    height:520px;
+    border-radius:24px;
+    border:2px solid rgba(0,0,0,0.03);
+    box-shadow:0 16px 40px rgba(0,0,0,0.12);
+}
+
+.map-side{
+    display:flex;
+    flex-direction:column;
+    gap:1.4rem;
+}
+
+.stats-row{
+    display:flex;
+    gap:1rem;
+}
+
+.stat-card{
+    flex:1;
+    background:var(--light-bg);
+    padding:1rem 1rem;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+}
+
+.stat-icon{
+    width:40px;
+    height:40px;
+    border-radius:14px;
+    background:rgba(26,95,63,0.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--primary-green);
+}
+
+.stat-text h4{
+    font-size:1.3rem;
+    color:var(--primary-green);
+}
+
+.stat-text p{
+    font-size:0.75rem;
+    color:var(--text-light);
+}
+
+.parceiros-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+}
+
+.parceiros-header h3{
+    font-size:1.1rem;
+    color:var(--primary-green);
+}
+
+.add-local-btn{
+    border:none;
+    border-radius:999px;
+    padding:0.55rem 1.3rem;
+    background:var(--gold);
+    color:#fff;
+    font-size:0.82rem;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:0.4rem;
+}
+
+.parceiros-list{
+    max-height:380px;
+    overflow:auto;
+    padding-right:0.3rem;
+}
+
+.parceiro-item{
+    background:var(--light-bg);
+    border-radius:16px;
+    padding:0.9rem 0.95rem;
+    margin-bottom:0.65rem;
+    border-left:4px solid var(--primary-green);
+    cursor:pointer;
+    transition:transform 0.15s ease,box-shadow 0.15s ease;
+}
+
+.parceiro-item:hover{
+    transform:translateX(3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.07);
+}
+
+.parceiro-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:0.2rem;
+}
+
+.parceiro-top h4{
+    font-size:0.95rem;
+    color:var(--primary-green);
+}
+
+.parceiro-estado{
+    font-size:0.8rem;
+    color:var(--gold);
+    font-weight:600;
+}
+
+.parceiro-meta{
+    font-size:0.8rem;
+    color:var(--text-light);
+}
+
+.parceiro-meta span{
+    margin-right:0.5rem;
+}
+
+/* POPUP LEAFLET */
+.leaflet-popup-content-wrapper{
+    border-radius:14px;
+}
+
+.leaflet-popup-content{
+    margin:0.7rem 0.7rem 0.9rem 0.7rem;
+}
+
+.popup-title{
+    font-weight:700;
+    color:var(--primary-green);
+    margin-bottom:0.1rem;
+}
+
+.popup-estado{
+    font-size:0.8rem;
+    color:var(--gold);
+    margin-bottom:0.4rem;
+}
+
+.popup-text{
+    font-size:0.82rem;
+    color:var(--text-light);
+}
+
+/* MODAL */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:1500;
+}
+
+.modal.active{display:flex;}
+
+.modal-content{
+    background:#fff;
+    border-radius:22px;
+    padding:2.1rem 2.2rem;
+    max-width:520px;
+    width:92%;
+    max-height:90vh;
+    overflow-y:auto;
+    box-shadow:0 20px 60px rgba(0,0,0,0.45);
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:1.5rem;
+}
+
+.modal-head h3{
+    font-size:1.3rem;
+    color:var(--primary-green);
+}
+
+.close-modal{
+    border:none;
+    background:none;
+    font-size:1.6rem;
+    color:var(--text-light);
+    cursor:pointer;
+}
+
+.form-group{
+    margin-bottom:1rem;
+}
+
+.form-group label{
+    display:block;
+    font-size:0.82rem;
+    font-weight:600;
+    color:var(--primary-green);
+    margin-bottom:0.3rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:0.7rem 0.8rem;
+    border-radius:10px;
+    border:1.6px solid #d4d4d4;
+    font-size:0.85rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    outline:none;
+    border-color:var(--primary-green);
+}
+
+.submit-btn{
+    margin-top:0.5rem;
+    width:100%;
+    border:none;
+    border-radius:999px;
+    padding:0.85rem 1.5rem;
+    background:linear-gradient(135deg,var(--primary-green),var(--secondary-green));
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* CONTATO / FOOTER */
+.contact-section{
+    background:var(--dark-bg);
+    color:#fff;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1.7fr 1.3fr;
+    gap:2.5rem;
+}
+
+.contact-text h3{
+    font-family:'Playfair Display',serif;
+    font-size:1.7rem;
+    margin-bottom:0.8rem;
+}
+
+.contact-text p{
+    font-size:0.9rem;
+    color:rgba(255,255,255,0.75);
+    margin-bottom:1.3rem;
+}
+
+.contact-items{
+    display:flex;
+    flex-direction:column;
+    gap:0.8rem;
+    font-size:0.9rem;
+}
+
+.contact-item{
+    display:flex;
+    align-items:flex-start;
+    gap:0.7rem;
+}
+
+.contact-item i{
+    color:var(--gold);
+    margin-top:2px;
+}
+
+.contact-item a{
+    color:#f9fafb;
+    text-decoration:underline;
+}
+
+.social-links{
+    display:flex;
+    gap:0.7rem;
+    margin-top:1.2rem;
+}
+
+.social-links a{
+    width:40px;
+    height:40px;
+    border-radius:999px;
+    background:#1f2933;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold);
+    text-decoration:none;
+}
+
+.mini-form h4{
+    font-size:1rem;
+    margin-bottom:0.6rem;
+}
+
+.mini-form p{
+    font-size:0.83rem;
+    color:rgba(255,255,255,0.75);
+    margin-bottom:0.8rem;
+}
+
+.mini-form textarea{
+    resize:vertical;
+    min-height:90px;
+}
+
+.mini-form button{
+    margin-top:0.3rem;
+    border:none;
+    border-radius:999px;
+    padding:0.75rem 1.4rem;
+    background:var(--gold);
+    color:#fff;
+    font-weight:600;
+    font-size:0.85rem;
+    cursor:pointer;
+}
+
+footer{
+    background:#05070a;
+    color:rgba(255,255,255,0.6);
+    font-size:0.78rem;
+    text-align:center;
+    padding:0.9rem 1rem;
+}
+
+/* RESPONSIVO */
+@media (max-width:1024px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-right{order:-1;}
+    .socios-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .map-layout{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+}
+
+@media (max-width:768px){
+    .header-container{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:flex-start;
+        gap:1rem;
+    }
+    .hero-inner{padding:3.5rem 1.2rem 3rem;}
+    section{padding:3rem 1.2rem;}
+    .socios-grid{grid-template-columns:1fr;}
+}

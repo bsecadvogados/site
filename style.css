@@ -1,8 +1,8 @@
-/* --- RESET E VARIÁVEIS --- */
+/* --- CONFIGURAÇÕES GERAIS --- */
 :root {
-    --bsc-green: #153e32;       /* Verde Profundo */
-    --bsc-gold: #c5a059;        /* Dourado Nobre */
-    --white-soft: #fcfcfc;      /* Branco Off-White */
+    --bsc-green: #153e32;       /* Verde Nobre */
+    --bsc-gold: #c5a059;        /* Dourado */
+    --white-soft: #fcfcfc;      /* Fundo Off-White */
     --gray-text: #4a4a4a;
     --font-serif: 'Cinzel', serif;
     --font-sans: 'Lato', sans-serif;
@@ -52,15 +52,15 @@ body {
     border-top: 5px solid var(--bsc-green);
     display: inline-block;
     position: relative;
-    max-width: 90%;
+    max-width: 95%;
 }
 
 .logo-img { 
     height: 80px; 
     width: auto; 
     display: block; 
-    margin: 0 auto 15px;
-    max-width: 100%; 
+    margin: 0 auto 15px; 
+    max-width: 100%; /* Garante que não estoure no celular */
 }
 
 .brand-name {
@@ -139,7 +139,7 @@ body {
     height: 320px;
     overflow: hidden;
     position: relative;
-    background: #f0f0f0; /* Cor de fundo caso a imagem falhe */
+    background: #eee;
 }
 
 .photo-container img {
@@ -187,7 +187,7 @@ body {
     margin-top: -5px;
 }
 
-/* --- ESTILOS DA REDE (CARDÁPIO INTERATIVO) --- */
+/* --- ESTILOS DA REDE --- */
 .level-network { width: 100%; max-width: 1000px; margin-top: 10px; }
 
 .section-header {
@@ -245,11 +245,11 @@ body {
 }
 
 .city-block { padding: 12px 20px; border-bottom: 1px solid rgba(0,0,0,0.05); }
-.city-name { font-size: 0.75rem; font-weight: 800; color: #aaa; text-transform: uppercase; display: block; margin-bottom: 4px;}
+.city-name { font-size: 0.75rem; font-weight: 800; color: #aaa; text-transform: uppercase; display: block; margin-bottom: 4px; }
 .partner-name { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--bsc-green); font-weight: 600; }
 .partner-name i { color: var(--bsc-gold); font-size: 0.8rem; }
 
-/* --- FOOTER E EXTRAS --- */
+/* --- FOOTER --- */
 .simple-footer {
     width: 100%; text-align: center;
     padding: 20px; margin-top: 60px; border-top: 1px solid #eee;
@@ -267,7 +267,7 @@ body {
 }
 .float-whatsapp:hover { transform: scale(1.1); background: #20b857; }
 
-/* --- RESPONSIVIDADE (MOBILE) --- */
+/* --- MOBILE --- */
 @media (max-width: 900px) {
     .connector-horizontal-bar { display: none; }
     .partners-grid { flex-direction: column; align-items: center; gap: 0; }
@@ -276,13 +276,12 @@ body {
     .connector-node-vertical { height: 40px; }
     .connector-partners-to-network { display: none; }
     
-    /* Conector manual para mobile */
     .partner-card::after {
         content: ''; display: block; width: 2px; height: 20px; 
         background: var(--bsc-gold); margin: 0 auto;
         position: absolute; bottom: -20px; left: 50%;
     }
-    .partner-node:last-child .partner-card::after { height: 60px; } /* Último conecta à rede */
+    .partner-node:last-child .partner-card::after { height: 60px; }
     
     .brand-name { font-size: 1.2rem; }
     .organogram-container { padding-top: 30px; }

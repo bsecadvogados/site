@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSC Advogados | Inteligência Jurídica para o Agronegócio</title>
+    <title>BSC Advogados | Global Agribusiness Law</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="//unpkg.com/three"></script>
+    <script src="//unpkg.com/globe.gl"></script>
     
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,7 +22,7 @@
             <img src="logo.png" alt="BSC Advogados" class="hero-logo">
             <h1>Barcellos Sakumoto & Carvalho</h1>
             <div class="gold-divider"></div>
-            <p class="tagline">Inteligência Jurídica para o Agronegócio</p>
+            <p class="tagline">Inteligência Jurídica Conectada ao Mundo</p>
         </div>
     </header>
 
@@ -65,9 +68,6 @@
             <div class="connector-vertical-line main-line"></div>
             
             <div class="management-card">
-                <div class="img-frame-small">
-                    <img src="iago.jpg" alt="Iago Manguary">
-                </div>
                 <div class="card-info-side">
                     <h3>Iago Manguary</h3>
                     <span class="role-badge dark">Controladoria Jurídica</span>
@@ -78,36 +78,14 @@
         </section>
 
         <section class="section-network">
-            <h2 class="section-title">Organograma de Capilaridade</h2>
-            <p class="section-subtitle">Estrutura conectada de alcance nacional e internacional</p>
-
-            <div class="tree-diagram-container">
-                <div class="tree-root">
-                    <span class="root-label"><i class="fas fa-globe"></i> Rede BSC</span>
-                </div>
-                
-                <div class="connector-vertical-line short"></div>
-                <div class="connector-horizontal-bar"></div>
-
-                <div class="tree-branches-wrapper">
-                    <div class="tree-branch">
-                        <div class="connector-vertical-line short connector-up"></div>
-                        <div class="branch-header br-header">
-                            <img src="https://flagcdn.com/w40/br.png" alt="Brasil" class="flag-icon"> Brasil
-                        </div>
-                        <div class="connector-vertical-line short"></div>
-                        <div id="brazil-grid" class="tree-nodes-grid"></div>
-                    </div>
-
-                    <div class="tree-branch">
-                        <div class="connector-vertical-line short connector-up"></div>
-                        <div class="branch-header intl-header">
-                            <img src="https://flagcdn.com/w40/us.png" alt="USA" class="flag-icon"> Internacional
-                        </div>
-                        <div class="connector-vertical-line short"></div>
-                        <div id="intl-grid" class="tree-nodes-grid one-column"></div>
-                    </div>
-                </div>
+            <h2 class="section-title">Rede Global BSC</h2>
+            <p class="section-subtitle">Conexões estratégicas do Brasil para o Mundo</p>
+            
+            <div id="globeViz"></div>
+            
+            <div class="network-legend">
+                <span><i class="fas fa-circle" style="color:var(--primary-green)"></i> Matriz (TO)</span>
+                <span><i class="fas fa-circle" style="color:var(--primary-gold)"></i> Unidades & Parceiros</span>
             </div>
         </section>
 

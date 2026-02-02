@@ -1,41 +1,43 @@
-const eventosBSC = [
-    { data: '2026-02-05', titulo: 'Show Safra MT', local: 'Lucas do Rio Verde', tipo: 'Evento Agro' },
-    { data: '2026-02-12', titulo: 'Reunião Sindicato Rural', local: 'Palmas - TO', tipo: 'Audiência' },
-    { data: '2026-02-20', titulo: 'Consultoria Propriedade X', local: 'Bahia', tipo: 'Visita Técnica' }
-];
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda BSC Advogados | Agro Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-function renderAgenda() {
-    const listContainer = document.getElementById('eventsList');
-    listContainer.innerHTML = '';
+    <div class="agro-background"></div>
 
-    eventosBSC.forEach(event => {
-        const dateObj = new Date(event.data);
-        const formattedDate = dateObj.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
-
-        listContainer.innerHTML += `
-            <div class="event-card">
-                <div class="event-info">
-                    <span>${formattedDate}</span>
-                    <h4>${event.titulo}</h4>
-                    <p><i class="fas fa-map-marker-alt"></i> ${event.local}</p>
-                </div>
-                <div class="event-tag">${event.tipo}</div>
+    <main class="agenda-wrapper">
+        <header class="agenda-header">
+            <div class="logo-area">
+                <h1>BSC ADVOGADOS</h1>
+                <span>DIREITO AGRÁRIO & AGRONEGÓCIO</span>
             </div>
-        `;
-    });
-}
+            <div class="date-now" id="currentDate">Segunda-feira, 02 de Fevereiro</div>
+        </header>
 
-// Inicializa a agenda ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    renderAgenda();
-    generateCalendar();
-});
+        <div class="weekly-display" id="weeklyGrid">
+            </div>
 
-function generateCalendar() {
-    const grid = document.getElementById('calendarGrid');
-    // Lógica simplificada para preencher 30 dias (exemplo)
-    for (let i = 1; i <= 30; i++) {
-        const hasEvent = eventosBSC.some(e => new Date(e.data).getDate() === i);
-        grid.innerHTML += `<div class="calendar-day ${hasEvent ? 'day-active' : ''}">${i}</div>`;
-    }
-}
+        <section class="detail-section">
+            <div class="detail-card">
+                <div class="detail-info">
+                    <h2 id="selectedDayTitle">Compromissos do Dia</h2>
+                    <div id="eventTimeline" class="event-timeline">
+                        </div>
+                </div>
+                <div class="detail-visual">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1000" alt="Agro Business" id="contextImage">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,316 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BSC Advogados Associados | Direito Agrário e Agronegócio</title>
+const eventosBSC = [
+    { data: '2026-02-05', titulo: 'Show Safra MT', local: 'Lucas do Rio Verde', tipo: 'Evento Agro' },
+    { data: '2026-02-12', titulo: 'Reunião Sindicato Rural', local: 'Palmas - TO', tipo: 'Audiência' },
+    { data: '2026-02-20', titulo: 'Consultoria Propriedade X', local: 'Bahia', tipo: 'Visita Técnica' }
+];
 
-    <!-- Fontes e ícones -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+function renderAgenda() {
+    const listContainer = document.getElementById('eventsList');
+    listContainer.innerHTML = '';
 
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    eventosBSC.forEach(event => {
+        const dateObj = new Date(event.data);
+        const formattedDate = dateObj.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
 
-    <!-- Geocoder Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-<header>
-    <div class="header-container">
-        <div class="logo-container">
-            <div class="logo">
-                <img src="logo.png" alt="BSC Advogados Associados">
-            </div>
-            <div class="brand-text">
-                <h1>BSC ADVOGADOS</h1>
-                <p>ASSOCIADOS</p>
-            </div>
-        </div>
-
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#socios">Sócios</a></li>
-                <li><a href="#capilaridade">Locais</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-
-        <!-- Botão WhatsApp topo – só ícone -->
-        <a class="whatsapp-btn" href="https://wa.me/5563992699118" target="_blank" rel="noopener">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-    </div>
-</header>
-
-<!-- HERO -->
-<section id="inicio" class="hero">
-    <div class="hero-inner">
-        <div class="hero-left">
-            <div class="hero-badge">
-                <span></span>
-                BSC Advogados · Direito Agrário
-            </div>
-            <h1 class="hero-title">
-                Estrutura jurídica voltada ao
-                <strong>agronegócio em todo o Brasil</strong>.
-            </h1>
-            <p class="hero-text">
-                Escritório com foco em Direito Agrário e Agronegócio, apoiando produtores rurais e empresas com atuação nacional e internacional.
-            </p>
-            <div class="hero-cta">
-                <a href="https://wa.me/5563992699118" class="primary-btn primary-btn-whats" target="_blank" rel="noopener">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    (63) 99269‑9118
-                </a>
-                <a href="#capilaridade" class="secondary-link">
-                    <span>Ver locais de atuação</span>
-                    <i class="fa-solid fa-arrow-down-long"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- ORGANOGRAMA COM IAGO AO CENTRO -->
-        <div class="hero-right org-panel">
-            <h2 class="org-panel-title">BSC Advogados</h2>
-            <p class="org-panel-subtitle">Sócios proprietários e estrutura de apoio</p>
-
-            <div class="org-top-row">
-                <div class="org-simple-card">
-                    <div class="org-simple-avatar">
-                        <img src="pamella.jpg" alt="Dra. Pamella">
-                    </div>
-                    <div class="org-simple-name">Dra. Pamella</div>
-                    <div class="org-simple-role">Sócia Proprietária</div>
+        listContainer.innerHTML += `
+            <div class="event-card">
+                <div class="event-info">
+                    <span>${formattedDate}</span>
+                    <h4>${event.titulo}</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> ${event.local}</p>
                 </div>
-
-                <div class="org-simple-card">
-                    <div class="org-simple-avatar">
-                        <img src="abimael.jpg" alt="Dr. Abimael">
-                    </div>
-                    <div class="org-simple-name">Dr. Abimael</div>
-                    <div class="org-simple-role">Sócio Proprietário</div>
-                </div>
-
-                <div class="org-simple-card">
-                    <div class="org-simple-avatar">
-                        <img src="giovani.jpg" alt="Dr. Giovani">
-                    </div>
-                    <div class="org-simple-name">Dr. Giovani</div>
-                    <div class="org-simple-role">Sócio Proprietário</div>
-                </div>
+                <div class="event-tag">${event.tipo}</div>
             </div>
+        `;
+    });
+}
 
-            <div class="org-connector">
-                <span class="org-line-horizontal"></span>
-            </div>
+// Inicializa a agenda ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+    renderAgenda();
+    generateCalendar();
+});
 
-            <div class="org-bottom-row single">
-                <div class="org-simple-card org-support-card">
-                    <div class="org-simple-avatar">
-                        <img src="iago.jpg" alt="Iago Manguary">
-                    </div>
-                    <div class="org-simple-name">Iago Manguary</div>
-                    <div class="org-simple-role">Controladoria Jurídica</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SÓCIOS -->
-<section id="socios">
-    <div class="section-wrapper">
-        <div class="section-heading">
-            <div class="pill">
-                <i class="fa-solid fa-user-tie"></i>
-                Sócios
-            </div>
-            <h2>Equipe de sócios proprietários</h2>
-        </div>
-
-        <div class="socios-grid">
-            <article class="socio-card socio-card-simple">
-                <div class="socio-photo">
-                    <img src="giovani.jpg" alt="Dr. Giovani">
-                </div>
-                <h3 class="socio-name">Dr. Giovani</h3>
-                <p class="socio-title">SÓCIO PROPRIETÁRIO</p>
-            </article>
-
-            <article class="socio-card socio-card-simple">
-                <div class="socio-photo">
-                    <img src="abimael.jpg" alt="Dr. Abimael">
-                </div>
-                <h3 class="socio-name">Dr. Abimael</h3>
-                <p class="socio-title">SÓCIO PROPRIETÁRIO</p>
-            </article>
-
-            <article class="socio-card socio-card-simple">
-                <div class="socio-photo">
-                    <img src="pamella.jpg" alt="Dra. Pamella">
-                </div>
-                <h3 class="socio-name">Dra. Pamella</h3>
-                <p class="socio-title">SÓCIA PROPRIETÁRIA</p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- CAPILARIDADE / MAPA -->
-<section id="capilaridade" class="map-section">
-    <div class="section-wrapper">
-        <div class="section-heading">
-            <div class="pill">
-                <i class="fa-solid fa-map-location-dot"></i>
-                Locais / Parceiros
-            </div>
-            <h2>Mapa de Estados, Cidades e Países</h2>
-        </div>
-
-        <div class="map-layout">
-            <div>
-                <div id="map"></div>
-            </div>
-
-            <aside class="map-side">
-                <div class="stats-row">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="stat-text">
-                            <h4 id="totalLocais">0</h4>
-                            <p>Locais de atuação</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-flag"></i>
-                        </div>
-                        <div class="stat-text">
-                            <h4 id="totalPaises">0</h4>
-                            <p>Países</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="parceiros-header">
-                    <h3>Locais e parceiros</h3>
-                    <button class="add-local-btn" type="button" onclick="openModal()">
-                        <i class="fa-solid fa-plus"></i> Adicionar local
-                    </button>
-                </div>
-
-                <div id="parceirosList" class="parceiros-list"></div>
-            </aside>
-        </div>
-    </div>
-</section>
-
-<!-- MODAL -->
-<div id="parceiroModal" class="modal">
-    <div class="modal-content">
-        <div class="modal-head">
-            <h3>Adicionar local parceiro</h3>
-            <button class="close-modal" type="button" onclick="closeModal()">&times;</button>
-        </div>
-
-        <form id="parceiroForm" onsubmit="addParceiro(event)">
-            <div class="form-group">
-                <label for="pais">País</label>
-                <input type="text" id="pais" required placeholder="Ex.: Brasil, Estados Unidos" />
-            </div>
-            <div class="form-group">
-                <label for="estado">Estado / Província</label>
-                <input type="text" id="estado" required placeholder="Ex.: Tocantins, Bahia, Flórida" />
-            </div>
-            <div class="form-group">
-                <label for="cidade">Cidade</label>
-                <input type="text" id="cidade" required placeholder="Ex.: Palmas, Sinop, Orlando" />
-            </div>
-            <div class="form-group">
-                <label for="enderecoBusca">Pesquisar local no mapa</label>
-                <input type="text" id="enderecoBusca" placeholder="Digite cidade ou endereço para localizar no mapa" />
-                <small class="hint">A coordenada será localizada automaticamente pela pesquisa.</small>
-            </div>
-            <div class="form-group">
-                <label for="responsavel">Responsável</label>
-                <select id="responsavel" required onchange="toggleOutroResponsavel()">
-                    <option value="">Selecione...</option>
-                    <option value="Dr. Giovani">Dr. Giovani</option>
-                    <option value="Dra. Pamella">Dra. Pamella</option>
-                    <option value="Dr. Abimael">Dr. Abimael</option>
-                    <option value="outro">Outro profissional parceiro</option>
-                </select>
-            </div>
-            <div class="form-group" id="outroResponsavelGroup" style="display:none;">
-                <label for="outroResponsavel">Nome do profissional parceiro</label>
-                <input type="text" id="outroResponsavel" placeholder="Ex.: Dra. Maria Silva" />
-            </div>
-
-            <button type="submit" class="submit-btn">
-                Salvar local no organograma
-            </button>
-        </form>
-    </div>
-</div>
-
-<!-- CONTATO -->
-<section id="contato" class="contact-section">
-    <div class="section-wrapper">
-        <div class="contact-grid">
-            <div class="contact-text">
-                <div class="pill">
-                    <i class="fa-solid fa-headset"></i>
-                    Contato
-                </div>
-                <h3>Fale com a BSC Advogados</h3>
-                <p>Entre em contato para atendimento personalizado em Direito Agrário e do Agronegócio.</p>
-                <div class="contact-items">
-                    <div class="contact-item">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span>WhatsApp: (63) 99269‑9118</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>E-mail: contato@bscadvogados.adv.br</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mini-form">
-                <h4>Envie uma mensagem rápida</h4>
-                <form onsubmit="event.preventDefault(); alert('Mensagem enviada (exemplo).');">
-                    <div class="form-group">
-                        <label for="nomeLead">Nome</label>
-                        <input id="nomeLead" type="text" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="emailLead">E-mail</label>
-                        <input id="emailLead" type="email" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="mensagemLead">Mensagem</label>
-                        <textarea id="mensagemLead" required></textarea>
-                    </div>
-                    <button type="submit">Enviar mensagem</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    BSC Advogados Associados · Direito Agrário e do Agronegócio.
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+function generateCalendar() {
+    const grid = document.getElementById('calendarGrid');
+    // Lógica simplificada para preencher 30 dias (exemplo)
+    for (let i = 1; i <= 30; i++) {
+        const hasEvent = eventosBSC.some(e => new Date(e.data).getDate() === i);
+        grid.innerHTML += `<div class="calendar-day ${hasEvent ? 'day-active' : ''}">${i}</div>`;
+    }
+}

@@ -1,65 +1,68 @@
 :root {
-    --gold: #d4af37;
-    --glass: rgba(255, 255, 255, 0.05);
-    --glass-heavy: rgba(0, 0, 0, 0.75);
+    --gold: #c5a059;
+    --white: #ffffff;
+    --glass: rgba(0, 0, 0, 0.82);
+    --border: rgba(197, 160, 89, 0.35);
 }
 
 body, html {
-    margin: 0; padding: 0; height: 100%;
+    margin: 0; padding: 0; min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
-    color: white; overflow-x: hidden;
+    color: var(--white); background-color: #0a0a0a;
+    overflow-x: hidden;
 }
 
-.agro-background {
+#dynamicBg {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
-                url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=1920');
-    background-size: cover; background-position: center; z-index: -1;
+    background-size: cover; background-position: center;
+    transition: background-image 1s ease-in-out; z-index: -2;
 }
 
-.agenda-wrapper {
-    max-width: 1200px; margin: 0 auto; padding: 40px 20px;
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.95) 100%);
+    z-index: -1;
 }
 
-.agenda-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 50px; border-bottom: 1px solid var(--gold); padding-bottom: 20px;
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px;
 }
 
-.logo-area h1 { font-family: 'Playfair Display', serif; margin: 0; letter-spacing: 4px; }
-.logo-area span { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; }
+.main-logo { height: 70px; }
+.brand-h h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: 1.7rem; letter-spacing: 3px; }
+.brand-h p { color: var(--gold); margin: 0; font-size: 0.7rem; letter-spacing: 2px; }
 
-/* Grid de Dias */
-.weekly-display {
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; margin-bottom: 40px;
+/* Organograma */
+.socio-grid { display: flex; justify-content: center; gap: 25px; margin-bottom: 50px; flex-wrap: wrap; }
+.card-socio {
+    background: var(--glass); padding: 25px; border-radius: 20px;
+    border: 1px solid var(--border); width: 200px; text-align: center;
+    backdrop-filter: blur(10px); transition: 0.4s;
 }
-
-.day-item {
-    background: var(--glass); backdrop-filter: blur(10px);
-    padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
-    text-align: center; cursor: pointer; transition: 0.4s;
+.photo-frame {
+    width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 15px;
+    border: 2px solid var(--gold); overflow: hidden;
 }
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+.card-socio h3 { font-family: 'Playfair Display', serif; color: var(--gold); margin: 10px 0 5px; }
 
-.day-item:hover, .day-item.active {
-    background: var(--gold); color: black; transform: translateY(-10px);
+/* Agenda */
+.nav-agenda { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 30px; }
+.btn-dia {
+    background: var(--glass); border: 1px solid var(--border);
+    padding: 15px; border-radius: 12px; cursor: pointer; text-align: center; transition: 0.3s;
 }
+.btn-dia.active { background: var(--gold); color: #000; font-weight: bold; }
 
-.day-item h4 { margin: 10px 0 0; font-size: 1.2rem; }
-.day-item span { font-size: 0.7rem; text-transform: uppercase; }
-
-/* Card de Detalhes */
-.detail-card {
-    display: grid; grid-template-columns: 1.5fr 1fr;
-    background: var(--glass-heavy); border-radius: 20px; overflow: hidden;
-    min-height: 400px; border: 1px solid rgba(212, 175, 55, 0.3);
+.panel-compromissos {
+    background: var(--glass); border: 1px solid var(--border);
+    border-radius: 20px; padding: 35px; backdrop-filter: blur(15px);
 }
-
-.detail-info { padding: 40px; }
-.detail-visual img { width: 100%; height: 100%; object-fit: cover; }
-
-.event-entry {
-    margin-bottom: 25px; padding-left: 15px; border-left: 3px solid var(--gold);
+.row-evento {
+    display: grid; grid-template-columns: 110px 1fr; gap: 20px;
+    padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-
-.event-entry strong { color: var(--gold); font-size: 1.1rem; }
-.event-entry p { margin: 5px 0; opacity: 0.8; }
+.time { color: var(--gold); font-weight: 700; font-size: 1.3rem; }

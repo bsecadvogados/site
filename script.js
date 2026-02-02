@@ -1,7 +1,7 @@
 const agendaData = [
     {
         dia: 'Segunda', data: '02/02', 
-        img: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&q=80&w=1920',
+        img: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&w=1920', // Soja
         eventos: [
             { h: '09:15', t: 'Audiência de Conciliação', d: 'Rafael Zanini x Antonio Mendes' },
             { h: '15:30', t: 'Realização de defesa prévia', d: 'TRANSPORTE BRAGA BORGES' },
@@ -10,21 +10,21 @@ const agendaData = [
     },
     {
         dia: 'Quarta', data: '04/02', 
-        img: 'https://images.unsplash.com/photo-1554306274-f230f2832876?auto=format&fit=crop&q=80&w=1920',
+        img: 'https://images.unsplash.com/photo-1554306274-f230f2832876?q=80&w=1920', // Milho
         eventos: [{ h: '07:00', t: 'Reunião BNI Jalapão', d: 'Networking e Parcerias' }]
     },
     {
         dia: 'Sexta', data: '06/02', 
-        img: 'https://images.unsplash.com/photo-1594488425046-601e3895e96a?auto=format&fit=crop&q=80&w=1920',
+        img: 'https://images.unsplash.com/photo-1594488425046-601e3895e96a?q=80&w=1920', // Fazenda/Silos
         eventos: [
-            { h: 'Dia Inteiro', t: 'Inauguração - Escritório AUBE', d: 'Evento Institucional BSC' },
+            { h: 'Inteiro', t: 'Inauguração - Escritório AUBE', d: 'Evento Institucional BSC' },
             { h: '08:30', t: 'Informar novo endereço', d: 'Rafael Zanini x Antonio Carlos' }
         ]
     },
     {
         dia: 'Sábado', data: '07/02', 
-        img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920',
-        eventos: [{ h: 'Dia Inteiro', t: 'Dia de Campo - OILEMA', d: 'Consultoria Setor Agro' }]
+        img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1920', // Campo/Grãos
+        eventos: [{ h: 'Inteiro', t: 'Dia de Campo - OILEMA', d: 'Consultoria Setor Agro' }]
     }
 ];
 

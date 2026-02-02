@@ -1,53 +1,64 @@
-const agendaEscritorio = [
-    { data: '02/02', dia: 'Segunda', img: 'https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800', eventos: [
-        { hora: '09:15', titulo: 'Audiência de Conciliação', local: 'Fórum Rafael Zanini' },
-        { hora: '15:30', titulo: 'Defesa Prévia', local: 'Transporte Braga Borges' }
-    ]},
-    { data: '04/02', dia: 'Quarta', img: 'https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&q=80&w=800', eventos: [
-        { hora: '07:00', titulo: 'Reunião BNI Jalapão', local: 'Auditório Principal' }
-    ]},
-    { data: '06/02', dia: 'Sexta', img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=800', eventos: [
-        { hora: 'Dia Inteiro', titulo: 'Inauguração Escritório AUBE', local: 'Sede Nova' }
-    ]},
-    { data: '07/02', dia: 'Sábado', img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800', eventos: [
-        { hora: '08:00', titulo: 'Dia de Campo - OILEMA', local: 'Fazenda Experimental' }
-    ]}
+const agendaData = [
+    {
+        dia: 'Segunda', data: '02/02', 
+        img: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&q=80&w=1920',
+        eventos: [
+            { h: '09:15', t: 'Audiência de Conciliação', d: 'Rafael Zanini x Antonio Mendes' },
+            { h: '15:30', t: 'Realização de defesa prévia', d: 'TRANSPORTE BRAGA BORGES' },
+            { h: '16:30', t: 'Impugnar Cumprimento de Sentença', d: 'TAUILE x SANNA' }
+        ]
+    },
+    {
+        dia: 'Quarta', data: '04/02', 
+        img: 'https://images.unsplash.com/photo-1554306274-f230f2832876?auto=format&fit=crop&q=80&w=1920',
+        eventos: [{ h: '07:00', t: 'Reunião BNI Jalapão', d: 'Networking e Parcerias' }]
+    },
+    {
+        dia: 'Sexta', data: '06/02', 
+        img: 'https://images.unsplash.com/photo-1594488425046-601e3895e96a?auto=format&fit=crop&q=80&w=1920',
+        eventos: [
+            { h: 'Dia Inteiro', t: 'Inauguração - Escritório AUBE', d: 'Evento Institucional BSC' },
+            { h: '08:30', t: 'Informar novo endereço', d: 'Rafael Zanini x Antonio Carlos' }
+        ]
+    },
+    {
+        dia: 'Sábado', data: '07/02', 
+        img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920',
+        eventos: [{ h: 'Dia Inteiro', t: 'Dia de Campo - OILEMA', d: 'Consultoria Setor Agro' }]
+    }
 ];
 
-function buildAgenda() {
-    const grid = document.getElementById('weeklyGrid');
-    
-    agendaEscritorio.forEach((item, index) => {
-        const div = document.createElement('div');
-        div.className = `day-item ${index === 0 ? 'active' : ''}`;
-        div.innerHTML = `<span>${item.data}</span><h4>${item.dia}</h4>`;
-        div.onclick = () => updateDetail(item, div);
-        grid.appendChild(div);
+function init() {
+    const nav = document.getElementById('navAgenda');
+    agendaData.forEach((item, i) => {
+        const btn = document.createElement('div');
+        btn.className = `btn-dia ${i === 0 ? 'active' : ''}`;
+        btn.innerHTML = `<span>${item.data}</span><br><strong>${item.dia}</strong>`;
+        btn.onclick = () => updateView(item, btn);
+        nav.appendChild(btn);
     });
-
-    // Inicia com o primeiro dia
-    updateDetail(agendaEscritorio[0]);
+    updateView(agendaData[0]);
+    setInterval(() => {
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString('pt-BR');
+    }, 1000);
 }
 
-function updateDetail(item, element) {
-    // UI Update
-    if(element) {
-        document.querySelectorAll('.day-item').forEach(d => d.classList.remove('active'));
-        element.classList.add('active');
+function updateView(data, btn) {
+    document.getElementById('dynamicBg').style.backgroundImage = `url('${data.img}')`;
+    if(btn) {
+        document.querySelectorAll('.btn-dia').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
     }
-
-    // Update Content
-    document.getElementById('selectedDayTitle').innerText = `Compromissos: ${item.dia}`;
-    document.getElementById('contextImage').src = item.img;
-    
-    const timeline = document.getElementById('eventTimeline');
-    timeline.innerHTML = item.eventos.map(e => `
-        <div class="event-entry">
-            <strong><i class="fa-regular fa-clock"></i> ${e.hora}</strong>
-            <p>${e.titulo}</p>
-            <small><i class="fa-solid fa-location-dot"></i> ${e.local}</small>
+    const panel = document.getElementById('panelEvents');
+    panel.innerHTML = data.eventos.map(e => `
+        <div class="row-evento">
+            <div class="time">${e.h}</div>
+            <div class="info-evento">
+                <h4>${e.t}</h4>
+                <p>${e.d}</p>
+            </div>
         </div>
     `).join('');
 }
 
-document.addEventListener('DOMContentLoaded', buildAgenda);
+document.addEventListener('DOMContentLoaded', init);

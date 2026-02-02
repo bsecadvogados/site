@@ -3,38 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSC Advogados | Agenda Agro</title>
+    <title>BSC Advogados | Agenda Dinâmica Agro</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --gold: #c5a059;
+            --white: #ffffff;
+            --glass: rgba(0, 0, 0, 0.7);
+            --border: rgba(197, 160, 89, 0.4);
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--white); overflow: hidden;
+            background-color: #000;
+        }
+
+        /* Background Dinâmico Imersivo */
+        #dynamicBg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            transition: background-image 1s ease-in-out; z-index: -2;
+        }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px; margin: 0 auto; padding: 40px 20px;
+            display: flex; flex-direction: column; height: 90vh;
+        }
+
+        header {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            margin-bottom: 40px; border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .logo-text h1 { font-family: 'Playfair Display', serif; margin: 0; letter-spacing: 4px; font-size: 2.2rem; }
+        .logo-text p { color: var(--gold); margin: 0; font-size: 0.8rem; letter-spacing: 3px; }
+
+        /* Navegação da Semana */
+        .week-nav {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px; margin-bottom: 30px;
+        }
+
+        .day-card {
+            background: var(--glass); border: 1px solid var(--border);
+            padding: 20px; border-radius: 12px; cursor: pointer;
+            text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .day-card:hover, .day-card.active {
+            background: var(--gold); color: #000; transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .day-card span { font-size: 0.75rem; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .day-card strong { font-size: 1.3rem; }
+
+        /* Detalhes dos Eventos */
+        .event-panel {
+            background: var(--glass); border-radius: 20px;
+            border: 1px solid var(--border); padding: 40px;
+            flex-grow: 1; overflow-y: auto; backdrop-filter: blur(15px);
+        }
+
+        .event-item {
+            display: grid; grid-template-columns: 120px 1fr;
+            gap: 20px; padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .event-time { font-size: 1.6rem; font-weight: 700; color: var(--gold); }
+        .event-details h3 { margin: 0; font-size: 1.4rem; color: var(--white); }
+        .event-details p { margin: 8px 0; opacity: 0.8; line-height: 1.5; }
+        
+        .tag {
+            display: inline-block; padding: 4px 12px; background: rgba(197, 160, 89, 0.2);
+            border: 1px solid var(--gold); color: var(--gold);
+            font-size: 0.7rem; border-radius: 4px; font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .event-item { grid-template-columns: 1fr; }
+            .week-nav { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
 </head>
 <body>
 
-    <div id="dynamicBg" class="main-bg"></div>
+    <div id="dynamicBg"></div>
     <div class="overlay"></div>
 
-    <main class="content-container">
-        <header class="main-header">
-            <div class="logo-box">
+    <div class="container">
+        <header>
+            <div class="logo-text">
                 <h1>BSC ADVOGADOS</h1>
                 <p>DIREITO AGRÁRIO & AGRONEGÓCIO</p>
             </div>
-            <div id="clock" class="clock-display">00:00:00</div>
+            <div style="text-align: right;">
+                <div id="viewDate" style="color: var(--gold); font-weight: bold;"></div>
+                <small id="digitalClock"></small>
+            </div>
         </header>
 
-        <nav class="days-nav" id="daysNav"></nav>
+        <div class="week-nav" id="weekNav"></div>
 
-        <section class="agenda-panel">
-            <div class="panel-header">
-                <h2 id="viewTitle">Compromissos do Dia</h2>
-                <span id="viewDate" class="gold-text"></span>
+        <div class="event-panel" id="eventPanel">
             </div>
-            
-            <div class="events-grid" id="eventsContainer">
-                </div>
-        </section>
-    </main>
+    </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Dados Completos da Agenda (Baseados na sua imagem)
+        const agendaData = [
+            {
+                dia: 'Segunda', data: '02/02', 
+                img: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1920',
+                eventos: [
+                    { hora: '09:15', titulo: 'Audiência de Conciliação', desc: 'Rafael Zanini x Antonio Mendes', tipo: 'JURÍDICO' },
+                    { hora: '15:30', titulo: 'Realização de defesa prévia', desc: 'TRANSPORTE BRAGA BORGES', tipo: 'PRAZO' },
+                    { hora: '16:30', titulo: 'Impugnar Cumprimento de Sentença', desc: 'TAUILE x SANNA', tipo: 'PRAZO' }
+                ]
+            },
+            {
+                dia: 'Quarta', data: '04/02', 
+                img: 'https://images.unsplash.com/photo-1594488425046-601e3895e96a?q=80&w=1920',
+                eventos: [
+                    { hora: '07:00', titulo: 'Reunião BNI Jalapão', desc: 'Networking e Parcerias Estratégicas em Palmas/TO', tipo: 'BNI' }
+                ]
+            },
+            {
+                dia: 'Sexta', data: '06/02', 
+                img: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1920',
+                eventos: [
+                    { hora: 'Inteiro', titulo: 'Inauguração - Escritório AUBE', desc: 'Presença Institucional BSC Advogados', tipo: 'EVENTO' },
+                    { hora: '08:30', titulo: 'Informar novo endereço', desc: 'Processo: RAFAEL ZANINI x ANTONIO CARLOS', tipo: 'JURÍDICO' }
+                ]
+            },
+            {
+                dia: 'Sábado', data: '07/02', 
+                img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1920',
+                eventos: [
+                    { hora: 'Inteiro', titulo: 'Dia de Campo - OILEMA', desc: 'Consultoria e Relacionamento no Setor Agronegócio', tipo: 'AGRO' }
+                ]
+            }
+        ];
+
+        function renderApp() {
+            const nav = document.getElementById('weekNav');
+            const bg = document.getElementById('dynamicBg');
+
+            agendaData.forEach((dia, index) => {
+                const card = document.createElement('div');
+                card.className = `day-card ${index === 0 ? 'active' : ''}`;
+                card.innerHTML = `<span>${dia.data}</span><strong>${dia.dia}</strong>`;
+                card.onclick = () => updateContent(dia, card);
+                nav.appendChild(card);
+            });
+
+            // Carregamento Inicial
+            updateContent(agendaData[0]);
+            
+            // Relógio
+            setInterval(() => {
+                document.getElementById('digitalClock').innerText = new Date().toLocaleTimeString('pt-BR');
+            }, 1000);
+        }
+
+        function updateContent(dia, cardElement) {
+            // Background
+            document.getElementById('dynamicBg').style.backgroundImage = `url('${dia.img}')`;
+            
+            // UI Selection
+            if(cardElement) {
+                document.querySelectorAll('.day-card').forEach(c => c.classList.remove('active'));
+                cardElement.classList.add('active');
+            }
+
+            // Textos
+            document.getElementById('viewDate').innerText = `${dia.dia}-feira, ${dia.data}`;
+            
+            // Lista de Eventos
+            const panel = document.getElementById('eventPanel');
+            panel.innerHTML = dia.eventos.map(e => `
+                <div class="event-item">
+                    <div class="event-time">${e.hora}</div>
+                    <div class="event-details">
+                        <span class="tag">${e.tipo}</span>
+                        <h3>${e.titulo}</h3>
+                        <p>${e.desc}</p>
+                    </div>
+                </div>
+            `).join('') || '<h3>Sem compromissos agendados.</h3>';
+        }
+
+        document.addEventListener('DOMContentLoaded', renderApp);
+    </script>
 </body>
 </html>

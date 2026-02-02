@@ -3,223 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSC Advogados | Agenda Dinâmica Agro</title>
-    
+    <title>BSC Advogados | Agenda Agro</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        :root {
-            --gold: #c5a059;
-            --white: #ffffff;
-            --glass: rgba(0, 0, 0, 0.85);
-            --border: rgba(197, 160, 89, 0.4);
-        }
-
-        body, html {
-            margin: 0; padding: 0; min-height: 100vh;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--white); background-color: #111;
-            overflow-x: hidden;
-        }
-
-        /* Fundo Dinâmico com Imagens Agro Reais */
-        #dynamicBg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            transition: background-image 1.2s ease-in-out; z-index: -2;
-            background-image: url('https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&q=80&w=1920');
-        }
-
-        .overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.95) 100%);
-            z-index: -1;
-        }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; position: relative; }
-
-        /* Header e Logo */
-        header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px;
-        }
-        .logo-box { display: flex; align-items: center; gap: 15px; }
-        .logo-box img { height: 65px; border-radius: 5px; }
-        .brand-h h1 { font-family: 'Playfair Display', serif; margin: 0; font-size: 1.6rem; letter-spacing: 3px; }
-        .brand-h p { color: var(--gold); margin: 0; font-size: 0.7rem; letter-spacing: 2px; }
-
-        /* Organograma dos Sócios */
-        .socio-grid {
-            display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; flex-wrap: wrap;
-        }
-        .card-socio {
-            background: var(--glass); padding: 25px; border-radius: 20px;
-            border: 1px solid var(--border); width: 200px; text-align: center;
-            backdrop-filter: blur(12px); transition: 0.4s ease;
-        }
-        .card-socio:hover { border-color: var(--gold); transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .photo-frame {
-            width: 120px; height: 120px; border-radius: 50%;
-            margin: 0 auto 15px; border: 2px solid var(--gold);
-            overflow: hidden; background: #222;
-        }
-        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-        .card-socio h3 { font-family: 'Playfair Display', serif; margin: 10px 0 5px; color: var(--gold); font-size: 1.2rem; }
-        .card-socio span { font-size: 0.65rem; text-transform: uppercase; opacity: 0.8; letter-spacing: 1px; }
-
-        /* Agenda Dinâmica */
-        .agenda-title { text-align: center; margin-bottom: 30px; }
-        .agenda-title h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); }
-
-        .nav-agenda {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 15px; margin-bottom: 30px;
-        }
-        .btn-dia {
-            background: var(--glass); border: 1px solid var(--border);
-            padding: 18px; border-radius: 12px; cursor: pointer; text-align: center;
-            transition: 0.3s; backdrop-filter: blur(8px);
-        }
-        .btn-dia.active { background: var(--gold); color: #000; border-color: var(--gold); font-weight: bold; }
-        .btn-dia strong { font-size: 1.1rem; display: block; }
-        .btn-dia span { font-size: 0.75rem; opacity: 0.7; }
-
-        .panel-compromissos {
-            background: var(--glass); border: 1px solid var(--border);
-            border-radius: 20px; padding: 40px; backdrop-filter: blur(20px);
-            margin-bottom: 50px;
-        }
-        .row-evento {
-            display: grid; grid-template-columns: 120px 1fr; gap: 20px;
-            padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
-            animation: slideIn 0.6s ease;
-        }
-        .hora { color: var(--gold); font-weight: 700; font-size: 1.4rem; }
-        .info-evento h4 { margin: 0; font-size: 1.3rem; }
-        .info-evento p { margin: 8px 0 0; opacity: 0.8; font-size: 1.1rem; line-height: 1.5; }
-
-        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        @media (max-width: 768px) {
-            .row-evento { grid-template-columns: 1fr; gap: 10px; }
-            .nav-agenda { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="dynamicBg"></div>
+    <div id="dynamicBg" class="main-bg"></div>
     <div class="overlay"></div>
 
-    <div class="container">
-        <header>
+    <main class="content-container">
+        <header class="main-header">
             <div class="logo-box">
-                <img src="logo.png" alt="BSC Advogados">
-                <div class="brand-h">
-                    <h1>BSC ADVOGADOS</h1>
-                    <p>DIREITO AGRÁRIO & AGRONEGÓCIO</p>
-                </div>
+                <h1>BSC ADVOGADOS</h1>
+                <p>DIREITO AGRÁRIO & AGRONEGÓCIO</p>
             </div>
-            <div id="clock" style="color: var(--gold); font-weight: bold; font-size: 1rem;"></div>
+            <div id="clock" class="clock-display">00:00:00</div>
         </header>
 
-        <section class="socio-grid">
-            <div class="card-socio">
-                <div class="photo-frame"><img src="giovani.jpg" alt="Dr. Giovani"></div>
-                <h3>Dr. Giovani</h3>
-                <span>Sócio Proprietário</span>
-            </div>
-            <div class="card-socio">
-                <div class="photo-frame"><img src="abimael.jpg" alt="Dr. Abimael"></div>
-                <h3>Dr. Abimael</h3>
-                <span>Sócio Proprietário</span>
-            </div>
-            <div class="card-socio">
-                <div class="photo-frame"><img src="pamella.jpg" alt="Dra. Pamella"></div>
-                <h3>Dra. Pamella</h3>
-                <span>Sócia Proprietária</span>
-            </div>
-        </section>
+        <nav class="days-nav" id="daysNav"></nav>
 
-        <section>
-            <div class="agenda-title"><h2>Agenda Institucional</h2></div>
-            <nav class="nav-agenda" id="navAgenda"></nav>
-            <div class="panel-compromissos" id="panelEvents"></div>
-        </section>
-    </div>
-
-    <script>
-        // URLs das imagens do banco de dados Agro (Soja, Milho, Fazendas, Grãos)
-        const agendaData = [
-            {
-                dia: 'Segunda', data: '02/02', 
-                img: 'https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?auto=format&fit=crop&q=80&w=1920', // Plantação de Soja
-                eventos: [
-                    { h: '09:15', t: 'Audiência de Conciliação', d: 'Processo: Rafael Zanini x Antonio Mendes' },
-                    { h: '15:30', t: 'Realização de defesa prévia', d: 'Cliente: TRANSPORTE BRAGA BORGES' },
-                    { h: '16:30', t: 'Impugnar Cumprimento de Sentença', d: 'Processo: TAUILE x SANNA' }
-                ]
-            },
-            {
-                dia: 'Quarta', data: '04/02', 
-                img: 'https://images.unsplash.com/photo-1554306274-f230f2832876?auto=format&fit=crop&q=80&w=1920', // Milharal de Ouro
-                eventos: [
-                    { h: '07:00', t: 'Reunião BNI Jalapão', d: 'Networking e Parcerias Estratégicas - Palmas/TO' }
-                ]
-            },
-            {
-                dia: 'Sexta', data: '06/02', 
-                img: 'https://images.unsplash.com/photo-1594488425046-601e3895e96a?auto=format&fit=crop&q=80&w=1920', // Fazenda e Maquinário
-                eventos: [
-                    { h: 'Dia Inteiro', t: 'Inauguração - Escritório AUBE', d: 'Evento Social e Institucional BSC' },
-                    { h: '08:30', t: 'Informar novo endereço', d: 'RAFAEL ZANINI x ANTONIO CARLOS' }
-                ]
-            },
-            {
-                dia: 'Sábado', data: '07/02', 
-                img: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&q=80&w=1920', // Silos e Grãos
-                eventos: [
-                    { h: 'Dia Inteiro', t: 'Dia de Campo - OILEMA', d: 'Consultoria e Relacionamento no Setor Agronegócio' }
-                ]
-            }
-        ];
-
-        function init() {
-            const nav = document.getElementById('navAgenda');
-            agendaData.forEach((item, i) => {
-                const btn = document.createElement('div');
-                btn.className = `btn-dia ${i === 0 ? 'active' : ''}`;
-                btn.innerHTML = `<span>${item.data}</span><strong>${item.dia}</strong>`;
-                btn.onclick = () => changeDay(item, btn);
-                nav.appendChild(btn);
-            });
-            changeDay(agendaData[0]);
+        <section class="agenda-panel">
+            <div class="panel-header">
+                <h2 id="viewTitle">Compromissos do Dia</h2>
+                <span id="viewDate" class="gold-text"></span>
+            </div>
             
-            setInterval(() => {
-                document.getElementById('clock').innerText = new Date().toLocaleTimeString('pt-BR');
-            }, 1000);
-        }
-
-        function changeDay(item, btn) {
-            document.getElementById('dynamicBg').style.backgroundImage = `url('${item.img}')`;
-            if(btn) {
-                document.querySelectorAll('.btn-dia').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            }
-            const panel = document.getElementById('panelEvents');
-            panel.innerHTML = item.eventos.map(e => `
-                <div class="row-evento">
-                    <div class="hora">${e.h}</div>
-                    <div class="info-evento">
-                        <h4>${e.t}</h4>
-                        <p>${e.d}</p>
-                    </div>
+            <div class="events-grid" id="eventsContainer">
                 </div>
-            `).join('');
-        }
+        </section>
+    </main>
 
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
